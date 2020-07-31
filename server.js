@@ -8,11 +8,14 @@ app.use(express.json());
 // Connect to MongoDB
 mongoose.connect(
   process.env.DB_CONNECTION,
-  { useNewUrlParser: true, useCreateIndex: true },
+  { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true },
   () => {
     console.log("MongoDB Connected");
   }
 );
+
+// Use Routes
+app.use("/api/items", require("./routes/todos"));
 
 const port = process.env.PORT || 5000;
 
