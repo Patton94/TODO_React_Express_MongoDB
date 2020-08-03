@@ -15,7 +15,7 @@ router.get("/", (req, res) => {
 // Create a TodoItem
 // Private
 
-router.post("/", (req, res) => {
+router.post("/add", (req, res) => {
   const newTodoItem = new TodoItem({
     title: req.body.title,
     description: req.body.description,
@@ -29,7 +29,7 @@ router.post("/", (req, res) => {
 // DELETE TodoItem
 // Private
 
-router.delete("/:id", (req, res) => {
+router.delete("/delete/:id", (req, res) => {
   TodoItem.findById(req.params.id)
     .then((item) => item.remove().then(() => res.json({ msg: "Item deleted" })))
     .catch((err) => res.status(400).json({ msg: "Something goes wrong" }));
@@ -38,7 +38,32 @@ router.delete("/:id", (req, res) => {
 // UPDATE TodoItem
 // Private
 
-// Mark TodoItem as done
+router.patch("/edit/:id", (req, res) => {
+  TodoItem.updateOne(
+    { _id: req.params.id },
+    {
+      $set: {
+        title: req.body.title,
+        description: req.body.description,
+        priority: req.body.priority,
+        deadline: req.body.deadline,
+      },
+    }
+  ).then(res.json({ msg: "Item udpated" }));
+});
+
+// Mark as done
 // Private
+
+router.patch("/edit/done/:id", (req, res) => {
+  TodoItem.updateOne(
+    { _id: req.params.id },
+    {
+      $set: {
+        done: req.body.done,
+      },
+    }
+  ).then(res.json({ msg: "Task done" }));
+});
 
 module.exports = router;

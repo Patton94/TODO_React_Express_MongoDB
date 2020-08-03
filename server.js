@@ -8,7 +8,7 @@ app.use(express.json());
 // Connect to MongoDB
 mongoose.connect(
   process.env.DB_CONNECTION,
-  { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true },
+  { useNewUrlParser: true, useCreateIndex: true },
   () => {
     console.log("MongoDB Connected");
   }
