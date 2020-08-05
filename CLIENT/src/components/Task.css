@@ -1,0 +1,71 @@
+.task {
+  margin-top: 2vh;
+  background-color: blueviolet;
+  display: flex;
+}
+
+.task__titleContainer {
+  background-color: burlywood;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.task__title {
+  background-color: dodgerblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.task__h3 {
+  margin: 0;
+}
+
+.task__priority {
+  background-color: chartreuse;
+  flex-basis: 8%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.task__beginDate {
+  background-color: cyan;
+  flex-basis: 12%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.task__deadline {
+  background-color: darkgoldenrod;
+  flex-basis: 12%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.task__editButton {
+  background-color: darkolivegreen;
+  flex-basis: 7%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.task__deleteButton {
+  background-color: darksalmon;
+  flex-basis: 7%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.task__doneButton {
+  background-color: darkslateblue;
+  flex-basis: 7%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

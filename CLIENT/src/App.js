@@ -1,8 +1,20 @@
 import React from "react";
+import axios from "axios";
 import "./App.css";
+import Navbar from "./components/Navbar";
+import Main from "./components/Main";
+import Footer from "./components/Footer";
 
 function App() {
-  return <div className="App">"Hello World"</div>;
+  return (
+    <div className="App">
+      <Navbar />
+
+      <Main />
+
+      <Footer />
+    </div>
+  );
 }
 
 export default App;

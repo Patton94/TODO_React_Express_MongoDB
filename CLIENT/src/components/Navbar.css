@@ -1,0 +1,39 @@
+.nav {
+  background-color: lightcoral;
+  flex-basis: 8%;
+  display: flex;
+  align-items: center;
+}
+
+.nav__a {
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+}
+
+.nav__todo {
+  background-color: red;
+  flex-grow: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav__login {
+  background-color: orange;
+  flex-basis: 20%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav__register {
+  background-color: blue;
+  flex-basis: 20%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

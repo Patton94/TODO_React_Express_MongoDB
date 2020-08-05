@@ -14,6 +14,12 @@ mongoose.connect(
   }
 );
 
+// Access Control Allow Origin Remove
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  next();
+});
+
 // Use Routes
 app.use("/api/items", require("./routes/todos"));
 

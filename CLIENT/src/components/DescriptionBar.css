@@ -1,0 +1,31 @@
+.bar {
+  margin-top: 2vh;
+  display: flex;
+  padding: 2px 0 2px 0;
+  text-align: center;
+}
+
+.bar__deadline {
+  flex-basis: 12%;
+  background-color: burlywood;
+}
+
+.bar__beginDate {
+  flex-basis: 12%;
+  background-color: cadetblue;
+}
+
+.bar__priority {
+  flex-basis: 8%;
+  background-color: cornflowerblue;
+}
+
+.bar__title {
+  flex-grow: 1;
+  background-color: cyan;
+}
+
+.bar__empty {
+  flex-basis: 21%;
+  background-color: aqua;
+}
