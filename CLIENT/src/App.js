@@ -1,19 +1,21 @@
 import React from "react";
-import axios from "axios";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
+import { TasksProvider } from "./context/tasksContext";
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
+    <TasksProvider>
+      <div className="App">
+        <Navbar />
 
-      <Main />
+        <Main />
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </TasksProvider>
   );
 }
 

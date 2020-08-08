@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Navbar.css";
+import Login from "./Login";
+import Register from "./Register";
 
 const Navbar = () => {
   return (
@@ -12,18 +14,10 @@ const Navbar = () => {
         </span>
       </div>
       <div className="nav__login">
-        <span>
-          <a className="nav__a" href="/">
-            Login
-          </a>
-        </span>
+        <Login />
       </div>
       <div className="nav__register">
-        <span>
-          <a class="nav__a" href="/">
-            Register
-          </a>
-        </span>
+        <Register />
       </div>
     </div>
   );

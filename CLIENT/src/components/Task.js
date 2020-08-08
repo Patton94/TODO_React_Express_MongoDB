@@ -1,28 +1,29 @@
 import React from "react";
 import "./Task.css";
+import Edit from "./Edit";
 
-const Task = () => {
+const Task = (props) => {
   return (
     <div className="task">
       <div className="task__titleContainer">
         <div className="task__title">
-          <h3 className="task__h3">Title</h3>
+          <h3 className="task__h3">{props.title}</h3>
         </div>
         <div className="task__description">
-          <span>Description</span>
+          <span>{props.description}</span>
         </div>
       </div>
       <div className="task__priority">
-        <span>Priority</span>
+        <span>{props.priority}</span>
       </div>
       <div className="task__beginDate">
-        <span>Begin date</span>
+        <span>{props.beginDate}</span>
       </div>
       <div className="task__deadline">
-        <span>Deadline</span>
+        <span>{props.deadline}</span>
       </div>
       <div className="task__editButton">
-        <button className="task__edit">Edit</button>
+        <Edit />
       </div>
       <div className="task__deleteButton">
         <button className="task__delete">Delete</button>
