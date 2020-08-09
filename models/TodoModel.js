@@ -21,6 +21,7 @@ const TodoSchema = new Schema({
   },
   done: {
     type: Boolean,
+    default: false,
   },
 });
 

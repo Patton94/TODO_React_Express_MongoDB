@@ -20,13 +20,13 @@ const RegisterModal = (props) => {
           <h2 className="register__modalTitle">Register</h2>
           <form action="" className="register__form">
             <div className="register__container">
-              <label for="user" className="register__label">
+              <label htmlFor="user" className="register__label">
                 User
               </label>
               <input id="user" type="text" className="register__user register__input" />
             </div>
             <div className="register__container">
-              <label for="email" className="register__label">
+              <label htmlFor="email" className="register__label">
                 Email
               </label>
               <input
@@ -36,7 +36,7 @@ const RegisterModal = (props) => {
               />
             </div>
             <div className="register__container">
-              <label for="password" className="register__label">
+              <label htmlFor="password" className="register__label">
                 Password
               </label>
               <input
@@ -46,7 +46,7 @@ const RegisterModal = (props) => {
               />
             </div>
             <div className="register__container">
-              <label for="confirmPassword" className="register__label">
+              <label htmlFor="confirmPassword" className="register__label">
                 Confirm password
               </label>
               <input

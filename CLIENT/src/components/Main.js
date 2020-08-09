@@ -19,6 +19,7 @@ const Main = () => {
 
       {tasks.map((task) => (
         <Task
+          id={task._id}
           key={task._id}
           title={task.title}
           description={task.description}

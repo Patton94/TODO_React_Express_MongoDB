@@ -22,13 +22,13 @@ const Login = (props) => {
           <h2 className="login__modalTitle">Login</h2>
           <form action="" className="login__form">
             <div className="login__container">
-              <label for="user" className="login__label">
+              <label htmlFor="user" className="login__label">
                 User
               </label>
               <input id="user" type="text" className="login__user login__input" />
             </div>
             <div className="login__container">
-              <label for="password" className="login__label">
+              <label htmlFor="password" className="login__label">
                 Password
               </label>
               <input

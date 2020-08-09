@@ -23,7 +23,13 @@ const Task = (props) => {
         <span>{props.deadline}</span>
       </div>
       <div className="task__editButton">
-        <Edit />
+        <Edit
+          id={props.id}
+          title={props.title}
+          description={props.description}
+          priority={props.priority}
+          deadline={props.deadline}
+        />
       </div>
       <div className="task__deleteButton">
         <button className="task__delete">Delete</button>
