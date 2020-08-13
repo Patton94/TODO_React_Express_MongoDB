@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./Edit.css";
+import axios from "axios";
+import { TasksContext } from "../context/tasksContext";
 
 const Edit = (props) => {
+  const [tasks, setTasks] = useContext(TasksContext);
   const [isOpen, setIsOpen] = useState(false);
   const [title, setTitle] = useState(props.title);
   const [description, setDescription] = useState(props.description);
@@ -13,8 +16,7 @@ const Edit = (props) => {
     setIsOpen(!isOpen);
   };
 
-  const editTask = (e) => {
-    e.preventDefault();
+  const editTask = () => {
     const editedTask = {
       title: title,
       description: description,
@@ -39,8 +41,25 @@ const Edit = (props) => {
       setDescription(description);
       setPriority(priority);
       setDeadline(deadline);
+
       toggle();
     }
+  };
+
+  const getData = () => {
+    axios
+      .get("http://localhost:5000/api/items")
+      .then((res) => {
+        setTasks(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleEditTask = (e) => {
+    e.preventDefault();
+
+    editTask();
+    setTimeout(getData, 200);
   };
 
   return (
@@ -112,7 +131,7 @@ const Edit = (props) => {
             </div>
 
             <input
-              onClick={editTask}
+              onClick={handleEditTask}
               className="edit__btn"
               type="submit"
               value="Edit Task"

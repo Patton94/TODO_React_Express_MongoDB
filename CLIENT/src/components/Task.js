@@ -1,10 +1,12 @@
 import React from "react";
 import "./Task.css";
 import Edit from "./Edit";
+import Delete from "./Delete";
+import Done from "./Done";
 
 const Task = (props) => {
   return (
-    <div className="task">
+    <div className={!props.done ? "task" : "task task__done"}>
       <div className="task__titleContainer">
         <div className="task__title">
           <h3 className="task__h3">{props.title}</h3>
@@ -20,24 +22,25 @@ const Task = (props) => {
         <span>{props.beginDate}</span>
       </div>
       <div className="task__deadline">
-        <span>{props.deadline}</span>
+        {!props.done ? <span>{props.deadline}</span> : <span>{props.finishDate}</span>}
       </div>
       <div className="task__editButton">
-        <Edit
-          id={props.id}
-          title={props.title}
-          description={props.description}
-          priority={props.priority}
-          deadline={props.deadline}
-        />
+        {!props.done ? (
+          <Edit
+            id={props.id}
+            title={props.title}
+            description={props.description}
+            priority={props.priority}
+            deadline={props.deadline}
+          />
+        ) : (
+          <Delete id={props.id} />
+        )}
       </div>
       <div className="task__deleteButton">
-        <button className="task__delete">Delete</button>
+        {!props.done ? <Delete id={props.id} /> : ""}
       </div>
-      <div className="task__doneButton">
-        {" "}
-        <button className="task__done">Done</button>
-      </div>
+      <div className="task__doneButton">{!props.done ? <Done id={props.id} /> : ""}</div>
     </div>
   );
 };

@@ -1,18 +1,22 @@
 .task {
   margin-top: 2vh;
-  background-color: blueviolet;
+  background-color: lightgray;
   display: flex;
 }
 
+.task__done {
+  background-color: greenyellow;
+}
+
 .task__titleContainer {
-  background-color: burlywood;
+  background-color: transparent;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 }
 
 .task__title {
-  background-color: dodgerblue;
+  background-color: rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,7 +27,7 @@
 }
 
 .task__priority {
-  background-color: chartreuse;
+  background-color: transparent;
   flex-basis: 8%;
   display: flex;
   justify-content: center;
@@ -31,7 +35,7 @@
 }
 
 .task__beginDate {
-  background-color: cyan;
+  background-color: rgba(0, 0, 0, 0.3);
   flex-basis: 12%;
   display: flex;
   justify-content: center;
@@ -39,7 +43,7 @@
 }
 
 .task__deadline {
-  background-color: darkgoldenrod;
+  background-color: transparent;
   flex-basis: 12%;
   display: flex;
   justify-content: center;
@@ -47,7 +51,7 @@
 }
 
 .task__editButton {
-  background-color: darkolivegreen;
+  background-color: rgba(0, 0, 0, 0.3);
   flex-basis: 7%;
   display: flex;
   justify-content: center;
@@ -55,7 +59,7 @@
 }
 
 .task__deleteButton {
-  background-color: darksalmon;
+  background-color: rgba(177, 0, 0, 0.3);
   flex-basis: 7%;
   display: flex;
   justify-content: center;
@@ -63,7 +67,7 @@
 }
 
 .task__doneButton {
-  background-color: darkslateblue;
+  background-color: rgba(0, 0, 0, 0.3);
   flex-basis: 7%;
   display: flex;
   justify-content: center;

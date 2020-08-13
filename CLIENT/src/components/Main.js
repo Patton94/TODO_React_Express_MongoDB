@@ -9,6 +9,9 @@ import { TasksContext } from "../context/tasksContext";
 const Main = () => {
   const [tasks, setTasks] = useContext(TasksContext);
 
+  const falseTasks = tasks.filter((task) => task.done == false);
+  const doneTasks = tasks.filter((task) => task.done == true);
+
   return (
     <div className="main">
       <Search />
@@ -17,7 +20,7 @@ const Main = () => {
 
       <DescriptionBar />
 
-      {tasks.map((task) => (
+      {falseTasks.map((task) => (
         <Task
           id={task._id}
           key={task._id}
@@ -26,6 +29,18 @@ const Main = () => {
           priority={task.priority}
           beginDate={task.beginDate.slice(0, 10)}
           deadline={task.deadline.slice(0, 10)}
+        />
+      ))}
+
+      {doneTasks.map((task) => (
+        <Task
+          id={task._id}
+          key={task._id}
+          title={task.title}
+          done={task.done}
+          description={task.description}
+          beginDate={task.beginDate.slice(0, 10)}
+          finishDate={task.finishDate.slice(0, 10)}
         />
       ))}
     </div>

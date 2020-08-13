@@ -60,7 +60,8 @@ router.patch("/edit/done/:id", (req, res) => {
     { _id: req.params.id },
     {
       $set: {
-        done: req.body.done,
+        done: true,
+        finishDate: Date.now(),
       },
     }
   ).then(res.json({ msg: "Task done" }));

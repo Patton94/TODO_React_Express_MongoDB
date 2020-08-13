@@ -1,8 +1,10 @@
-import React, { useState } from "react";
-
+import React, { useState, useContext } from "react";
 import "./Add.css";
+import axios from "axios";
+import { TasksContext } from "../context/tasksContext";
 
 const Add = () => {
+  const [tasks, setTasks] = useContext(TasksContext);
   const [isOpen, setIsOpen] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -17,8 +19,7 @@ const Add = () => {
   };
 
   // Add new task width validation
-  const addTask = (e) => {
-    e.preventDefault();
+  const addTask = () => {
     const newTask = {
       title: title,
       description: description,
@@ -43,10 +44,25 @@ const Add = () => {
         .then((data) => console.log(data));
       setTitle("");
       setDescription("");
-      setPriority("");
+      setPriority(1);
       setDeadline("");
       toggle();
     }
+  };
+
+  const getData = () => {
+    axios
+      .get("http://localhost:5000/api/items")
+      .then((res) => {
+        setTasks(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleAddTask = (e) => {
+    e.preventDefault();
+    addTask();
+    setTimeout(getData, 200);
   };
 
   return (
@@ -99,7 +115,7 @@ const Add = () => {
                 className="add__priority add__input"
                 type="range"
                 id="priority"
-                min="0"
+                min="1"
                 max="3"
               ></input>
             </div>
@@ -120,7 +136,7 @@ const Add = () => {
             {deadlineError ? deadlineError : ""}
 
             <input
-              onClick={addTask}
+              onClick={handleAddTask}
               className="add__btn"
               type="submit"
               value="Add Task"

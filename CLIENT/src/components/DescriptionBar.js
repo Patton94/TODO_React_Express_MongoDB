@@ -6,8 +6,8 @@ const DescriptionBar = () => {
     <div className="bar">
       <div className="bar__title">Title</div>
       <div className="bar__priority">Priority</div>
-      <div className="bar__beginDate">BeginDate</div>
-      <div className="bar__deadline">Deadline</div>
+      <div className="bar__beginDate">Begin Date</div>
+      <div className="bar__deadline">Deadline / Finish Date</div>
       <div className="bar__empty"></div>
     </div>
   );

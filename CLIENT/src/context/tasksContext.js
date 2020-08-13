@@ -8,10 +8,14 @@ export const TasksProvider = (props) => {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/items").then((res) => {
-      setTasks(res.data);
-    });
-  }, [tasks]);
+    axios
+      .get("http://localhost:5000/api/items")
+      .then((res) => {
+        setTasks(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <TasksContext.Provider value={[tasks, setTasks]}>
       {props.children}
