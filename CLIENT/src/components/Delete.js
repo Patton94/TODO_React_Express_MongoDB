@@ -1,34 +1,31 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import "./Delete.css";
 import { TasksContext } from "../context/tasksContext";
+import { UserContext } from "../context/userContext";
 import axios from "axios";
 
 const Delete = (props) => {
   const [tasks, setTasks] = useContext(TasksContext);
 
+  const { userName, userID, token } = useContext(UserContext);
+  const [userNameValue, setUserNameValue] = userName;
+  const [userIDValue, setUserIDValue] = userID;
+  const [tokenValue, setTokenValue] = token;
+
   const deleteTask = () => {
-    fetch(`http://localhost:5000/api/items/delete/${props.id}`, {
-      method: "DELETE",
+    fetch(`http://localhost:5000/api/items/${userIDValue}/delete/${props.title}`, {
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
+        "x-auth-token": `${tokenValue}`,
       },
     })
       .then((res) => res.json())
       .then((data) => console.log(data));
   };
 
-  const getData = () => {
-    axios
-      .get("http://localhost:5000/api/items")
-      .then((res) => {
-        setTasks(res.data);
-      })
-      .catch((err) => console.log(err));
-  };
-
   const handleDeleteTask = () => {
     deleteTask();
-    setTimeout(getData, 200);
   };
 
   return (

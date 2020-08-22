@@ -34,13 +34,15 @@ const Task = (props) => {
             deadline={props.deadline}
           />
         ) : (
-          <Delete id={props.id} />
+          <Delete id={props.id} title={props.title} />
         )}
       </div>
       <div className="task__deleteButton">
-        {!props.done ? <Delete id={props.id} /> : ""}
+        {!props.done ? <Delete title={props.title} /> : ""}
       </div>
-      <div className="task__doneButton">{!props.done ? <Done id={props.id} /> : ""}</div>
+      <div className="task__doneButton">
+        {!props.done ? <Done title={props.title} /> : ""}
+      </div>
     </div>
   );
 };

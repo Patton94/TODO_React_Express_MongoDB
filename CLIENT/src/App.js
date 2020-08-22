@@ -4,18 +4,21 @@ import Navbar from "./components/Navbar";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
 import { TasksProvider } from "./context/tasksContext";
+import { UserProvider } from "./context/userContext";
 
 function App() {
   return (
-    <TasksProvider>
-      <div className="App">
-        <Navbar />
+    <UserProvider>
+      <TasksProvider>
+        <div className="App">
+          <Navbar />
 
-        <Main />
+          <Main />
 
-        <Footer />
-      </div>
-    </TasksProvider>
+          <Footer />
+        </div>
+      </TasksProvider>
+    </UserProvider>
   );
 }
 

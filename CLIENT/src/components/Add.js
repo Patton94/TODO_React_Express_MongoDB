@@ -2,8 +2,14 @@ import React, { useState, useContext } from "react";
 import "./Add.css";
 import axios from "axios";
 import { TasksContext } from "../context/tasksContext";
+import { UserContext } from "../context/userContext";
 
 const Add = () => {
+  const { userName, userID, token } = useContext(UserContext);
+  const [userNameValue, setUserNameValue] = userName;
+  const [userIDValue, setUserIDValue] = userID;
+  const [tokenValue, setTokenValue] = token;
+
   const [tasks, setTasks] = useContext(TasksContext);
   const [isOpen, setIsOpen] = useState(false);
   const [title, setTitle] = useState("");
@@ -18,7 +24,7 @@ const Add = () => {
     setIsOpen(!isOpen);
   };
 
-  // Add new task width validation
+  // Add new task with validation
   const addTask = () => {
     const newTask = {
       title: title,
@@ -33,10 +39,11 @@ const Add = () => {
     if (!deadline) return setDeadlineError("Select a deadline date!");
 
     if (!titleError && !deadlineError) {
-      fetch("http://localhost:5000/api/items/add", {
-        method: "POST",
+      fetch(`http://localhost:5000/api/items/${userIDValue}/add`, {
+        method: "PATCH",
         headers: {
           "Content-Type": "application/json",
+          "x-auth-token": `${tokenValue}`,
         },
         body: JSON.stringify(newTask),
       })
@@ -50,19 +57,9 @@ const Add = () => {
     }
   };
 
-  const getData = () => {
-    axios
-      .get("http://localhost:5000/api/items")
-      .then((res) => {
-        setTasks(res.data);
-      })
-      .catch((err) => console.log(err));
-  };
-
   const handleAddTask = (e) => {
     e.preventDefault();
     addTask();
-    setTimeout(getData, 200);
   };
 
   return (

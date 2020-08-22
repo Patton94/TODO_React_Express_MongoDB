@@ -2,8 +2,14 @@ import React, { useState, useContext } from "react";
 import "./Edit.css";
 import axios from "axios";
 import { TasksContext } from "../context/tasksContext";
+import { UserContext } from "../context/userContext";
 
 const Edit = (props) => {
+  const { userName, userID, token } = useContext(UserContext);
+  const [userNameValue, setUserNameValue] = userName;
+  const [userIDValue, setUserIDValue] = userID;
+  const [tokenValue, setTokenValue] = token;
+
   const [tasks, setTasks] = useContext(TasksContext);
   const [isOpen, setIsOpen] = useState(false);
   const [title, setTitle] = useState(props.title);
@@ -27,10 +33,11 @@ const Edit = (props) => {
     if (!title) {
       setTitleError("This field cannot be empty!");
     } else {
-      fetch(`http://localhost:5000/api/items/edit/${props.id}`, {
+      fetch(`http://localhost:5000/api/items/${userIDValue}/edit/${props.title}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
+          "x-auth-token": `${tokenValue}`,
         },
         body: JSON.stringify(editedTask),
       })
@@ -46,20 +53,9 @@ const Edit = (props) => {
     }
   };
 
-  const getData = () => {
-    axios
-      .get("http://localhost:5000/api/items")
-      .then((res) => {
-        setTasks(res.data);
-      })
-      .catch((err) => console.log(err));
-  };
-
   const handleEditTask = (e) => {
     e.preventDefault();
-
     editTask();
-    setTimeout(getData, 200);
   };
 
   return (
