@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import "./Add.css";
-import axios from "axios";
 import { TasksContext } from "../context/tasksContext";
 import { UserContext } from "../context/userContext";
 
@@ -57,9 +56,44 @@ const Add = () => {
     }
   };
 
+  const addDemoTask = () => {
+    const currentDate = new Date();
+    let date1 = new Date(currentDate);
+    const beginDate = date1.toISOString().slice(0, 10);
+
+    const newDemoTask = {
+      _id: Math.floor(Math.random() * 999999),
+      done: false,
+      finishDate: null,
+      title: title,
+      description: description,
+      priority: priority,
+      deadline: deadline,
+      beginDate: beginDate,
+    };
+
+    if (!title) {
+      setTitleError("This field cannot be empty!");
+    }
+    if (!deadline) return setDeadlineError("Select a deadline date!");
+
+    if (!titleError && !deadlineError) {
+      const dTasks = [...tasks];
+      dTasks.push(newDemoTask);
+      setTasks(dTasks);
+      setTitle("");
+      setDescription("");
+      setPriority(1);
+      setDeadline("");
+      toggle();
+    }
+  };
+
   const handleAddTask = (e) => {
     e.preventDefault();
-    addTask();
+    {
+      userIDValue ? addTask() : addDemoTask();
+    }
   };
 
   return (

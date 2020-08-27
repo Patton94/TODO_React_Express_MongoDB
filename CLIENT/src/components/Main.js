@@ -5,9 +5,14 @@ import Task from "./Task";
 import Add from "./Add";
 import Search from "./Search";
 import { TasksContext } from "../context/tasksContext";
+import { UserContext } from "../context/userContext";
 
 const Main = () => {
   const [tasks, setTasks] = useContext(TasksContext);
+  const { userName, userID, token } = useContext(UserContext);
+  const [userNameValue, setUserNameValue] = userName;
+  const [userIDValue, setUserIDValue] = userID;
+  const [tokenValue, setTokenValue] = token;
 
   const falseTasks = tasks.filter((task) => task.done == false);
   const doneTasks = tasks.filter((task) => task.done == true);
@@ -20,10 +25,19 @@ const Main = () => {
 
       <DescriptionBar />
 
+      {!userIDValue ? (
+        <span>
+          This is demonstration mode. All changes will be removed after refreshing the
+          page. To keep your own to do list, please log in.
+        </span>
+      ) : (
+        ""
+      )}
+
       {falseTasks.map((task) => (
         <Task
+          key={Math.floor(Math.random() * 999999)}
           id={task._id}
-          key={task._id}
           title={task.title}
           description={task.description}
           priority={task.priority}
@@ -34,8 +48,8 @@ const Main = () => {
 
       {doneTasks.map((task) => (
         <Task
+          key={Math.floor(Math.random() * 999999)}
           id={task._id}
-          key={task._id}
           title={task.title}
           done={task.done}
           description={task.description}

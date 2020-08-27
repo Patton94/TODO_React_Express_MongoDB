@@ -3,8 +3,6 @@ import "./Done.css";
 import { TasksContext } from "../context/tasksContext";
 import { UserContext } from "../context/userContext";
 
-import axios from "axios";
-
 const Done = (props) => {
   const { userName, userID, token } = useContext(UserContext);
   const [userNameValue, setUserNameValue] = userName;
@@ -25,8 +23,24 @@ const Done = (props) => {
       .then((data) => console.log(data));
   };
 
+  const doneDemoTask = () => {
+    const currentDate = new Date();
+    let date1 = new Date(currentDate);
+    const finishDate = date1.toISOString().slice(0, 10);
+
+    const dTasks = [...tasks];
+    const index = dTasks.findIndex((task) => task._id == props.id);
+
+    dTasks[index].done = true;
+    dTasks[index].finishDate = finishDate;
+
+    setTasks(dTasks);
+  };
+
   const handleDoneTask = () => {
-    doneTask();
+    {
+      userIDValue ? doneTask() : doneDemoTask();
+    }
   };
 
   return (

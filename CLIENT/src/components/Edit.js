@@ -53,9 +53,33 @@ const Edit = (props) => {
     }
   };
 
+  const editDemoTask = () => {
+    if (!title) {
+      setTitleError("This field cannot be empty!");
+    } else {
+      const dTasks = [...tasks];
+      const index = dTasks.findIndex((task) => task._id == props.id);
+
+      dTasks[index].title = title;
+      dTasks[index].description = description;
+      dTasks[index].priority = priority;
+      dTasks[index].deadline = deadline;
+      setTasks(dTasks);
+
+      setTitle(title);
+      setDescription(description);
+      setPriority(priority);
+      setDeadline(deadline);
+
+      toggle();
+    }
+  };
+
   const handleEditTask = (e) => {
     e.preventDefault();
-    editTask();
+    {
+      userIDValue ? editTask() : editDemoTask();
+    }
   };
 
   return (
@@ -108,7 +132,7 @@ const Edit = (props) => {
                 className="edit__priority edit__input"
                 type="range"
                 id="priority"
-                min="0"
+                min="1"
                 max="3"
               ></input>
             </div>

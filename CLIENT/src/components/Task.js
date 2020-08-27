@@ -38,10 +38,10 @@ const Task = (props) => {
         )}
       </div>
       <div className="task__deleteButton">
-        {!props.done ? <Delete title={props.title} /> : ""}
+        {!props.done ? <Delete title={props.title} id={props.id} /> : ""}
       </div>
       <div className="task__doneButton">
-        {!props.done ? <Done title={props.title} /> : ""}
+        {!props.done ? <Done title={props.title} id={props.id} /> : ""}
       </div>
     </div>
   );

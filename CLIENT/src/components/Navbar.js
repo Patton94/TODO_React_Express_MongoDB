@@ -18,8 +18,6 @@ const Navbar = () => {
     localStorage.removeItem("userName");
     localStorage.removeItem("token");
     localStorage.removeItem("userID");
-
-    // setItems - demo
   };
 
   return (
@@ -27,7 +25,8 @@ const Navbar = () => {
       <div className="nav__todo">
         <span>
           <a className="nav__a" href="/">
-            TO DO
+            {/* TO DO */}
+            {userIDValue ? "TO DO" : "TO DO - DEMO MODE"}
           </a>
         </span>
       </div>

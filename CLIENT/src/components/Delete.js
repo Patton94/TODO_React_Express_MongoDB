@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import "./Delete.css";
 import { TasksContext } from "../context/tasksContext";
 import { UserContext } from "../context/userContext";
-import axios from "axios";
 
 const Delete = (props) => {
   const [tasks, setTasks] = useContext(TasksContext);
@@ -24,8 +23,17 @@ const Delete = (props) => {
       .then((data) => console.log(data));
   };
 
+  const deleteDemoTask = () => {
+    const dTasks = [...tasks];
+    const index = dTasks.findIndex((task) => task._id == props.id);
+    dTasks.splice(index, 1);
+    setTasks(dTasks);
+  };
+
   const handleDeleteTask = () => {
-    deleteTask();
+    {
+      userIDValue ? deleteTask() : deleteDemoTask();
+    }
   };
 
   return (
