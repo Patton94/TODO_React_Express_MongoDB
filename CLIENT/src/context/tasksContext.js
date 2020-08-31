@@ -1,6 +1,5 @@
 import { createContext, useState, useEffect, useContext } from "react";
 import React from "react";
-import axios from "axios";
 import { UserContext } from "./userContext";
 
 export const TasksContext = createContext();
@@ -18,12 +17,16 @@ export const TasksProvider = (props) => {
   let date4 = new Date(currentDate);
   let date5 = new Date(currentDate);
   let date6 = new Date(currentDate);
+  let date7 = new Date(currentDate);
+  let date8 = new Date(currentDate);
 
   date1.setDate(date1.getDate() + 6);
   date2.setDate(date2.getDate() + 10);
   date3.setDate(date3.getDate() + 1);
   date4.setDate(date4.getDate() - 5);
   date5.setDate(date5.getDate() - 15);
+  date7.setDate(date7.getDate() - 10);
+  date8.setDate(date8.getDate() - 2);
 
   const deadline1Demo = date1.toISOString().slice(0, 10);
   const deadline2Demo = date2.toISOString().slice(0, 10);
@@ -31,6 +34,8 @@ export const TasksProvider = (props) => {
   const finishDateDemo = date4.toISOString().slice(0, 10);
   const beginDateDoneDemo = date5.toISOString().slice(0, 10);
   const beginDateDemo = date6.toISOString().slice(0, 10);
+  const beginDateExcedeedDemo = date7.toISOString().slice(0, 10);
+  const deadlineExcedeedDemo = date8.toISOString().slice(0, 10);
 
   const initialTasks = [
     {
@@ -64,7 +69,7 @@ export const TasksProvider = (props) => {
       beginDate: beginDateDemo,
     },
     {
-      id: Math.floor(Math.random() * 999999),
+      _id: Math.floor(Math.random() * 999999),
       done: true,
       finishDate: finishDateDemo,
       title: "Play guitar",
@@ -72,6 +77,16 @@ export const TasksProvider = (props) => {
       priority: 2,
       deadline: null,
       beginDate: beginDateDoneDemo,
+    },
+    {
+      _id: Math.floor(Math.random() * 999999),
+      done: false,
+      finishDate: null,
+      title: "Pay rent",
+      description: "100$",
+      priority: 3,
+      deadline: deadlineExcedeedDemo,
+      beginDate: beginDateExcedeedDemo,
     },
   ];
 

@@ -18,6 +18,18 @@ const Add = () => {
   const [titleError, setTitleError] = useState("");
   const [deadlineError, setDeadlineError] = useState("");
 
+  const getData = () => {
+    fetch(`http://localhost:5000/api/items/${userIDValue}`, {
+      method: "GET",
+      headers: {
+        "x-auth-token": `${tokenValue}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => setTasks(data))
+      .catch((err) => console.log(err));
+  };
+
   // Open and close modal
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -48,11 +60,15 @@ const Add = () => {
       })
         .then((res) => res.json())
         .then((data) => console.log(data));
+
       setTitle("");
       setDescription("");
       setPriority(1);
       setDeadline("");
-      toggle();
+      setTimeout(() => {
+        toggle();
+        getData();
+      }, 100);
     }
   };
 

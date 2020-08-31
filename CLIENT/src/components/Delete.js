@@ -11,6 +11,18 @@ const Delete = (props) => {
   const [userIDValue, setUserIDValue] = userID;
   const [tokenValue, setTokenValue] = token;
 
+  const getData = () => {
+    fetch(`http://localhost:5000/api/items/${userIDValue}`, {
+      method: "GET",
+      headers: {
+        "x-auth-token": `${tokenValue}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => setTasks(data))
+      .catch((err) => console.log(err));
+  };
+
   const deleteTask = () => {
     fetch(`http://localhost:5000/api/items/${userIDValue}/delete/${props.title}`, {
       method: "PATCH",
@@ -20,7 +32,12 @@ const Delete = (props) => {
       },
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => console.log(data))
+      .then(
+        setTimeout(() => {
+          getData();
+        }, 100)
+      );
   };
 
   const deleteDemoTask = () => {

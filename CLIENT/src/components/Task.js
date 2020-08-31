@@ -1,12 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Task.css";
 import Edit from "./Edit";
 import Delete from "./Delete";
 import Done from "./Done";
 
 const Task = (props) => {
+  const [isDeadlineClose, setIsDeadlineClose] = useState(false);
+  const [isExcedeed, setIsExcedeed] = useState(false);
+
+  const time1 = new Date(props.deadline);
+  const deadlineTime = time1.getTime() + 86400000;
+  const time2 = new Date();
+  const currentTime = time2.getTime();
+  const differenceHours = (deadlineTime - currentTime) / 1000 / 60 / 60;
+
+  useEffect(() => {
+    if (differenceHours < 48 && differenceHours > 0) {
+      setIsDeadlineClose(true);
+    } else setIsDeadlineClose(false);
+    if (differenceHours < 0) {
+      setIsExcedeed(true);
+    } else setIsExcedeed(false);
+  }, []);
+
   return (
-    <div className={!props.done ? "task" : "task task__done"}>
+    <div
+      className={
+        !props.done ? (isExcedeed ? "task task__excedeed" : "task") : "task task__done"
+      }
+    >
       <div className="task__titleContainer">
         <div className="task__title">
           <h3 className="task__h3">{props.title}</h3>
@@ -21,7 +43,12 @@ const Task = (props) => {
       <div className="task__beginDate">
         <span>{props.beginDate}</span>
       </div>
-      <div className="task__deadline">
+      {/* <div className="task__deadline"> */}
+      <div
+        className={
+          isDeadlineClose ? "task__deadline task__deadlineIsClose" : "task__deadline"
+        }
+      >
         {!props.done ? <span>{props.deadline}</span> : <span>{props.finishDate}</span>}
       </div>
       <div className="task__editButton">

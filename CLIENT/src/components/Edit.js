@@ -18,6 +18,18 @@ const Edit = (props) => {
   const [deadline, setDeadline] = useState(props.deadline);
   const [titleError, setTitleError] = useState("");
 
+  const getData = () => {
+    fetch(`http://localhost:5000/api/items/${userIDValue}`, {
+      method: "GET",
+      headers: {
+        "x-auth-token": `${tokenValue}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => setTasks(data))
+      .catch((err) => console.log(err));
+  };
+
   const toggle = () => {
     setIsOpen(!isOpen);
   };
@@ -48,8 +60,10 @@ const Edit = (props) => {
       setDescription(description);
       setPriority(priority);
       setDeadline(deadline);
-
-      toggle();
+      setTimeout(() => {
+        toggle();
+        getData();
+      }, 100);
     }
   };
 

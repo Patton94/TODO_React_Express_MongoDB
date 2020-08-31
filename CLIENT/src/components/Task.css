@@ -8,6 +8,14 @@
   background-color: greenyellow;
 }
 
+.task__excedeed {
+  background-color: rgba(255, 0, 42, 0.4);
+}
+
+.task__deadlineIsClose {
+  background-color: red;
+}
+
 .task__titleContainer {
   background-color: transparent;
   display: flex;
@@ -43,7 +51,7 @@
 }
 
 .task__deadline {
-  background-color: transparent;
+  /* background-color: transparent; */
   flex-basis: 12%;
   display: flex;
   justify-content: center;

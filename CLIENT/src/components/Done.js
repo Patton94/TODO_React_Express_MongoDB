@@ -11,6 +11,18 @@ const Done = (props) => {
 
   const [tasks, setTasks] = useContext(TasksContext);
 
+  const getData = () => {
+    fetch(`http://localhost:5000/api/items/${userIDValue}`, {
+      method: "GET",
+      headers: {
+        "x-auth-token": `${tokenValue}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => setTasks(data))
+      .catch((err) => console.log(err));
+  };
+
   const doneTask = () => {
     fetch(`http://localhost:5000/api/items/${userIDValue}/edit/done/${props.title}`, {
       method: "PATCH",
@@ -20,7 +32,12 @@ const Done = (props) => {
       },
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => console.log(data))
+      .then(
+        setTimeout(() => {
+          getData();
+        }, 100)
+      );
   };
 
   const doneDemoTask = () => {
