@@ -3,9 +3,11 @@ import "./Main.css";
 import DescriptionBar from "./DescriptionBar";
 import Task from "./Task";
 import Add from "./Add";
-import Search from "./Search";
+import LoadingBar from "./LoadingBar";
+
 import { TasksContext } from "../context/tasksContext";
 import { UserContext } from "../context/userContext";
+import { LoadingContext } from "../context/loadingContext";
 
 const Main = () => {
   const [tasks, setTasks] = useContext(TasksContext);
@@ -13,6 +15,9 @@ const Main = () => {
   const [userNameValue, setUserNameValue] = userName;
   const [userIDValue, setUserIDValue] = userID;
   const [tokenValue, setTokenValue] = token;
+
+  const [isLoading, setIsLoading] = useContext(LoadingContext);
+
   const [allDone, setAllDone] = useState(false);
   const [isEmpty, setIsEmpty] = useState(true);
   const falseTasks = tasks.filter((task) => task.done == false);
@@ -26,8 +31,18 @@ const Main = () => {
 
   const checkIsEmpty = () => {
     if (tasks.length == 0) {
+      setIsLoading(true);
       setIsEmpty(true);
-    } else setIsEmpty(false);
+    } else {
+      setIsEmpty(false);
+      setIsLoading(false);
+    }
+
+    setTimeout(() => {
+      if (tasks.length == 0) {
+        setIsLoading(false);
+      }
+    }, 1000);
   };
 
   useEffect(() => {
@@ -37,14 +52,14 @@ const Main = () => {
 
   return (
     <div className="main">
-      <Search />
-
       <Add />
 
       <DescriptionBar />
 
+      <LoadingBar class={isLoading ? "loadingBar__on" : ""} />
+
       {!userIDValue ? (
-        <span>
+        <span className="main__demoInfo">
           This is demonstration mode. All changes will be removed after refreshing the
           page. To keep your own to do list, please log in.
         </span>
@@ -52,8 +67,18 @@ const Main = () => {
         ""
       )}
 
-      {allDone ? <h4>All tasks have been completed, congratulations!</h4> : ""}
-      {isEmpty ? <h4>Your tasks list is empty. Add some task. </h4> : ""}
+      {allDone ? (
+        <h4 className="main__emptyList">
+          All tasks have been completed, congratulations!
+        </h4>
+      ) : (
+        ""
+      )}
+      {isEmpty ? (
+        <h4 className="main__emptyList">Your tasks list is empty. Add some task. </h4>
+      ) : (
+        ""
+      )}
 
       {falseTasks.map((task) => (
         <Task

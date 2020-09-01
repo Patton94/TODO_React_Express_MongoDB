@@ -1,5 +1,6 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import "./Login.css";
+import LoadingBar from "./LoadingBar";
 import { UserContext } from "../context/userContext";
 
 const Login = () => {
@@ -15,6 +16,7 @@ const Login = () => {
   const [passwordError, setPasswordError] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loginFailed, setLoginFailed] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -42,11 +44,13 @@ const Login = () => {
           localStorage.setItem("token", data.token);
           localStorage.setItem("userName", data.user.name);
           localStorage.setItem("userID", data.user.id);
+          setIsLoading(true); ////
           setEmail("");
           setPassword("");
           setIsLoggedIn(true);
           setTimeout(() => {
             toggle();
+            setIsLoading(false); /////
             setIsLoggedIn(false);
             setLoginFailed("");
           }, 2000);
@@ -80,6 +84,7 @@ const Login = () => {
             <span>X</span>
           </div>
           <h2 className="login__modalTitle">Login</h2>
+          <LoadingBar class={isLoading ? "loadingBar__on" : ""} />
           <form action="" className="login__form">
             <div className="login__container">
               <label htmlFor="user" className="login__label">

@@ -29,6 +29,7 @@
   width: 30vw;
   height: 70vh;
   background-color: lightgray;
+  z-index: 3;
 }
 
 .add__modalTitle {

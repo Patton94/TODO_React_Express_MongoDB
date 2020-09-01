@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import "./Register.css";
+import LoadingBar from "./LoadingBar";
 import { UserContext } from "../context/userContext";
 
 const Register = () => {
@@ -19,6 +20,7 @@ const Register = () => {
   const [passwordConfirmError, setPasswordConfirmError] = useState("");
   const [isRegistered, setIsRegistered] = useState(false);
   const [registrationFailed, setRegistrationFailed] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -44,6 +46,7 @@ const Register = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.msg === "OK") {
+          setIsLoading(true);
           setName("");
           setEmail("");
           setPassword("");
@@ -51,6 +54,7 @@ const Register = () => {
           setIsRegistered(true);
           setTimeout(() => {
             toggle();
+            setIsLoading(false);
             setIsRegistered(false);
           }, 3000);
         } else return setRegistrationFailed(data.msg);
@@ -93,6 +97,7 @@ const Register = () => {
             <span>X</span>
           </div>
           <h2 className="register__modalTitle">Register</h2>
+          <LoadingBar class={isLoading ? "loadingBar__on" : ""} />
           <form action="" className="register__form">
             <div className="register__container">
               <label htmlFor="user" className="register__label">

@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect, useContext } from "react";
 import React from "react";
 import { UserContext } from "./userContext";
+import { LoadingContext } from "./loadingContext";
 
 export const TasksContext = createContext();
 
@@ -9,6 +10,8 @@ export const TasksProvider = (props) => {
   const [userNameValue, setUserNameValue] = userName;
   const [userIDValue, setUserIDValue] = userID;
   const [tokenValue, setTokenValue] = token;
+
+  const [isLoading, setIsLoading] = useContext(LoadingContext);
 
   const currentDate = new Date();
   let date1 = new Date(currentDate);
@@ -103,7 +106,9 @@ export const TasksProvider = (props) => {
         .then((res) => res.json())
         .then((data) => setTasks(data))
         .catch((err) => console.log(err));
-    } else setTasks(initialTasks);
+    } else {
+      setTasks(initialTasks);
+    }
   }, [userIDValue, userNameValue, tokenValue]);
 
   return (

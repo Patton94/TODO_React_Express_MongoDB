@@ -1,14 +1,16 @@
 import React, { useState, useContext } from "react";
 import "./Edit.css";
-import axios from "axios";
 import { TasksContext } from "../context/tasksContext";
 import { UserContext } from "../context/userContext";
+import { LoadingContext } from "../context/loadingContext";
 
 const Edit = (props) => {
   const { userName, userID, token } = useContext(UserContext);
   const [userNameValue, setUserNameValue] = userName;
   const [userIDValue, setUserIDValue] = userID;
   const [tokenValue, setTokenValue] = token;
+
+  const [isLoading, setIsLoading] = useContext(LoadingContext);
 
   const [tasks, setTasks] = useContext(TasksContext);
   const [isOpen, setIsOpen] = useState(false);
@@ -57,6 +59,7 @@ const Edit = (props) => {
         .then((data) => console.log(data));
 
       setTitle(title);
+      setIsLoading(true);
       setDescription(description);
       setPriority(priority);
       setDeadline(deadline);

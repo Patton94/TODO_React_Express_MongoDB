@@ -2,12 +2,15 @@ import React, { useState, useContext } from "react";
 import "./Add.css";
 import { TasksContext } from "../context/tasksContext";
 import { UserContext } from "../context/userContext";
+import { LoadingContext } from "../context/loadingContext";
 
 const Add = () => {
   const { userName, userID, token } = useContext(UserContext);
   const [userNameValue, setUserNameValue] = userName;
   const [userIDValue, setUserIDValue] = userID;
   const [tokenValue, setTokenValue] = token;
+
+  const [isLoading, setIsLoading] = useContext(LoadingContext);
 
   const [tasks, setTasks] = useContext(TasksContext);
   const [isOpen, setIsOpen] = useState(false);
@@ -60,7 +63,7 @@ const Add = () => {
       })
         .then((res) => res.json())
         .then((data) => console.log(data));
-
+      setIsLoading(true);
       setTitle("");
       setDescription("");
       setPriority(1);

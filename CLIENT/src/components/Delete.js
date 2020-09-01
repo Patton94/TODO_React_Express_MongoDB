@@ -2,9 +2,11 @@ import React, { useContext } from "react";
 import "./Delete.css";
 import { TasksContext } from "../context/tasksContext";
 import { UserContext } from "../context/userContext";
+import { LoadingContext } from "../context/loadingContext";
 
 const Delete = (props) => {
   const [tasks, setTasks] = useContext(TasksContext);
+  const [isLoading, setIsLoading] = useContext(LoadingContext);
 
   const { userName, userID, token } = useContext(UserContext);
   const [userNameValue, setUserNameValue] = userName;
@@ -24,6 +26,7 @@ const Delete = (props) => {
   };
 
   const deleteTask = () => {
+    setIsLoading(true);
     fetch(`http://localhost:5000/api/items/${userIDValue}/delete/${props.title}`, {
       method: "PATCH",
       headers: {

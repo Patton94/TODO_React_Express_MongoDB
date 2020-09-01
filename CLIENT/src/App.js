@@ -5,20 +5,23 @@ import Main from "./components/Main";
 import Footer from "./components/Footer";
 import { TasksProvider } from "./context/tasksContext";
 import { UserProvider } from "./context/userContext";
+import { LoadingProvider } from "./context/loadingContext";
 
 function App() {
   return (
-    <UserProvider>
-      <TasksProvider>
-        <div className="App">
-          <Navbar />
+    <LoadingProvider>
+      <UserProvider>
+        <TasksProvider>
+          <div className="App">
+            <Navbar />
 
-          <Main />
+            <Main />
 
-          <Footer />
-        </div>
-      </TasksProvider>
-    </UserProvider>
+            <Footer />
+          </div>
+        </TasksProvider>
+      </UserProvider>
+    </LoadingProvider>
   );
 }
 
