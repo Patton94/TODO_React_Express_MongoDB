@@ -4,6 +4,7 @@ import DescriptionBar from "./DescriptionBar";
 import Task from "./Task";
 import Add from "./Add";
 import LoadingBar from "./LoadingBar";
+import Sort from "./Sort";
 
 import { TasksContext } from "../context/tasksContext";
 import { UserContext } from "../context/userContext";
@@ -20,6 +21,7 @@ const Main = () => {
 
   const [allDone, setAllDone] = useState(false);
   const [isEmpty, setIsEmpty] = useState(true);
+
   const falseTasks = tasks.filter((task) => task.done == false);
   const doneTasks = tasks.filter((task) => task.done == true);
 
@@ -53,6 +55,8 @@ const Main = () => {
   return (
     <div className="main">
       <Add />
+
+      <Sort />
 
       <DescriptionBar />
 

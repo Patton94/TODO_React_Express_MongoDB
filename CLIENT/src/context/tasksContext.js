@@ -104,10 +104,100 @@ export const TasksProvider = (props) => {
         },
       })
         .then((res) => res.json())
-        .then((data) => setTasks(data))
+        .then((data) => {
+          if (
+            localStorage.getItem("sortBy") == "beginDateNewest" ||
+            !localStorage.getItem("sortBy")
+          ) {
+            const sortedTasks = [...data];
+            sortedTasks.sort((a, b) => {
+              return new Date(b.beginDate) - new Date(a.beginDate);
+            });
+            setTasks(sortedTasks);
+          }
+          if (localStorage.getItem("sortBy") == "beginDateOldest") {
+            const sortedTasks = [...data];
+            sortedTasks.sort((a, b) => {
+              return new Date(a.beginDate) - new Date(b.beginDate);
+            });
+            setTasks(sortedTasks);
+          }
+          if (localStorage.getItem("sortBy") == "deadlineNearest") {
+            const sortedTasks = [...data];
+            sortedTasks.sort((a, b) => {
+              return new Date(a.deadline) - new Date(b.deadline);
+            });
+            setTasks(sortedTasks);
+          }
+          if (localStorage.getItem("sortBy") == "deadlineLatest") {
+            const sortedTasks = [...data];
+            sortedTasks.sort((a, b) => {
+              return new Date(b.deadline) - new Date(a.deadline);
+            });
+            setTasks(sortedTasks);
+          }
+          if (localStorage.getItem("sortBy") == "priorityMost") {
+            const sortedTasks = [...data];
+            sortedTasks.sort((a, b) => {
+              return b.priority - a.priority;
+            });
+            setTasks(sortedTasks);
+          }
+          if (localStorage.getItem("sortBy") == "priorityLeast") {
+            const sortedTasks = [...data];
+            sortedTasks.sort((a, b) => {
+              return a.priority - b.priority;
+            });
+            setTasks(sortedTasks);
+          }
+        })
         .catch((err) => console.log(err));
     } else {
-      setTasks(initialTasks);
+      if (
+        localStorage.getItem("sortBy") == "beginDateNewest" ||
+        !localStorage.getItem("sortBy")
+      ) {
+        const sortedTasks = [...initialTasks];
+        sortedTasks.sort((a, b) => {
+          return new Date(b.beginDate) - new Date(a.beginDate);
+        });
+        setTasks(sortedTasks);
+      }
+      if (localStorage.getItem("sortBy") == "beginDateOldest") {
+        const sortedTasks = [...initialTasks];
+        sortedTasks.sort((a, b) => {
+          return new Date(a.beginDate) - new Date(b.beginDate);
+        });
+        setTasks(sortedTasks);
+      }
+      if (localStorage.getItem("sortBy") == "deadlineNearest") {
+        const sortedTasks = [...initialTasks];
+        sortedTasks.sort((a, b) => {
+          return new Date(a.deadline) - new Date(b.deadline);
+        });
+        setTasks(sortedTasks);
+      }
+      if (localStorage.getItem("sortBy") == "deadlineLatest") {
+        const sortedTasks = [...initialTasks];
+        sortedTasks.sort((a, b) => {
+          return new Date(b.deadline) - new Date(a.deadline);
+        });
+        setTasks(sortedTasks);
+      }
+      if (localStorage.getItem("sortBy") == "priorityMost") {
+        const sortedTasks = [...initialTasks];
+        sortedTasks.sort((a, b) => {
+          return b.priority - a.priority;
+        });
+        setTasks(sortedTasks);
+      }
+      if (localStorage.getItem("sortBy") == "priorityLeast") {
+        const sortedTasks = [...initialTasks];
+        sortedTasks.sort((a, b) => {
+          return a.priority - b.priority;
+        });
+        setTasks(sortedTasks);
+      }
     }
   }, [userIDValue, userNameValue, tokenValue]);
 
