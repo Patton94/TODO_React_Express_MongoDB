@@ -6,22 +6,25 @@ import Footer from "./components/Footer";
 import { TasksProvider } from "./context/tasksContext";
 import { UserProvider } from "./context/userContext";
 import { LoadingProvider } from "./context/loadingContext";
+import { SearchProvider } from "./context/searchContext";
 
 function App() {
   return (
-    <LoadingProvider>
-      <UserProvider>
-        <TasksProvider>
-          <div className="App">
-            <Navbar />
+    <SearchProvider>
+      <LoadingProvider>
+        <UserProvider>
+          <TasksProvider>
+            <div className="App">
+              <Navbar />
 
-            <Main />
+              <Main />
 
-            <Footer />
-          </div>
-        </TasksProvider>
-      </UserProvider>
-    </LoadingProvider>
+              <Footer />
+            </div>
+          </TasksProvider>
+        </UserProvider>
+      </LoadingProvider>
+    </SearchProvider>
   );
 }
 

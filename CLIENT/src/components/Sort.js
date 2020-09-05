@@ -53,7 +53,6 @@ const Sort = () => {
 
   useEffect(() => {
     sortSelectChange();
-    console.log(localStorage.getItem("sortBy"));
   }, [sortBy]);
 
   return (

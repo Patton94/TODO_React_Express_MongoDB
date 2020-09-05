@@ -5,10 +5,12 @@ import Task from "./Task";
 import Add from "./Add";
 import LoadingBar from "./LoadingBar";
 import Sort from "./Sort";
+import Search from "./Search";
 
 import { TasksContext } from "../context/tasksContext";
 import { UserContext } from "../context/userContext";
 import { LoadingContext } from "../context/loadingContext";
+import { SearchContext } from "../context/searchContext";
 
 const Main = () => {
   const [tasks, setTasks] = useContext(TasksContext);
@@ -22,8 +24,10 @@ const Main = () => {
   const [allDone, setAllDone] = useState(false);
   const [isEmpty, setIsEmpty] = useState(true);
 
-  const falseTasks = tasks.filter((task) => task.done == false);
-  const doneTasks = tasks.filter((task) => task.done == true);
+  const [filteredTasks, setFilteredTasks] = useContext(SearchContext);
+
+  const falseTasks = filteredTasks.filter((task) => task.done == false);
+  const doneTasks = filteredTasks.filter((task) => task.done == true);
 
   const checkIsDone = () => {
     if (doneTasks.length === tasks.length && tasks.length > 0) {
@@ -54,6 +58,8 @@ const Main = () => {
 
   return (
     <div className="main">
+      <Search />
+
       <Add />
 
       <Sort />
