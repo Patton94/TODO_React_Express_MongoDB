@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./Sort.css";
 import { TasksContext } from "../context/tasksContext";
+import { useTranslation } from "react-i18next";
 
 const Sort = () => {
   const [sortBy, setSortBy] = useState(localStorage.getItem("sortBy"));
   const [tasks, setTasks] = useContext(TasksContext);
+  const [t, i18n] = useTranslation();
 
   const sortSelectChange = () => {
     if (sortBy == "beginDateNewest") {
@@ -57,7 +59,7 @@ const Sort = () => {
 
   return (
     <div>
-      <label htmlFor="sort">Sort by:</label>
+      <label htmlFor="sort">{t("Sort.Label")}</label>
       <select
         value={sortBy}
         onChange={(e) => {
@@ -66,18 +68,18 @@ const Sort = () => {
         }}
         id="sort"
       >
-        <optgroup label="Begin Date">
-          <option value="beginDateNewest">From the newest</option>
-          <option value="beginDateOldest">From the oldest</option>
+        <optgroup label={t("Sort.BeginDate")}>
+          <option value="beginDateNewest">{t("Sort.Newest")}</option>
+          <option value="beginDateOldest">{t("Sort.Oldest")}</option>
         </optgroup>
-        <optgroup label="Deadline">
+        <optgroup label={t("Sort.Deadline")}>
           {" "}
-          <option value="deadlineNearest">From the nearest</option>
-          <option value="deadlineLatest">From the latest</option>
+          <option value="deadlineNearest">{t("Sort.Nearest")}</option>
+          <option value="deadlineLatest">{t("Sort.Latest")}</option>
         </optgroup>
-        <optgroup label="Priority">
-          <option value="priorityMost">Most important</option>
-          <option value="priorityLeast">Least important</option>
+        <optgroup label={t("Sort.Priority")}>
+          <option value="priorityMost">{t("Sort.Most")}</option>
+          <option value="priorityLeast">{t("Sort.Least")}</option>
         </optgroup>
       </select>
     </div>

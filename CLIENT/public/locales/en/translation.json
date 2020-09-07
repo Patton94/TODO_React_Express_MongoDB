@@ -1,0 +1,92 @@
+{
+  "Main": {
+    "Demo": "This is demonstration mode. All changes will be removed after refreshing the page. To keep your own to do list, please log in.",
+    "AllDone": "All tasks have been completed, congratulations!",
+    "EmptyList": "Your tasks list is empty. Add some task."
+  },
+  "Navbar": {
+    "Title": "TO DO",
+    "DemoTitle": "TO DO - Demo Mode",
+    "Logout": "LOGOUT"
+  },
+  "Login": {
+    "Login": "SIGN IN",
+    "ModalTitle": "SIGN IN",
+    "ModalPassword": "Password",
+    "ModalButton": "SIGN IN",
+    "ModalHello": "Hello",
+    "EmailError": "This field cannot be empty!",
+    "PasswordError": "This field cannot be empty!",
+    "NotExistError": "User does not exist",
+    "CredentialsError": "Invalid password"
+  },
+  "Register": {
+    "ExistError": "User already exist",
+    "EmptyError": "This field cannot be empty!",
+    "EmailError": "Invalid email adress",
+    "ConfirmError": "Passwords are not the same",
+    "Register": "REGISTER",
+    "ModalTitle": "REGISTRATION",
+    "ModalUser": "User",
+    "ModalPassword": "Password",
+    "ModalConfirmPassword": "Confirm password",
+    "ModalMessage": "Registration succesfull!",
+    "ModalButton": "Register"
+  },
+  "Search": {
+    "Placeholder": "Search tasks ..."
+  },
+  "Add": {
+    "EmptyError": "This field cannot be empty!",
+    "DeadlineError": "Select a deadline date!",
+    "Add": "Add Task",
+    "ModalTitle": "Adding a Task",
+    "ModalTaskTitle": "Title",
+    "ModalDescription": "Description",
+    "ModalPriority": "Priority",
+    "ModalDeadline": "Deadline",
+    "ModalButton": "Add Task"
+  },
+  "Sort": {
+    "Label": "Sort by:",
+    "BeginDate": "Begin Date",
+    "Newest": "From the newest",
+    "Oldest": "From the oldest",
+    "Deadline": "Deadline",
+    "Nearest": "From the nearest",
+    "Latest": "From the latest",
+    "Priority": "Priority",
+    "Most": "Most important",
+    "Least": "Least important"
+  },
+  "Bar": {
+    "Title": "Title",
+    "Priority": "Priority",
+    "BeginDate": "Begin Date",
+    "Deadline": "Deadline / Finish Date"
+  },
+  "Tasks": {
+    "Title1": "Repair a car",
+    "Description1": "Gearbox to fix",
+    "Title2": "Visit Mom",
+    "Description2": "Buy flowers",
+    "Title3": "Rule the Universe!",
+    "Description3": "Don't need there any description",
+    "Title4": "Play guitar",
+    "Description4": "Song for my girlfriend",
+    "Title5": "Pay rent",
+    "Description5": "100$"
+  },
+  "Edit": {
+    "EmptyError": "This field cannot be empty!",
+    "ModalTitle": "Edit Task",
+    "ModalTaskTitle": "Title",
+    "ModalDescription": "Description",
+    "ModalPriority": "Priority",
+    "ModalDeadline": "Deadline",
+    "ModalButton": "Edit"
+  },
+  "Footer": {
+    "Copyright": "Copyright"
+  }
+}

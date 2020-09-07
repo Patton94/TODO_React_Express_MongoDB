@@ -2,12 +2,14 @@ import React, { useState, useContext } from "react";
 import "./Login.css";
 import LoadingBar from "./LoadingBar";
 import { UserContext } from "../context/userContext";
+import { useTranslation } from "react-i18next";
 
 const Login = () => {
   const { userName, token, userID } = useContext(UserContext);
   const [userNameValue, setUserNameValue] = userName;
   const [tokenValue, setTokenValue] = token;
   const [userIDValue, setUserIDValue] = userID;
+  const [t, i18n] = useTranslation();
 
   const [isOpen, setIsOpen] = useState(false);
   const [email, setEmail] = useState("");
@@ -54,14 +56,19 @@ const Login = () => {
             setIsLoggedIn(false);
             setLoginFailed("");
           }, 2000);
-        } else return setLoginFailed(data.msg);
+        } else
+          return setLoginFailed(
+            data.msg === "User does not exist"
+              ? t("Login.NotExistError")
+              : t("Login.CredentialsError")
+          );
       });
   };
 
   const loginUser = (e) => {
     e.preventDefault();
-    if (!email) setEmailError("This field cannot be empty!");
-    if (!password) setPasswordError("This field cannot be empty!");
+    if (!email) setEmailError(t("Login.EmailError"));
+    if (!password) setPasswordError(t("Login.PasswordError"));
 
     if (email && password && !emailError && !emailError) {
       fetchData();
@@ -74,7 +81,7 @@ const Login = () => {
         userNameValue
       ) : (
         <button onClick={toggle} className="login">
-          LOGIN
+          {t("Login.Login")}
         </button>
       )}
       <div className={isOpen ? "login__active" : "login__background"}>
@@ -83,7 +90,7 @@ const Login = () => {
           <div onClick={toggle} className="login__close">
             <span>X</span>
           </div>
-          <h2 className="login__modalTitle">Login</h2>
+          <h2 className="login__modalTitle">{t("Login.ModalTitle")}</h2>
           <LoadingBar class={isLoading ? "loadingBar__on" : ""} />
           <form action="" className="login__form">
             <div className="login__container">
@@ -96,13 +103,16 @@ const Login = () => {
                 className="login__user login__input"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                onFocus={() => setEmailError("")}
+                onFocus={() => {
+                  setEmailError("");
+                  setLoginFailed(false);
+                }}
               />
             </div>
             {emailError ? emailError : ""}
             <div className="login__container">
               <label htmlFor="password" className="login__label">
-                Password
+                {t("Login.ModalPassword")}
               </label>
               <input
                 id="password"
@@ -110,18 +120,23 @@ const Login = () => {
                 className="login__password login__input"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                onFocus={() => setPasswordError("")}
+                onFocus={() => {
+                  setPasswordError("");
+                  setLoginFailed(false);
+                }}
               />
             </div>
             {passwordError ? passwordError : ""}
 
             {isLoggedIn ? (
-              <h3>Hello {userNameValue}</h3>
+              <h3>
+                {t("Login.ModalHello")} {userNameValue}
+              </h3>
             ) : (
               <input
                 className="login__btn"
                 type="submit"
-                value="Login"
+                value={t("Login.ModalButton")}
                 onClick={loginUser}
               />
             )}

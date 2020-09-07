@@ -1,0 +1,92 @@
+{
+  "Main": {
+    "Demo": "To jest tryb demonstracyjny. Wszystkie zmiany zostaną usunięte po odświeżeniu strony. Aby prowadzić własną listę zadań, zaloguj się.",
+    "AllDone": "Wszystkie zadania zostały wykonane, gratulacje!",
+    "EmptyList": "Twoja lista zadań jest pusta. Dodaj jakieś zadanie."
+  },
+  "Navbar": {
+    "Title": "Lista zadań",
+    "DemoTitle": "Lista zadań - tryb demo",
+    "Logout": "Wyloguj się"
+  },
+  "Login": {
+    "Login": "Zaloguj się",
+    "ModalTitle": "Zaloguj się",
+    "ModalPassword": "Hasło",
+    "ModalButton": "Zaloguj się",
+    "ModalHello": "Cześć",
+    "EmailError": "To pole nie może być puste!",
+    "PasswordError": "To pole nie może być puste!",
+    "NotExistError": "Użytkownik nie istnieje",
+    "CredentialsError": "Błędne hasło"
+  },
+  "Register": {
+    "ExistError": "Użytkownik już istnieje",
+    "EmptyError": "To pole nie może być puste!",
+    "EmailError": "Błędny adres email",
+    "ConfirmError": "Hasła nie są takie same",
+    "Register": "Zarejestruj się",
+    "ModalTitle": "Rejestracja",
+    "ModalUser": "Użytkownik",
+    "ModalPassword": "Hasło",
+    "ModalConfirmPassword": "Potwierdź hasło",
+    "ModalMessage": "Rejestracja powiodła się!",
+    "ModalButton": "Zarejestruj się"
+  },
+  "Search": {
+    "Placeholder": "Szukaj zadań ..."
+  },
+  "Add": {
+    "EmptyError": "To pole nie może być puste!",
+    "DeadlineError": "Wybierz termin!",
+    "Add": "Dodaj zadanie",
+    "ModalTitle": "Dodawanie zadania",
+    "ModalTaskTitle": "Tytuł",
+    "ModalDescription": "Opis",
+    "ModalPriority": "Priorytet",
+    "ModalDeadline": "Termin",
+    "ModalButton": "Dodaj"
+  },
+  "Sort": {
+    "Label": "Sortuj:",
+    "BeginDate": "Data rozpoczęcia",
+    "Newest": "Od najnowszych",
+    "Oldest": "Od najstarszych",
+    "Deadline": "Termin",
+    "Nearest": "Od najbliższych",
+    "Latest": "Od najdalszych",
+    "Priority": "Priorytet",
+    "Most": "Od najważniejszych",
+    "Least": "Od najmniej ważnych"
+  },
+  "Bar": {
+    "Title": "Tytuł",
+    "Priority": "Priorytet",
+    "BeginDate": "Data rozpoczęcia",
+    "Deadline": "Termin / Data zakończenia"
+  },
+  "Tasks": {
+    "Title1": "Naprawić samochód",
+    "Description1": "Skrzynia biegów do naprawy",
+    "Title2": "Odwiedzić mamę",
+    "Description2": "Kupić kwiaty",
+    "Title3": "Rządzić Wszechświatem",
+    "Description3": "Nie potrzebuję tutaj opisu ;)",
+    "Title4": "Grać na gitarze",
+    "Description4": "Piosenka dla dziewczyny",
+    "Title5": "Zapłacić czynsz",
+    "Description5": "380 zł"
+  },
+  "Edit": {
+    "EmptyError": "To pole nie może być puste!",
+    "ModalTitle": "Edycja zadania",
+    "ModalTaskTitle": "Tytuł",
+    "ModalDescription": "Opis",
+    "ModalPriority": "Priorytet",
+    "ModalDeadline": "Termin",
+    "ModalButton": "Edytuj"
+  },
+  "Footer": {
+    "Copyright": "Prawa autorskie"
+  }
+}

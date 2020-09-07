@@ -11,6 +11,7 @@ import { TasksContext } from "../context/tasksContext";
 import { UserContext } from "../context/userContext";
 import { LoadingContext } from "../context/loadingContext";
 import { SearchContext } from "../context/searchContext";
+import { useTranslation } from "react-i18next";
 
 const Main = () => {
   const [tasks, setTasks] = useContext(TasksContext);
@@ -18,6 +19,7 @@ const Main = () => {
   const [userNameValue, setUserNameValue] = userName;
   const [userIDValue, setUserIDValue] = userID;
   const [tokenValue, setTokenValue] = token;
+  const [t, i18n] = useTranslation();
 
   const [isLoading, setIsLoading] = useContext(LoadingContext);
 
@@ -51,6 +53,10 @@ const Main = () => {
     }, 1000);
   };
 
+  const handleClick = (lang) => {
+    i18n.changeLanguage(lang);
+  };
+
   useEffect(() => {
     checkIsDone();
     checkIsEmpty();
@@ -58,6 +64,11 @@ const Main = () => {
 
   return (
     <div className="main">
+      <div>
+        <button onClick={() => handleClick("pl")}>PL</button>
+        <button onClick={() => handleClick("en")}>ENG</button>
+      </div>
+
       <Search />
 
       <Add />
@@ -70,8 +81,7 @@ const Main = () => {
 
       {!userIDValue ? (
         <span className="main__demoInfo">
-          This is demonstration mode. All changes will be removed after refreshing the
-          page. To keep your own to do list, please log in.
+          <p>{t("Main.Demo")}</p>
         </span>
       ) : (
         ""
@@ -79,13 +89,17 @@ const Main = () => {
 
       {allDone ? (
         <h4 className="main__emptyList">
-          All tasks have been completed, congratulations!
+          {/* All tasks have been completed, congratulations! */}
+          {t("Main.AllDone")}
         </h4>
       ) : (
         ""
       )}
       {isEmpty ? (
-        <h4 className="main__emptyList">Your tasks list is empty. Add some task. </h4>
+        <h4 className="main__emptyList">
+          {/* Your tasks list is empty. Add some task.  */}
+          {t("Main.EmptyList")}
+        </h4>
       ) : (
         ""
       )}

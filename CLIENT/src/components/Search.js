@@ -2,11 +2,13 @@ import React, { useContext, useState, useEffect } from "react";
 import "./Search.css";
 import { SearchContext } from "../context/searchContext";
 import { TasksContext } from "../context/tasksContext";
+import { useTranslation } from "react-i18next";
 
 const Search = () => {
   const [searchText, setSearchText] = useState("");
   const [filteredTasks, setFilteredTasks] = useContext(SearchContext);
   const [tasks, setTasks] = useContext(TasksContext);
+  const [t, i18n] = useTranslation();
 
   useEffect(() => {
     setFilteredTasks(tasks);
@@ -36,7 +38,7 @@ const Search = () => {
             searchTask();
           }
         }}
-        placeholder="Search tasks ..."
+        placeholder={t("Search.Placeholder")}
         type="text"
       />
     </div>

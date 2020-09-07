@@ -3,12 +3,14 @@ import "./Add.css";
 import { TasksContext } from "../context/tasksContext";
 import { UserContext } from "../context/userContext";
 import { LoadingContext } from "../context/loadingContext";
+import { useTranslation } from "react-i18next";
 
 const Add = () => {
   const { userName, userID, token } = useContext(UserContext);
   const [userNameValue, setUserNameValue] = userName;
   const [userIDValue, setUserIDValue] = userID;
   const [tokenValue, setTokenValue] = token;
+  const [t, i18n] = useTranslation();
 
   const [isLoading, setIsLoading] = useContext(LoadingContext);
 
@@ -92,9 +94,9 @@ const Add = () => {
     };
 
     if (!title) {
-      setTitleError("This field cannot be empty!");
+      setTitleError(t("Add.EmptyError"));
     }
-    if (!deadline) return setDeadlineError("Select a deadline date!");
+    if (!deadline) return setDeadlineError(t("Add.DeadlineError"));
 
     if (!titleError && !deadlineError) {
       const dTasks = [...tasks];
@@ -118,18 +120,18 @@ const Add = () => {
   return (
     <>
       <button onClick={toggle} className="add">
-        Add Task
+        {t("Add.Add")}
       </button>
       <div className={isOpen ? "add__active" : "add__background"}>
         <div className="add__modal">
           <div onClick={toggle} className="add__close">
             <span>X</span>
           </div>
-          <h2 className="add__modalTitle">Add Task</h2>
+          <h2 className="add__modalTitle">{t("Add.ModalTitle")}</h2>
           <form action="" className="add__form">
             <div className="add__container">
               <label htmlFor="title" className="add__label">
-                Title
+                {t("Add.ModalTaskTitle")}
               </label>
               <input
                 value={title}
@@ -143,7 +145,7 @@ const Add = () => {
             {titleError ? titleError : ""}
             <div className="add__container">
               <label htmlFor="description" className="add__label">
-                Description
+                {t("Add.ModalDescription")}
               </label>
               <textarea
                 value={description}
@@ -157,7 +159,7 @@ const Add = () => {
             </div>
             <div className="add__container">
               <label htmlFor="priority" className="add__label">
-                Priority
+                {t("Add.ModalPriority")}
               </label>
               <input
                 value={priority}
@@ -171,7 +173,7 @@ const Add = () => {
             </div>
             <div className="add__container">
               <label htmlFor="deadline" className="add__label">
-                Deadline
+                {t("Add.ModalDeadline")}
               </label>
               <input
                 value={deadline}
@@ -189,7 +191,7 @@ const Add = () => {
               onClick={handleAddTask}
               className="add__btn"
               type="submit"
-              value="Add Task"
+              value={t("Add.ModalButton")}
             />
           </form>
         </div>

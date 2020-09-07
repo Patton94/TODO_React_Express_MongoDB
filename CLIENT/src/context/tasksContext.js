@@ -2,6 +2,7 @@ import { createContext, useState, useEffect, useContext } from "react";
 import React from "react";
 import { UserContext } from "./userContext";
 import { LoadingContext } from "./loadingContext";
+import { useTranslation } from "react-i18next";
 
 export const TasksContext = createContext();
 
@@ -10,6 +11,7 @@ export const TasksProvider = (props) => {
   const [userNameValue, setUserNameValue] = userName;
   const [userIDValue, setUserIDValue] = userID;
   const [tokenValue, setTokenValue] = token;
+  const [t, i18n] = useTranslation();
 
   const [isLoading, setIsLoading] = useContext(LoadingContext);
 
@@ -45,8 +47,8 @@ export const TasksProvider = (props) => {
       _id: Math.floor(Math.random() * 999999),
       done: false,
       finishDate: null,
-      title: "Repair a car",
-      description: "Gearbox to fix",
+      title: t("Tasks.Title1"),
+      description: t("Tasks.Description1"),
       priority: 2,
       deadline: deadline1Demo,
       beginDate: beginDateDemo,
@@ -55,8 +57,8 @@ export const TasksProvider = (props) => {
       _id: Math.floor(Math.random() * 999999),
       done: false,
       finishDate: null,
-      title: "Visit Mom",
-      description: "Buy flowers",
+      title: t("Tasks.Title2"),
+      description: t("Tasks.Description2"),
       priority: 3,
       deadline: deadline2Demo,
       beginDate: beginDateDemo,
@@ -65,8 +67,8 @@ export const TasksProvider = (props) => {
       _id: Math.floor(Math.random() * 999999),
       done: false,
       finishDate: null,
-      title: "Rule the Universe!",
-      description: "Don't need there any description",
+      title: t("Tasks.Title3"),
+      description: t("Tasks.Description3"),
       priority: 3,
       deadline: deadline3Demo,
       beginDate: beginDateDemo,
@@ -75,8 +77,8 @@ export const TasksProvider = (props) => {
       _id: Math.floor(Math.random() * 999999),
       done: true,
       finishDate: finishDateDemo,
-      title: "Play guitar",
-      description: "Love song for my girlfriend",
+      title: t("Tasks.Title4"),
+      description: t("Tasks.Description4"),
       priority: 2,
       deadline: null,
       beginDate: beginDateDoneDemo,
@@ -85,8 +87,8 @@ export const TasksProvider = (props) => {
       _id: Math.floor(Math.random() * 999999),
       done: false,
       finishDate: null,
-      title: "Pay rent",
-      description: "100$",
+      title: t("Tasks.Title5"),
+      description: t("Tasks.Description5"),
       priority: 3,
       deadline: deadlineExcedeedDemo,
       beginDate: beginDateExcedeedDemo,

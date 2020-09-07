@@ -2,12 +2,14 @@ import React, { useState, useContext } from "react";
 import "./Register.css";
 import LoadingBar from "./LoadingBar";
 import { UserContext } from "../context/userContext";
+import { useTranslation } from "react-i18next";
 
 const Register = () => {
   const { userName, token, userID } = useContext(UserContext);
   const [userNameValue, setUserNameValue] = userName;
   const [userIDValue, setUserIDValue] = userID;
   const [tokenValue, setTokenValue] = token;
+  const [t, i18n] = useTranslation();
 
   const [isOpen, setIsOpen] = useState(false);
   const [name, setName] = useState("");
@@ -24,9 +26,6 @@ const Register = () => {
 
   const toggle = () => {
     setIsOpen(!isOpen);
-    console.log(userNameValue);
-    console.log(userIDValue);
-    console.log(tokenValue);
   };
 
   // Fetch data - post
@@ -57,18 +56,18 @@ const Register = () => {
             setIsLoading(false);
             setIsRegistered(false);
           }, 3000);
-        } else return setRegistrationFailed(data.msg);
+        } else return setRegistrationFailed(t("Register.ExistError"));
       });
   };
 
   const addUser = (e) => {
     e.preventDefault();
-    if (!name) setNameError("This field cannot be empty!");
-    if (!email) setEmailError("This field cannot be empty");
-    if (!email.includes("@")) setEmailError("Invalid email adress");
-    if (!password) setPasswordError("This field cannot be empty");
-    if (!passwordConfirm) setPasswordConfirmError("This field cannot be empty!");
-    if (password !== passwordConfirm) setPasswordError("Passwords are not the same");
+    if (!name) setNameError(t("Register.EmptyError"));
+    if (!email) setEmailError(t("Register.EmptyError"));
+    if (!email.includes("@")) setEmailError(t("Register.EmailError"));
+    if (!password) setPasswordError(t("Register.EmptyError"));
+    if (!passwordConfirm) setPasswordConfirmError(t("Register.EmptyError"));
+    if (password !== passwordConfirm) setPasswordError(t("Register.ConfirmError"));
 
     if (
       name &&
@@ -89,19 +88,19 @@ const Register = () => {
   return (
     <>
       <button onClick={toggle} className="register">
-        REGISTER
+        {t("Register.Register")}
       </button>
       <div className={isOpen ? "register__active" : "register__background"}>
         <div className="register__modal">
           <div onClick={toggle} className="register__close">
             <span>X</span>
           </div>
-          <h2 className="register__modalTitle">Register</h2>
+          <h2 className="register__modalTitle">{t("Register.ModalTitle")}</h2>
           <LoadingBar class={isLoading ? "loadingBar__on" : ""} />
           <form action="" className="register__form">
             <div className="register__container">
               <label htmlFor="user" className="register__label">
-                User
+                {t("Register.ModalUser")}
               </label>
               <input
                 id="user"
@@ -127,13 +126,14 @@ const Register = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 onFocus={() => {
                   setEmailError("");
+                  setRegistrationFailed(false);
                 }}
               />
             </div>
             {emailError ? emailError : ""}
             <div className="register__container">
               <label htmlFor="password" className="register__label">
-                Password
+                {t("Register.ModalPassword")}
               </label>
               <input
                 id="password"
@@ -149,7 +149,7 @@ const Register = () => {
             {passwordError ? passwordError : ""}
             <div className="register__container">
               <label htmlFor="confirmPassword" className="register__label">
-                Confirm password
+                {t("Register.ModalConfirmPassword")}
               </label>
               <input
                 id="confirmPassword"
@@ -164,12 +164,12 @@ const Register = () => {
             </div>
             {passwordConfirmError ? passwordConfirmError : ""}
             {isRegistered ? (
-              <h3>Registration succesfull!</h3>
+              <h3>{t("Register.ModalMessage")}</h3>
             ) : (
               <input
                 className="register__btn"
                 type="submit"
-                value="Register"
+                value={t("Register.ModalButton")}
                 onClick={addUser}
               />
             )}
