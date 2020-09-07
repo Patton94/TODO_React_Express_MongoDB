@@ -6,6 +6,7 @@ import Add from "./Add";
 import LoadingBar from "./LoadingBar";
 import Sort from "./Sort";
 import Search from "./Search";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 import { TasksContext } from "../context/tasksContext";
 import { UserContext } from "../context/userContext";
@@ -53,10 +54,6 @@ const Main = () => {
     }, 1000);
   };
 
-  const handleClick = (lang) => {
-    i18n.changeLanguage(lang);
-  };
-
   useEffect(() => {
     checkIsDone();
     checkIsEmpty();
@@ -64,10 +61,7 @@ const Main = () => {
 
   return (
     <div className="main">
-      <div>
-        <button onClick={() => handleClick("pl")}>PL</button>
-        <button onClick={() => handleClick("en")}>ENG</button>
-      </div>
+      <LanguageSwitcher />
 
       <Search />
 
@@ -87,22 +81,8 @@ const Main = () => {
         ""
       )}
 
-      {allDone ? (
-        <h4 className="main__emptyList">
-          {/* All tasks have been completed, congratulations! */}
-          {t("Main.AllDone")}
-        </h4>
-      ) : (
-        ""
-      )}
-      {isEmpty ? (
-        <h4 className="main__emptyList">
-          {/* Your tasks list is empty. Add some task.  */}
-          {t("Main.EmptyList")}
-        </h4>
-      ) : (
-        ""
-      )}
+      {allDone ? <h4 className="main__emptyList">{t("Main.AllDone")}</h4> : ""}
+      {isEmpty ? <h4 className="main__emptyList">{t("Main.EmptyList")}</h4> : ""}
 
       {falseTasks.map((task) => (
         <Task

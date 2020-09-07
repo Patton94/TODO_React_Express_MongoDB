@@ -7,24 +7,27 @@ import { TasksProvider } from "./context/tasksContext";
 import { UserProvider } from "./context/userContext";
 import { LoadingProvider } from "./context/loadingContext";
 import { SearchProvider } from "./context/searchContext";
+import { LanguageProvider } from "./context/languageContext";
 
 function App() {
   return (
-    <SearchProvider>
-      <LoadingProvider>
-        <UserProvider>
-          <TasksProvider>
-            <div className="App">
-              <Navbar />
+    <LanguageProvider>
+      <SearchProvider>
+        <LoadingProvider>
+          <UserProvider>
+            <TasksProvider>
+              <div className="App">
+                <Navbar />
 
-              <Main />
+                <Main />
 
-              <Footer />
-            </div>
-          </TasksProvider>
-        </UserProvider>
-      </LoadingProvider>
-    </SearchProvider>
+                <Footer />
+              </div>
+            </TasksProvider>
+          </UserProvider>
+        </LoadingProvider>
+      </SearchProvider>
+    </LanguageProvider>
   );
 }
 

@@ -2,6 +2,7 @@ import { createContext, useState, useEffect, useContext } from "react";
 import React from "react";
 import { UserContext } from "./userContext";
 import { LoadingContext } from "./loadingContext";
+import { LanguageContext } from "./languageContext";
 import { useTranslation } from "react-i18next";
 
 export const TasksContext = createContext();
@@ -14,6 +15,7 @@ export const TasksProvider = (props) => {
   const [t, i18n] = useTranslation();
 
   const [isLoading, setIsLoading] = useContext(LoadingContext);
+  const [language, setLanguage] = useContext(LanguageContext);
 
   const currentDate = new Date();
   let date1 = new Date(currentDate);
@@ -201,7 +203,13 @@ export const TasksProvider = (props) => {
         setTasks(sortedTasks);
       }
     }
-  }, [userIDValue, userNameValue, tokenValue]);
+  }, [userIDValue, userNameValue, tokenValue, language]);
+
+  useEffect(() => {
+    if (localStorage.getItem("i18nextLng") !== language) {
+      setLanguage(localStorage.getItem("i18nextLng"));
+    } else setLanguage(localStorage.getItem("i18nextLng"));
+  }, [language]);
 
   return (
     <TasksContext.Provider value={[tasks, setTasks]}>
