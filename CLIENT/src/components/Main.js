@@ -7,6 +7,7 @@ import LoadingBar from "./LoadingBar";
 import Sort from "./Sort";
 import Search from "./Search";
 import LanguageSwitcher from "./LanguageSwitcher";
+import ThemeSwitcher from "./ThemeSwitcher";
 
 import { TasksContext } from "../context/tasksContext";
 import { UserContext } from "../context/userContext";
@@ -62,6 +63,8 @@ const Main = () => {
   return (
     <div className="main">
       <LanguageSwitcher />
+
+      <ThemeSwitcher />
 
       <Search />
 

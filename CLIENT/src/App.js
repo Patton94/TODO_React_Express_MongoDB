@@ -8,26 +8,29 @@ import { UserProvider } from "./context/userContext";
 import { LoadingProvider } from "./context/loadingContext";
 import { SearchProvider } from "./context/searchContext";
 import { LanguageProvider } from "./context/languageContext";
+import { DarkThemeProvider } from "./context/darkThemeContext";
 
 function App() {
   return (
-    <LanguageProvider>
-      <SearchProvider>
-        <LoadingProvider>
-          <UserProvider>
-            <TasksProvider>
-              <div className="App">
-                <Navbar />
+    <DarkThemeProvider>
+      <LanguageProvider>
+        <SearchProvider>
+          <LoadingProvider>
+            <UserProvider>
+              <TasksProvider>
+                <div className="App">
+                  <Navbar />
 
-                <Main />
+                  <Main />
 
-                <Footer />
-              </div>
-            </TasksProvider>
-          </UserProvider>
-        </LoadingProvider>
-      </SearchProvider>
-    </LanguageProvider>
+                  <Footer />
+                </div>
+              </TasksProvider>
+            </UserProvider>
+          </LoadingProvider>
+        </SearchProvider>
+      </LanguageProvider>
+    </DarkThemeProvider>
   );
 }
 

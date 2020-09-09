@@ -11,13 +11,17 @@
   font-size: 20px;
 }
 
-.nav__todo {
+.nav__title {
   background-color: red;
   flex-grow: 1;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.nav__title.dark {
+  background-color: darkgray;
 }
 
 .nav__login {
@@ -27,6 +31,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.nav__login.dark {
+  background-color: darkred;
 }
 
 .nav__logout {

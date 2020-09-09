@@ -4,12 +4,14 @@ import Login from "./Login";
 import Register from "./Register";
 import { UserContext } from "../context/userContext";
 import { useTranslation } from "react-i18next";
+import { DarkThemeContext } from "../context/darkThemeContext";
 
 const Navbar = () => {
   const { userName, token, userID } = useContext(UserContext);
   const [userNameValue, setUserNameValue] = userName;
   const [tokenValue, setTokenValue] = token;
   const [userIDValue, setUserIDValue] = userID;
+  const [darkTheme, setDarkTheme] = useContext(DarkThemeContext);
 
   const [t, i18n] = useTranslation();
 
@@ -25,14 +27,14 @@ const Navbar = () => {
 
   return (
     <div className="nav">
-      <div className="nav__todo">
+      <div className={darkTheme ? "nav__title dark" : "nav__title"}>
         <span>
           <a className="nav__a" href="/">
             {userIDValue ? t("Navbar.Title") : t("Navbar.DemoTitle")}
           </a>
         </span>
       </div>
-      <div className="nav__login">
+      <div className={darkTheme ? "nav__login dark" : "nav__login"}>
         <Login />
       </div>
       <div className="nav__register">
