@@ -4,6 +4,7 @@ import { TasksContext } from "../context/tasksContext";
 import { UserContext } from "../context/userContext";
 import { LoadingContext } from "../context/loadingContext";
 import { useTranslation } from "react-i18next";
+import { FaEdit } from "react-icons/fa";
 
 const Edit = (props) => {
   const { userName, userID, token } = useContext(UserContext);
@@ -104,7 +105,7 @@ const Edit = (props) => {
   return (
     <>
       <button onClick={toggle} className="edit">
-        Edit
+        <FaEdit />
       </button>
       <div className={isOpen ? "edit__active" : "edit__background"}>
         <div className="edit__modal">

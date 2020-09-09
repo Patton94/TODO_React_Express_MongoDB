@@ -5,6 +5,7 @@ import Register from "./Register";
 import { UserContext } from "../context/userContext";
 import { useTranslation } from "react-i18next";
 import { DarkThemeContext } from "../context/darkThemeContext";
+import { AiOutlineLogout } from "react-icons/ai";
 
 const Navbar = () => {
   const { userName, token, userID } = useContext(UserContext);
@@ -40,7 +41,7 @@ const Navbar = () => {
       <div className="nav__register">
         {userNameValue && tokenValue ? (
           <button onClick={logoutUser} className="nav__logout">
-            {t("Navbar.Logout")}
+            {t("Navbar.Logout")} <AiOutlineLogout />
           </button>
         ) : (
           <Register />

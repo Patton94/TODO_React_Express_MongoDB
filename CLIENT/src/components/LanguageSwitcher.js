@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import "./LanguageSwitcher.css";
 import { LanguageContext } from "../context/languageContext";
 import { useTranslation } from "react-i18next";
+import Flag from "react-flagkit";
 
 const LanguageSwitcher = () => {
   const [language, setLanguage] = useContext(LanguageContext);
@@ -14,8 +15,8 @@ const LanguageSwitcher = () => {
 
   return (
     <div>
-      <button onClick={() => handleClick("pl")}>PL</button>
-      <button onClick={() => handleClick("en")}>ENG</button>
+      <Flag country="PL" onClick={() => handleClick("pl")} />
+      <Flag country="GB" onClick={() => handleClick("en")} />
     </div>
   );
 };

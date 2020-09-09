@@ -3,6 +3,7 @@ import "./Delete.css";
 import { TasksContext } from "../context/tasksContext";
 import { UserContext } from "../context/userContext";
 import { LoadingContext } from "../context/loadingContext";
+import { MdDelete } from "react-icons/md";
 
 const Delete = (props) => {
   const [tasks, setTasks] = useContext(TasksContext);
@@ -58,7 +59,7 @@ const Delete = (props) => {
 
   return (
     <button onClick={handleDeleteTask} className="delete">
-      Delete
+      <MdDelete />
     </button>
   );
 };

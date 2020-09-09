@@ -3,6 +3,7 @@ import "./Login.css";
 import LoadingBar from "./LoadingBar";
 import { UserContext } from "../context/userContext";
 import { useTranslation } from "react-i18next";
+import { AiOutlineLogin } from "react-icons/ai";
 
 const Login = () => {
   const { userName, token, userID } = useContext(UserContext);
@@ -81,7 +82,7 @@ const Login = () => {
         userNameValue
       ) : (
         <button onClick={toggle} className="login">
-          {t("Login.Login")}
+          {t("Login.Login")} <AiOutlineLogin />
         </button>
       )}
       <div className={isOpen ? "login__active" : "login__background"}>

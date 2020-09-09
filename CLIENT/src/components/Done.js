@@ -3,6 +3,7 @@ import "./Done.css";
 import { TasksContext } from "../context/tasksContext";
 import { UserContext } from "../context/userContext";
 import { LoadingContext } from "../context/loadingContext";
+import { MdDone } from "react-icons/md";
 
 const Done = (props) => {
   const { userName, userID, token } = useContext(UserContext);
@@ -65,7 +66,7 @@ const Done = (props) => {
 
   return (
     <button onClick={handleDoneTask} className="done">
-      Done
+      <MdDone />
     </button>
   );
 };
