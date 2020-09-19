@@ -5,8 +5,27 @@
 
 .main__demoInfo {
   display: block;
+  width: 98%;
+  margin: 0 auto;
 }
 
 .main__emptyList {
   display: block;
+  width: 98%;
+  margin: 0 auto;
+}
+
+.main__searchAddSort {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+@media (max-width: 549.98px) {
+  .main__searchAddSort {
+    flex-wrap: wrap;
+  }
 }

@@ -4,6 +4,11 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
+  background-color: transparent;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .login__modal {
@@ -12,9 +17,11 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 30vw;
-  height: 70vh;
+  height: 40vh;
   background-color: lightgray;
   z-index: 3;
+  display: flex;
+  flex-direction: column;
 }
 
 .login__background {
@@ -35,33 +42,57 @@
   color: white;
 }
 
-form {
+.login__form {
+  width: 100%;
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .login__container {
-  margin-top: 2vh;
-  flex-basis: 90%;
+  margin: 2vh 10px 0 30px;
+  flex-basis: 100%;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .login__label {
   flex-basis: 30%;
+  font-weight: bold;
 }
 
 .login__input {
-  flex-grow: 1;
+  flex-basis: 70%;
+}
+
+.login__inputError {
+  margin-top: 3px;
+  display: block;
+  width: 100%;
+  text-align: center;
 }
 
 .login__btn {
   margin-top: 2vh;
+  font-weight: bold;
+}
+
+.login__message {
+  display: block;
+  width: 100%;
+  text-align: center;
 }
 
 i {
   font-size: 30px;
   color: black;
+}
+
+.login__closeIcon {
+  font-size: 25px;
 }
 
 .login__close {
@@ -76,4 +107,52 @@ i {
   align-items: center;
   font-weight: bold;
   cursor: pointer;
+}
+
+@media (max-width: 449.98px) {
+  .login {
+    font-size: 23px;
+  }
+}
+
+@media (max-width: 1149.98px) {
+  .login__modal {
+    width: 40vw;
+  }
+}
+
+@media (max-width: 929.98px) {
+  .login__modal {
+    width: 50vw;
+  }
+}
+
+@media (max-width: 679.98px) {
+  .login__modal {
+    width: 60vw;
+  }
+}
+
+@media (max-width: 559.98px) {
+  .login__modal {
+    width: 96vw;
+  }
+}
+
+@media (max-height: 599.98px) {
+  .login__modal {
+    height: 50vh;
+  }
+}
+
+@media (max-height: 479.98px) {
+  .login__modal {
+    height: 60vh;
+  }
+}
+
+@media (max-height: 379.98px) {
+  .login__modal {
+    height: 70vh;
+  }
 }

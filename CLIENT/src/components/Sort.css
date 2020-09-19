@@ -1,0 +1,18 @@
+.sort {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-basis: 33.33%;
+}
+
+@media (max-width: 549.98px) {
+  .sort {
+    flex-basis: 50%;
+  }
+}
+
+@media (max-width: 449.98px) {
+  .sort__select {
+    width: 80%;
+  }
+}

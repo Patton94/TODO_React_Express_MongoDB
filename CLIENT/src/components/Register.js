@@ -1,9 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./Register.css";
 import LoadingBar from "./LoadingBar";
 import { UserContext } from "../context/userContext";
 import { useTranslation } from "react-i18next";
 import { AiOutlineUserAdd } from "react-icons/ai";
+import { GrFormClose } from "react-icons/gr";
 
 const Register = () => {
   const { userName, token, userID } = useContext(UserContext);
@@ -25,11 +26,19 @@ const Register = () => {
   const [registrationFailed, setRegistrationFailed] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", handleResize);
+  }, [width]);
+
   const toggle = () => {
     setIsOpen(!isOpen);
   };
 
-  // Fetch data - post
   const fetchData = () => {
     const newUser = {
       name,
@@ -88,25 +97,28 @@ const Register = () => {
 
   return (
     <>
-      <button onClick={toggle} className="register">
-        {t("Register.Register")} <AiOutlineUserAdd />
-      </button>
+      {width < 450 ? (
+        <button onClick={toggle} className="register">
+          <AiOutlineUserAdd />
+        </button>
+      ) : (
+        <button onClick={toggle} className="register">
+          {t("Register.Register")} <AiOutlineUserAdd />
+        </button>
+      )}
       <div className={isOpen ? "register__active" : "register__background"}>
         <div className="register__modal">
           <div onClick={toggle} className="register__close">
-            <span>X</span>
+            <GrFormClose className="register__closeIcon" />
           </div>
           <h2 className="register__modalTitle">{t("Register.ModalTitle")}</h2>
           <LoadingBar class={isLoading ? "loadingBar__on" : ""} />
           <form action="" className="register__form">
             <div className="register__container">
-              <label htmlFor="user" className="register__label">
-                {t("Register.ModalUser")}
-              </label>
+              <label className="register__label">{t("Register.ModalUser")}</label>
               <input
-                id="user"
                 type="text"
-                className="register__user register__input"
+                className="register__input"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 onFocus={() => {
@@ -114,15 +126,12 @@ const Register = () => {
                 }}
               />
             </div>
-            {nameError ? nameError : ""}
+            {nameError ? <span className="register__inputError">{nameError}</span> : ""}
             <div className="register__container">
-              <label htmlFor="email" className="register__label">
-                Email
-              </label>
+              <label className="register__label">Email</label>
               <input
-                id="email"
                 type="email"
-                className="register__email register__input"
+                className="register__input"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 onFocus={() => {
@@ -131,15 +140,12 @@ const Register = () => {
                 }}
               />
             </div>
-            {emailError ? emailError : ""}
+            {emailError ? <span className="register__inputError">{emailError}</span> : ""}
             <div className="register__container">
-              <label htmlFor="password" className="register__label">
-                {t("Register.ModalPassword")}
-              </label>
+              <label className="register__label">{t("Register.ModalPassword")}</label>
               <input
-                id="password"
                 type="password"
-                className="register__password register__input"
+                className="register__input"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 onFocus={() => {
@@ -147,15 +153,18 @@ const Register = () => {
                 }}
               />
             </div>
-            {passwordError ? passwordError : ""}
+            {passwordError ? (
+              <span className="register__inputError">{passwordError}</span>
+            ) : (
+              ""
+            )}
             <div className="register__container">
-              <label htmlFor="confirmPassword" className="register__label">
+              <label className="register__label">
                 {t("Register.ModalConfirmPassword")}
               </label>
               <input
-                id="confirmPassword"
                 type="password"
-                className="register__password register__input"
+                className="register__input"
                 value={passwordConfirm}
                 onChange={(e) => setPasswordConfirm(e.target.value)}
                 onFocus={() => {
@@ -163,9 +172,13 @@ const Register = () => {
                 }}
               />
             </div>
-            {passwordConfirmError ? passwordConfirmError : ""}
+            {passwordConfirmError ? (
+              <span className="register__inputError">{passwordConfirmError}</span>
+            ) : (
+              ""
+            )}
             {isRegistered ? (
-              <h3>{t("Register.ModalMessage")}</h3>
+              <h3 className="register__message">{t("Register.ModalMessage")}</h3>
             ) : (
               <input
                 className="register__btn"
@@ -175,7 +188,11 @@ const Register = () => {
               />
             )}
 
-            {registrationFailed ? <h3>{registrationFailed}</h3> : ""}
+            {registrationFailed ? (
+              <h3 className="register__message">{registrationFailed}</h3>
+            ) : (
+              ""
+            )}
           </form>
         </div>
       </div>

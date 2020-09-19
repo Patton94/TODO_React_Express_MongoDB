@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import "./Sort.css";
 import { TasksContext } from "../context/tasksContext";
 import { useTranslation } from "react-i18next";
+import { FaSort } from "react-icons/fa";
 
 const Sort = () => {
   const [sortBy, setSortBy] = useState(localStorage.getItem("sortBy"));
@@ -58,9 +59,10 @@ const Sort = () => {
   }, [sortBy]);
 
   return (
-    <div>
-      <label htmlFor="sort">{t("Sort.Label")}</label>
+    <div className="sort">
+      <label htmlFor="sort">{<FaSort />}</label>
       <select
+        className="sort__select"
         value={sortBy}
         onChange={(e) => {
           setSortBy(e.target.value);

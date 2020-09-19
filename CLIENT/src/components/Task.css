@@ -1,4 +1,6 @@
 .task {
+  width: 98%;
+  margin: 0 auto;
   margin-top: 2vh;
   background-color: lightgray;
   display: flex;
@@ -34,6 +36,10 @@
   margin: 0;
 }
 
+.task__description {
+  text-align: center;
+}
+
 .task__priority {
   background-color: transparent;
   flex-basis: 8%;
@@ -51,7 +57,6 @@
 }
 
 .task__deadline {
-  /* background-color: transparent; */
   flex-basis: 12%;
   display: flex;
   justify-content: center;
@@ -80,4 +85,151 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.task__dots {
+  background-color: rgba(0, 0, 0, 0.3);
+  flex-basis: 7%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.task__modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20vw;
+  height: 40vh;
+  background-color: lightgray;
+  display: flex;
+  z-index: 3;
+}
+
+.task__background {
+  display: none;
+}
+
+.task__active {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.task__close {
+  align-self: flex-end;
+  top: 0;
+  right: 0;
+  width: 25px;
+  height: 25px;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.task__closeIcon {
+  font-size: 25px;
+}
+
+@media (max-width: 799.98px) {
+  .task__beginDate,
+  .task__deadline {
+    flex-basis: 15%;
+  }
+
+  .task__modal {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .task__editButton {
+    flex-grow: 1;
+  }
+
+  .task__deleteButtonModal {
+    background-color: rgba(177, 0, 0, 0.3);
+    flex-basis: 7%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+  }
+
+  .task__doneButton {
+    flex-grow: 1;
+  }
+}
+
+@media (max-width: 649.98px) {
+  .task__beginDate,
+  .task__deadline {
+    flex-basis: 17%;
+  }
+
+  .task__priority {
+    flex-basis: 5%;
+  }
+
+  .task__dots {
+    flex-basis: 7%;
+  }
+
+  .task__editButton {
+    height: 25%;
+  }
+}
+
+@media (max-width: 579.98px) {
+  .task__modal {
+    width: 30vw;
+  }
+}
+
+@media (max-width: 549.98px) {
+  .task {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .task__titleContainer {
+    flex-basis: 100%;
+  }
+
+  .task__dots {
+    flex-basis: 9%;
+  }
+
+  .task__priority {
+    flex-basis: 9%;
+  }
+
+  .task__beginDate,
+  .task__deadline {
+    flex-basis: 40%;
+  }
+}
+
+@media (max-width: 349.98px) {
+  .task__modal {
+    width: 40vw;
+  }
+}
+
+@media (max-height: 579.98px) {
+  .task__modal {
+    height: 60vh;
+  }
+}
+
+@media (max-height: 449.98px) {
+  .task__modal {
+    height: 70vh;
+  }
 }

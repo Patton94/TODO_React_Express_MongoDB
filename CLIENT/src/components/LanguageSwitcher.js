@@ -14,9 +14,13 @@ const LanguageSwitcher = () => {
   };
 
   return (
-    <div>
-      <Flag country="PL" onClick={() => handleClick("pl")} />
-      <Flag country="GB" onClick={() => handleClick("en")} />
+    <div className="language">
+      <div className="language__flag">
+        <Flag country="PL" size={30} onClick={() => handleClick("pl")} />
+      </div>
+      <div className="language__flag">
+        <Flag country="GB" size={30} onClick={() => handleClick("en")} />
+      </div>
     </div>
   );
 };

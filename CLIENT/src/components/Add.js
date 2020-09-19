@@ -1,9 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./Add.css";
 import { TasksContext } from "../context/tasksContext";
 import { UserContext } from "../context/userContext";
 import { LoadingContext } from "../context/loadingContext";
 import { useTranslation } from "react-i18next";
+import { BsPlusCircleFill } from "react-icons/bs";
+import { GrFormClose } from "react-icons/gr";
 
 const Add = () => {
   const { userName, userID, token } = useContext(UserContext);
@@ -22,6 +24,15 @@ const Add = () => {
   const [deadline, setDeadline] = useState("");
   const [titleError, setTitleError] = useState("");
   const [deadlineError, setDeadlineError] = useState("");
+
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", handleResize);
+  }, [width]);
 
   const getData = () => {
     fetch(`http://localhost:5000/api/items/${userIDValue}`, {
@@ -119,73 +130,72 @@ const Add = () => {
 
   return (
     <>
-      <button onClick={toggle} className="add">
-        {t("Add.Add")}
-      </button>
+      {width < 650 ? (
+        <div className="add__iconContainer">
+          <BsPlusCircleFill className="add__icon" onClick={toggle} />
+        </div>
+      ) : (
+        <button onClick={toggle} className="add">
+          {t("Add.Add")}
+        </button>
+      )}
+
       <div className={isOpen ? "add__active" : "add__background"}>
         <div className="add__modal">
           <div onClick={toggle} className="add__close">
-            <span>X</span>
+            <GrFormClose className="add__closeIcon" />
           </div>
           <h2 className="add__modalTitle">{t("Add.ModalTitle")}</h2>
           <form action="" className="add__form">
             <div className="add__container">
-              <label htmlFor="title" className="add__label">
-                {t("Add.ModalTaskTitle")}
-              </label>
+              <label className="add__label">{t("Add.ModalTaskTitle")}</label>
               <input
                 value={title}
                 onFocus={() => setTitleError("")}
                 onChange={(e) => setTitle(e.target.value)}
-                id="title"
                 type="text"
-                className="add__title add__input"
+                className="add__input"
               />
             </div>
-            {titleError ? titleError : ""}
+            {titleError ? <span className="add__inputError">{titleError}</span> : ""}
             <div className="add__container">
-              <label htmlFor="description" className="add__label">
-                {t("Add.ModalDescription")}
-              </label>
+              <label className="add__label">{t("Add.ModalDescription")}</label>
               <textarea
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                id="description"
-                className="add__description add__input"
+                className="add__input"
                 name="description"
                 cols="20"
                 rows="5"
               ></textarea>
             </div>
             <div className="add__container">
-              <label htmlFor="priority" className="add__label">
-                {t("Add.ModalPriority")}
-              </label>
+              <label className="add__label">{t("Add.ModalPriority")}</label>
               <input
                 value={priority}
                 onChange={(e) => setPriority(e.target.value)}
-                className="add__priority add__input"
+                className="add__input"
                 type="range"
-                id="priority"
                 min="1"
                 max="3"
               ></input>
             </div>
             <div className="add__container">
-              <label htmlFor="deadline" className="add__label">
-                {t("Add.ModalDeadline")}
-              </label>
+              <label className="add__label">{t("Add.ModalDeadline")}</label>
               <input
                 value={deadline}
                 onFocus={() => setDeadlineError("")}
                 onChange={(e) => setDeadline(e.target.value)}
-                id="deadline"
-                className="add__deadline add__input"
+                className="add__input"
                 type="date"
                 value="now"
               />
             </div>
-            {deadlineError ? deadlineError : ""}
+            {deadlineError ? (
+              <span className="add__inputError">{deadlineError}</span>
+            ) : (
+              ""
+            )}
 
             <input
               onClick={handleAddTask}

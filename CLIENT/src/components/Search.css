@@ -1,0 +1,17 @@
+.search {
+  flex-basis: 33.33%;
+}
+
+@media (max-width: 549.98px) {
+  .search {
+    flex-basis: 50%;
+    display: flex;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 449.98px) {
+  .search__input {
+    width: 80%;
+  }
+}

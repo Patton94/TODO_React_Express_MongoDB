@@ -3,7 +3,6 @@ import "./Search.css";
 import { SearchContext } from "../context/searchContext";
 import { TasksContext } from "../context/tasksContext";
 import { useTranslation } from "react-i18next";
-import { AiOutlineSearch } from "react-icons/ai";
 
 const Search = () => {
   const [searchText, setSearchText] = useState("");
@@ -32,6 +31,7 @@ const Search = () => {
   return (
     <div className="search">
       <input
+        className="search__input"
         value={searchText}
         onChange={(e) => {
           setSearchText(e.target.value.toUpperCase());
@@ -42,7 +42,6 @@ const Search = () => {
         placeholder={t("Search.Placeholder")}
         type="text"
       />
-      <AiOutlineSearch />
     </div>
   );
 };

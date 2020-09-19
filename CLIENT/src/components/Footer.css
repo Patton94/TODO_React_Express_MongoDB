@@ -1,7 +1,314 @@
 .footer {
+  position: fixed;
+  max-width: 1024px;
+  bottom: 0;
   background-color: lightgreen;
-  flex-basis: 8%;
+  flex-basis: 3%;
+  font-size: 25px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 5px;
+  padding: 3px 0;
+}
+
+.footer__settings,
+.footer__info {
+  flex-basis: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.footer__icon {
+  cursor: pointer;
+}
+
+.footer__close {
+  flex-basis: 5%;
+  font-size: 16px;
+  align-self: flex-end;
+  width: 25px;
+  height: 25px;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.footer__modalInfo,
+.footer__modalSettings {
+  width: 50%;
+  bottom: -50vh;
+  height: 40vh;
+  position: absolute;
+  background-color: tomato;
+  transition: 0.5s ease;
+}
+
+.footer__modalInfo {
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+}
+
+.footer__modalSettings {
+  width: 50%;
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer__iconContainer {
+  display: grid;
+  flex-basis: 95%;
+  background-color: aqua;
+  grid-template-columns: 0.2fr 1fr 0.2fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  padding-left: 10px;
+  padding-right: 10px;
+  grid-template-areas:
+    "ico_1 txt_1 ico_7 txt_7"
+    "ico_2 txt_2 ico_8 txt_8"
+    "ico_3 txt_3 ico_9 txt_9"
+    "ico_4 txt_4 ico_10 txt_10"
+    "ico_5 txt_5 ico_11 txt_11"
+    "ico_6 txt_6 ico_12 txt_12";
+}
+
+.footer__iconContainer :nth-child(even),
+.footer__iconContainer :nth-child(odd) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer__ico1 {
+  grid-area: ico_1;
+  font-size: 20px;
+}
+
+.footer__ico2 {
+  grid-area: ico_2;
+  font-size: 20px;
+}
+
+.footer__ico3 {
+  grid-area: ico_3;
+  font-size: 20px;
+}
+
+.footer__ico4 {
+  grid-area: ico_4;
+  font-size: 20px;
+}
+
+.footer__ico5 {
+  grid-area: ico_5;
+  font-size: 20px;
+}
+
+.footer__ico6 {
+  grid-area: ico_6;
+  font-size: 20px;
+}
+
+.footer__ico7 {
+  grid-area: ico_7;
+  font-size: 20px;
+}
+
+.footer__ico8 {
+  grid-area: ico_8;
+  font-size: 20px;
+}
+
+.footer__ico9 {
+  grid-area: ico_9;
+  font-size: 20px;
+}
+
+.footer__ico10 {
+  grid-area: ico_10;
+  font-size: 20px;
+}
+
+.footer__ico11 {
+  grid-area: ico_11;
+  font-size: 20px;
+}
+
+.footer__ico12 {
+  grid-area: ico_12;
+  font-size: 20px;
+}
+
+.footer__txt1 {
+  grid-area: txt_1;
+}
+
+.footer__txt2 {
+  grid-area: txt_2;
+}
+
+.footer__txt3 {
+  grid-area: txt_3;
+}
+
+.footer__txt4 {
+  grid-area: txt_4;
+}
+
+.footer__txt5 {
+  grid-area: txt_5;
+}
+
+.footer__txt6 {
+  grid-area: txt_6;
+}
+
+.footer__txt7 {
+  grid-area: txt_7;
+}
+
+.footer__txt8 {
+  grid-area: txt_8;
+}
+
+.footer__txt9 {
+  grid-area: txt_9;
+}
+
+.footer__txt10 {
+  grid-area: txt_10;
+}
+
+.footer__txt11 {
+  grid-area: txt_11;
+}
+
+.footer__txt12 {
+  grid-area: txt_12;
+}
+
+.footer__modalSettings {
+  right: 0;
+}
+
+.footer__active {
+  bottom: 100%;
+  transition: 0.5s ease;
+}
+
+.footer__switcherContainer {
+  width: 80%;
+  height: 50%;
+  background-color: rgb(126, 101, 149);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__closeIcon {
+  font-size: 25px;
+}
+
+@media (max-width: 739.98px) {
+  .footer__modalInfo {
+    width: 60%;
+  }
+}
+
+@media (max-width: 619.98px) {
+  .footer__modalInfo {
+    width: 70%;
+  }
+}
+
+@media (max-width: 529.98px) {
+  .footer__modalInfo {
+    width: 100%;
+    height: 43vh;
+  }
+}
+
+@media (max-width: 469.98px) {
+  .footer__modalSettings {
+    width: 70%;
+  }
+}
+
+@media (max-width: 419.98px) {
+  .footer__txt1 {
+    margin-left: 5px;
+  }
+
+  .footer__txt2 {
+    margin-left: 5px;
+  }
+
+  .footer__txt3 {
+    margin-left: 5px;
+  }
+
+  .footer__txt4 {
+    margin-left: 5px;
+  }
+
+  .footer__txt5 {
+    margin-left: 5px;
+  }
+
+  .footer__txt6 {
+    margin-left: 5px;
+  }
+
+  .footer__txt7 {
+    margin-left: 5px;
+  }
+
+  .footer__txt8 {
+    margin-left: 5px;
+  }
+
+  .footer__txt9 {
+    margin-left: 5px;
+  }
+
+  .footer__txt10 {
+    margin-left: 5px;
+  }
+
+  .footer__txt11 {
+    margin-left: 5px;
+  }
+
+  .footer__txt12 {
+    margin-left: 5px;
+  }
+}
+
+@media (max-width: 349.98px) {
+  .footer__modalSettings {
+    width: 100%;
+  }
+}
+
+@media (max-height: 379.98px) {
+  .footer__modalInfo {
+    height: 50vh;
+  }
+}
+
+@media (max-height: 289.98px) {
+  .footer__modalInfo {
+    height: 60vh;
+  }
 }

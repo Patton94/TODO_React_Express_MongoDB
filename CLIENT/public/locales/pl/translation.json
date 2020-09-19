@@ -6,7 +6,7 @@
   },
   "Navbar": {
     "Title": "Lista zadań",
-    "DemoTitle": "Lista zadań - tryb demo",
+    "DemoTitle": "Lista zadań - Demo",
     "Logout": "Wyloguj się"
   },
   "Login": {
@@ -88,5 +88,19 @@
   },
   "Footer": {
     "Copyright": "Prawa autorskie"
+  },
+  "Info": {
+    "Login": "Zaloguj się",
+    "Register": "Zarejestruj się",
+    "Logout": "Wyloguj się",
+    "Add": "Dodaj zadanie",
+    "Description": "Tytuł i opis",
+    "Priority": "Priorytet",
+    "BeginDate": "Data rozpoczęcia",
+    "Deadline": "Termin",
+    "Edit": "Edytuj zadanie",
+    "Delete": "Usuń zadanie",
+    "Done": "Zadanie wykonane",
+    "Dots": "Operacje na zadaniu"
   }
 }

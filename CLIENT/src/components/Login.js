@@ -1,9 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./Login.css";
 import LoadingBar from "./LoadingBar";
 import { UserContext } from "../context/userContext";
 import { useTranslation } from "react-i18next";
 import { AiOutlineLogin } from "react-icons/ai";
+import { GrFormClose } from "react-icons/gr";
 
 const Login = () => {
   const { userName, token, userID } = useContext(UserContext);
@@ -20,6 +21,15 @@ const Login = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loginFailed, setLoginFailed] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", handleResize);
+  }, [width]);
 
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -80,6 +90,10 @@ const Login = () => {
     <>
       {userNameValue && tokenValue ? (
         userNameValue
+      ) : width < 450 ? (
+        <button onClick={toggle} className="login">
+          <AiOutlineLogin />
+        </button>
       ) : (
         <button onClick={toggle} className="login">
           {t("Login.Login")} <AiOutlineLogin />
@@ -89,19 +103,17 @@ const Login = () => {
         {" "}
         <div className="login__modal">
           <div onClick={toggle} className="login__close">
-            <span>X</span>
+            {/* <span>X</span> */}
+            <GrFormClose className="login__closeIcon" />
           </div>
           <h2 className="login__modalTitle">{t("Login.ModalTitle")}</h2>
           <LoadingBar class={isLoading ? "loadingBar__on" : ""} />
           <form action="" className="login__form">
             <div className="login__container">
-              <label htmlFor="user" className="login__label">
-                Email
-              </label>
+              <label className="login__label">Email</label>
               <input
-                id="user"
                 type="email"
-                className="login__user login__input"
+                className="login__input"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 onFocus={() => {
@@ -110,15 +122,12 @@ const Login = () => {
                 }}
               />
             </div>
-            {emailError ? emailError : ""}
+            {emailError ? <span className="login__inputError">{emailError}</span> : ""}
             <div className="login__container">
-              <label htmlFor="password" className="login__label">
-                {t("Login.ModalPassword")}
-              </label>
+              <label className="login__label">{t("Login.ModalPassword")}</label>
               <input
-                id="password"
                 type="password"
-                className="login__password login__input"
+                className="login__input"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 onFocus={() => {
@@ -127,10 +136,14 @@ const Login = () => {
                 }}
               />
             </div>
-            {passwordError ? passwordError : ""}
+            {passwordError ? (
+              <span className="login__inputError">{passwordError}</span>
+            ) : (
+              ""
+            )}
 
             {isLoggedIn ? (
-              <h3>
+              <h3 className="login__message">
                 {t("Login.ModalHello")} {userNameValue}
               </h3>
             ) : (
@@ -141,7 +154,7 @@ const Login = () => {
                 onClick={loginUser}
               />
             )}
-            {loginFailed ? <h3>{loginFailed}</h3> : ""}
+            {loginFailed ? <h3 className="login__message">{loginFailed}</h3> : ""}
           </form>
         </div>
       </div>

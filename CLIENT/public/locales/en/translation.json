@@ -6,7 +6,7 @@
   },
   "Navbar": {
     "Title": "TO DO",
-    "DemoTitle": "TO DO - Demo Mode",
+    "DemoTitle": "TO DO - Demo",
     "Logout": "LOGOUT"
   },
   "Login": {
@@ -88,5 +88,19 @@
   },
   "Footer": {
     "Copyright": "Copyright"
+  },
+  "Info": {
+    "Login": "Sign In",
+    "Register": "Register",
+    "Logout": "Logout",
+    "Add": "Add Task",
+    "Description": "Task title",
+    "Priority": "Task priority",
+    "BeginDate": "Task begin date",
+    "Deadline": "Task deadline",
+    "Edit": "Edit task",
+    "Delete": "Delete task",
+    "Done": "Task is done",
+    "Dots": "Operations on tasks"
   }
 }

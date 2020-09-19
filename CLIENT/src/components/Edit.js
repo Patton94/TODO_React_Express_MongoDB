@@ -5,6 +5,7 @@ import { UserContext } from "../context/userContext";
 import { LoadingContext } from "../context/loadingContext";
 import { useTranslation } from "react-i18next";
 import { FaEdit } from "react-icons/fa";
+import { GrFormClose } from "react-icons/gr";
 
 const Edit = (props) => {
   const { userName, userID, token } = useContext(UserContext);
@@ -109,62 +110,50 @@ const Edit = (props) => {
       </button>
       <div className={isOpen ? "edit__active" : "edit__background"}>
         <div className="edit__modal">
-          <div className="edit__close">
-            <span onClick={toggle}>X</span>
+          <div className="edit__close" onClick={toggle}>
+            <GrFormClose className="edit__closeIcon" />
           </div>
           <h2 className="edit__modalTitle">{t("Edit.ModalTitle")}</h2>
           <form action="" className="edit__form">
             <div className="edit__container">
-              <label htmlFor="title" className="edit__label">
-                {t("Edit.ModalTaskTitle")}
-              </label>
+              <label className="edit__label">{t("Edit.ModalTaskTitle")}</label>
               <input
                 value={title}
                 onFocus={() => setTitleError("")}
                 onChange={(e) => setTitle(e.target.value)}
-                id="title"
                 type="text"
-                className="edit__title edit__input"
+                className="edit__input"
               />
             </div>
-            {titleError ? titleError : ""}
+            {titleError ? <span className="edit__inputError">{titleError}</span> : ""}
             <div className="edit__container">
-              <label htmlFor="description" className="edit__label">
-                {t("Edit.ModalDescription")}
-              </label>
+              <label className="edit__label">{t("Edit.ModalDescription")}</label>
               <textarea
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                id="description"
-                className="edit__description edit__input"
+                className="edit__input"
                 name="description"
                 cols="20"
                 rows="5"
               ></textarea>
             </div>
             <div className="edit__container">
-              <label htmlFor="priority" className="edit__label">
-                {t("Edit.ModalPriority")}
-              </label>
+              <label className="edit__label">{t("Edit.ModalPriority")}</label>
               <input
                 value={priority}
                 onChange={(e) => setPriority(e.target.value)}
-                className="edit__priority edit__input"
+                className="edit__input"
                 type="range"
-                id="priority"
                 min="1"
                 max="3"
               ></input>
             </div>
             <div className="edit__container">
-              <label htmlFor="deadline" className="edit__label">
-                {t("Edit.ModalDeadline")}
-              </label>
+              <label className="edit__label">{t("Edit.ModalDeadline")}</label>
               <input
                 value={deadline}
                 onChange={(e) => setDeadline(e.target.value)}
-                id="deadline"
-                className="edit__deadline edit__input"
+                className="edit__input"
                 type="date"
                 value="now"
               />

@@ -1,8 +1,10 @@
 .nav {
   background-color: lightcoral;
-  flex-basis: 8%;
+  flex-basis: 5%;
   display: flex;
   align-items: center;
+  width: 98%;
+  margin: 0 auto;
 }
 
 .nav__a {
@@ -18,6 +20,57 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.nav__logo {
+  width: 60%;
+  height: 100%;
+
+  background-color: coral;
+  display: flex;
+}
+
+.nav__logoImg {
+  flex-basis: 20%;
+  height: 100%;
+  background-color: chartreuse;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav__img {
+  width: 40px;
+  max-width: 100%;
+}
+
+.nav__logoBar {
+  flex-basis: 3%;
+  background-color: darkgoldenrod;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav__verticalBar {
+  width: 50%;
+  height: 80%;
+  background-color: black;
+}
+
+.nav__logoTitle {
+  flex-grow: 1;
+  background-color: cadetblue;
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 10px;
+  align-items: center;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.nav__logoSignature {
+  font-family: "Permanent Marker", cursive;
 }
 
 .nav__title.dark {
@@ -43,6 +96,11 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
+  background-color: transparent;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .nav__register {
@@ -52,4 +110,36 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media (max-width: 449.98px) {
+  .nav__logout {
+    font-size: 23px;
+  }
+}
+
+@media (max-width: 729.98px) {
+  .nav__logo {
+    width: 70%;
+  }
+}
+
+@media (max-width: 569.98px) {
+  .nav__logo {
+    width: 80%;
+  }
+
+  .nav__logoBar {
+    width: 10px;
+  }
+
+  .nav__logoTitle {
+    margin-left: 5px;
+  }
+}
+
+@media (max-width: 519.98px) {
+  .nav__logo {
+    width: 100%;
+  }
 }
