@@ -16,10 +16,10 @@ const LanguageSwitcher = () => {
   return (
     <div className="language">
       <div className="language__flag">
-        <Flag country="PL" size={30} onClick={() => handleClick("pl")} />
+        <Flag country="PL" size={35} onClick={() => handleClick("pl")} />
       </div>
       <div className="language__flag">
-        <Flag country="GB" size={30} onClick={() => handleClick("en")} />
+        <Flag country="GB" size={35} onClick={() => handleClick("en")} />
       </div>
     </div>
   );

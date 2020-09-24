@@ -14,8 +14,8 @@
   top: 0;
   width: 80%;
   height: 100%;
-  background: rgb(0, 10, 255);
-  background: linear-gradient(90deg, rgba(0, 10, 255, 1) 0%, rgba(255, 2, 2, 1) 100%);
+  background: rgb(245, 127, 23);
+  background: linear-gradient(45deg, rgba(245, 127, 23, 1) 0%, rgba(255, 255, 0, 1) 100%);
   z-index: 0;
 }
 

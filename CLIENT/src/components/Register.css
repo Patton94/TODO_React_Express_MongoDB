@@ -18,7 +18,13 @@
   transform: translate(-50%, -50%);
   width: 30vw;
   height: 60vh;
-  background-color: lightgray;
+  background: rgb(255, 245, 157);
+  background: linear-gradient(
+    45deg,
+    rgba(255, 214, 0, 1) 0%,
+    rgba(255, 245, 157, 1) 100%
+  );
+  box-shadow: 0 0 2px 2px black;
   z-index: 3;
 }
 
@@ -28,16 +34,19 @@
 
 .register__active {
   position: absolute;
+  z-index: 2;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
 }
 
 .register__modalTitle {
   text-align: center;
-  color: white;
+  color: black;
 }
 
 .register__form {
@@ -64,9 +73,27 @@
 
 .register__input {
   flex-grow: 1;
+  background-color: transparent;
+  border: 2px solid black;
+  box-shadow: 0 0 2px black;
+  border-radius: 10px;
+  height: 20px;
+  transition: 0.2s ease;
+}
+
+.register__input:hover {
+  box-shadow: 0 0 5px black;
+}
+
+.register__input:focus {
+  box-shadow: 0 0 5px black;
 }
 
 .register__inputError {
+  font-size: 14px;
+  color: red;
+  font-weight: normal;
+  text-align: right;
   margin-top: 3px;
   display: block;
   width: 100%;
@@ -76,6 +103,21 @@
 .register__btn {
   margin-top: 2vh;
   font-weight: bold;
+  font-size: 15px;
+  line-height: 20px;
+  background-color: transparent;
+  border: none;
+  border: 2px solid black;
+  box-shadow: 0 0 2px black;
+  border-radius: 10px;
+  padding: 3px 6px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.register__btn:hover {
+  box-shadow: 0 0 5px black;
+  background-color: #f9a825;
 }
 
 .register__message {
@@ -95,19 +137,25 @@ i {
   right: 0;
   width: 25px;
   height: 25px;
-  background-color: red;
+  background-color: #ff4747;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: bold;
   cursor: pointer;
+  transition: 0.2s ease;
+  box-shadow: 0 0 2px 1px #ff4747;
+}
+
+.register__close:hover {
+  box-shadow: 0 0 2px 2px #ff4747;
 }
 
 .register__closeIcon {
   font-size: 25px;
 }
 
-@media (max-width: 449.98px) {
+@media (max-width: 499.98px) {
   .register {
     font-size: 23px;
   }
@@ -163,27 +211,27 @@ i {
   }
 }
 
-@media (max-height: 599.98px) {
+@media (max-height: 619.98px) {
   .register__modal {
     height: 70vh;
   }
 }
 
-@media (max-height: 499.98px) {
+@media (max-height: 519.98px) {
   .register__modal {
     height: 80vh;
   }
 }
 
-@media (max-height: 429.98px) {
+@media (max-height: 449.98px) {
   .register__modal {
     height: 90vh;
   }
 }
 
-@media (max-height: 369.98px) {
+@media (max-height: 379.98px) {
   .register__modal {
-    height: 96vh;
+    height: 98vh;
   }
 
   .register__modalTitle {

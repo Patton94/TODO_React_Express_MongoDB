@@ -67,13 +67,13 @@ const Navbar = () => {
       </div>
       <div className="nav__register">
         {userNameValue && tokenValue ? (
-          width < 460 ? (
+          width < 500 ? (
             <button onClick={logoutUser} className="nav__logout">
               <AiOutlineLogout />
             </button>
           ) : (
             <button onClick={logoutUser} className="nav__logout">
-              {t("Navbar.Logout")} <AiOutlineLogout />
+              {t("Navbar.Logout")}
             </button>
           )
         ) : (

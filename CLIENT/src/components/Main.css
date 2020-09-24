@@ -1,6 +1,6 @@
 .main {
-  background-color: lightcyan;
   flex-grow: 1;
+  margin-bottom: 100%;
 }
 
 .main__demoInfo {

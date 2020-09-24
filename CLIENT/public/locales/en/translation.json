@@ -5,15 +5,13 @@
     "EmptyList": "Your tasks list is empty. Add some task."
   },
   "Navbar": {
-    "Title": "TO DO",
-    "DemoTitle": "TO DO - Demo",
-    "Logout": "LOGOUT"
+    "Logout": "Logout"
   },
   "Login": {
-    "Login": "SIGN IN",
-    "ModalTitle": "SIGN IN",
+    "Login": "Sign In",
+    "ModalTitle": "Sing In",
     "ModalPassword": "Password",
-    "ModalButton": "SIGN IN",
+    "ModalButton": "Sign In",
     "ModalHello": "Hello",
     "EmailError": "This field cannot be empty!",
     "PasswordError": "This field cannot be empty!",
@@ -25,8 +23,8 @@
     "EmptyError": "This field cannot be empty!",
     "EmailError": "Invalid email adress",
     "ConfirmError": "Passwords are not the same",
-    "Register": "REGISTER",
-    "ModalTitle": "REGISTRATION",
+    "Register": "Register",
+    "ModalTitle": "Registration",
     "ModalUser": "User",
     "ModalPassword": "Password",
     "ModalConfirmPassword": "Confirm password",

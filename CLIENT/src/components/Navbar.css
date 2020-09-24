@@ -1,5 +1,4 @@
 .nav {
-  background-color: lightcoral;
   flex-basis: 5%;
   display: flex;
   align-items: center;
@@ -14,7 +13,6 @@
 }
 
 .nav__title {
-  background-color: red;
   flex-grow: 1;
   height: 100%;
   display: flex;
@@ -25,15 +23,13 @@
 .nav__logo {
   width: 60%;
   height: 100%;
-
-  background-color: coral;
   display: flex;
+  cursor: pointer;
 }
 
 .nav__logoImg {
   flex-basis: 20%;
   height: 100%;
-  background-color: chartreuse;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,7 +42,6 @@
 
 .nav__logoBar {
   flex-basis: 3%;
-  background-color: darkgoldenrod;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,7 +55,6 @@
 
 .nav__logoTitle {
   flex-grow: 1;
-  background-color: cadetblue;
   display: flex;
   justify-content: flex-start;
   margin-left: 10px;
@@ -78,12 +72,18 @@
 }
 
 .nav__login {
-  background-color: orange;
   flex-basis: 20%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  transition: 0.15s linear;
+}
+
+.nav__login:hover {
+  background-color: #f9a825;
+  box-shadow: 0 0 3px #f9a825;
 }
 
 .nav__login.dark {
@@ -104,15 +104,21 @@
 }
 
 .nav__register {
-  background-color: blue;
   flex-basis: 20%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  transition: 0.15s linear;
 }
 
-@media (max-width: 449.98px) {
+.nav__register:hover {
+  background-color: #f9a825;
+  box-shadow: 0 0 3px #f9a825;
+}
+
+@media (max-width: 499.98px) {
   .nav__logout {
     font-size: 23px;
   }

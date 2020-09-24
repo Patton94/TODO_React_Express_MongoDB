@@ -90,20 +90,19 @@ const Login = () => {
     <>
       {userNameValue && tokenValue ? (
         userNameValue
-      ) : width < 450 ? (
+      ) : width < 500 ? (
         <button onClick={toggle} className="login">
           <AiOutlineLogin />
         </button>
       ) : (
         <button onClick={toggle} className="login">
-          {t("Login.Login")} <AiOutlineLogin />
+          {t("Login.Login")}
         </button>
       )}
       <div className={isOpen ? "login__active" : "login__background"}>
         {" "}
         <div className="login__modal">
           <div onClick={toggle} className="login__close">
-            {/* <span>X</span> */}
             <GrFormClose className="login__closeIcon" />
           </div>
           <h2 className="login__modalTitle">{t("Login.ModalTitle")}</h2>

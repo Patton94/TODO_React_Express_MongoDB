@@ -7,10 +7,10 @@
   "Navbar": {
     "Title": "Lista zadań",
     "DemoTitle": "Lista zadań - Demo",
-    "Logout": "Wyloguj się"
+    "Logout": "Wyloguj"
   },
   "Login": {
-    "Login": "Zaloguj się",
+    "Login": "Zaloguj",
     "ModalTitle": "Zaloguj się",
     "ModalPassword": "Hasło",
     "ModalButton": "Zaloguj się",
@@ -25,7 +25,7 @@
     "EmptyError": "To pole nie może być puste!",
     "EmailError": "Błędny adres email",
     "ConfirmError": "Hasła nie są takie same",
-    "Register": "Zarejestruj się",
+    "Register": "Zarejestruj",
     "ModalTitle": "Rejestracja",
     "ModalUser": "Użytkownik",
     "ModalPassword": "Hasło",

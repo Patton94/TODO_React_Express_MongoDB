@@ -40,12 +40,16 @@ const Task = (props) => {
   }, [width]);
 
   return (
-    <div
-      className={
-        !props.done ? (isExcedeed ? "task task__excedeed" : "task") : "task task__done"
-      }
-    >
-      <div className="task__titleContainer">
+    <div className="task">
+      <div
+        className={
+          props.done
+            ? "task__titleContainer task__done"
+            : isExcedeed
+            ? "task__titleContainer task__excedeed"
+            : "task__titleContainer"
+        }
+      >
         <div className="task__title">
           <h3 className="task__h3">{props.title}</h3>
         </div>
@@ -53,10 +57,10 @@ const Task = (props) => {
           <span>{props.description}</span>
         </div>
       </div>
-      <div className="task__priority">
+      <div className={"task__priority"}>
         <span>{props.priority}</span>
       </div>
-      <div className="task__beginDate">
+      <div className={"task__beginDate"}>
         <span>{props.beginDate}</span>
       </div>
       <div
@@ -66,12 +70,13 @@ const Task = (props) => {
       >
         {!props.done ? <span>{props.deadline}</span> : <span>{props.finishDate}</span>}
       </div>
-
       {width < 800 ? (
         !props.done ? (
           <>
             <div className="task__dots" onClick={toggle}>
-              <HiDotsVertical />
+              <button className="task__dotsButton">
+                <HiDotsVertical />
+              </button>
             </div>
             <div className={isOpen ? "task__active" : "task__background"}>
               <div className="task__modal">
@@ -106,7 +111,11 @@ const Task = (props) => {
           </>
         ) : (
           <div className="task__deleteButton">
-            <Delete id={props.id} title={props.title} />
+            <Delete
+              className={width < 550 ? "delete__small" : ""}
+              id={props.id}
+              title={props.title}
+            />
           </div>
         )
       ) : (

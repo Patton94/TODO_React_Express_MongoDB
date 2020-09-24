@@ -5,6 +5,28 @@
   flex-basis: 33.33%;
 }
 
+.sort__select {
+  background-color: transparent;
+  font-size: 14px;
+  border: 3px solid black;
+  box-shadow: 0 0 5px black;
+  border-radius: 10px;
+  height: 28px;
+  transition: 0.2s ease;
+}
+
+.sort__group {
+  background-color: #fff9c4;
+}
+
+.sort__select:hover {
+  box-shadow: 0 0 10px black;
+}
+
+.sort__select:focus {
+  box-shadow: 0 0 10px black;
+}
+
 @media (max-width: 549.98px) {
   .sort {
     flex-basis: 50%;

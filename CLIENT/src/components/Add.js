@@ -132,7 +132,9 @@ const Add = () => {
     <>
       {width < 650 ? (
         <div className="add__iconContainer">
-          <BsPlusCircleFill className="add__icon" onClick={toggle} />
+          <button className="add__iconSmall" onClick={toggle}>
+            <BsPlusCircleFill className="add__icon" />
+          </button>
         </div>
       ) : (
         <button onClick={toggle} className="add">
@@ -163,7 +165,7 @@ const Add = () => {
               <textarea
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                className="add__input"
+                className="add__input add__description"
                 name="description"
                 cols="20"
                 rows="5"
@@ -174,7 +176,7 @@ const Add = () => {
               <input
                 value={priority}
                 onChange={(e) => setPriority(e.target.value)}
-                className="add__input"
+                className="add__input add__priority"
                 type="range"
                 min="1"
                 max="3"
@@ -186,7 +188,7 @@ const Add = () => {
                 value={deadline}
                 onFocus={() => setDeadlineError("")}
                 onChange={(e) => setDeadline(e.target.value)}
-                className="add__input"
+                className="add__input add__deadline"
                 type="date"
                 value="now"
               />

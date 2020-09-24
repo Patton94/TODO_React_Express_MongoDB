@@ -11,35 +11,44 @@
   justify-content: space-evenly;
 }
 
-.login__modal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 30vw;
-  height: 40vh;
-  background-color: lightgray;
-  z-index: 3;
-  display: flex;
-  flex-direction: column;
-}
-
 .login__background {
   display: none;
 }
 
 .login__active {
   position: absolute;
+  z-index: 2;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+.login__modal {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30vw;
+  height: 40vh;
+  background: rgb(255, 245, 157);
+  background: linear-gradient(
+    45deg,
+    rgba(255, 214, 0, 1) 0%,
+    rgba(255, 245, 157, 1) 100%
+  );
+  box-shadow: 0 0 2px 2px black;
+  display: flex;
+  flex-direction: column;
 }
 
 .login__modalTitle {
   text-align: center;
-  color: white;
+  color: black;
 }
 
 .login__form {
@@ -66,9 +75,27 @@
 
 .login__input {
   flex-basis: 70%;
+  background-color: transparent;
+  border: 2px solid black;
+  box-shadow: 0 0 2px black;
+  border-radius: 10px;
+  height: 20px;
+  transition: 0.2s ease;
+}
+
+.login__input:hover {
+  box-shadow: 0 0 5px black;
+}
+
+.login__input:focus {
+  box-shadow: 0 0 5px black;
 }
 
 .login__inputError {
+  font-size: 14px;
+  color: red;
+  font-weight: normal;
+  text-align: right;
   margin-top: 3px;
   display: block;
   width: 100%;
@@ -78,6 +105,21 @@
 .login__btn {
   margin-top: 2vh;
   font-weight: bold;
+  font-size: 15px;
+  line-height: 20px;
+  background-color: transparent;
+  border: none;
+  border: 2px solid black;
+  box-shadow: 0 0 2px black;
+  border-radius: 10px;
+  padding: 3px 6px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.login__btn:hover {
+  box-shadow: 0 0 5px black;
+  background-color: #f9a825;
 }
 
 .login__message {
@@ -101,15 +143,21 @@ i {
   right: 0;
   width: 25px;
   height: 25px;
-  background-color: red;
+  background-color: #ff4747;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: bold;
   cursor: pointer;
+  transition: 0.2s ease;
+  box-shadow: 0 0 2px 1px #ff4747;
 }
 
-@media (max-width: 449.98px) {
+.login__close:hover {
+  box-shadow: 0 0 2px 2px #ff4747;
+}
+
+@media (max-width: 499.98px) {
   .login {
     font-size: 23px;
   }

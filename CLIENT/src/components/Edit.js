@@ -131,7 +131,7 @@ const Edit = (props) => {
               <textarea
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                className="edit__input"
+                className="edit__input edit__description"
                 name="description"
                 cols="20"
                 rows="5"
@@ -142,7 +142,7 @@ const Edit = (props) => {
               <input
                 value={priority}
                 onChange={(e) => setPriority(e.target.value)}
-                className="edit__input"
+                className="edit__input edit__priority"
                 type="range"
                 min="1"
                 max="3"
@@ -153,7 +153,7 @@ const Edit = (props) => {
               <input
                 value={deadline}
                 onChange={(e) => setDeadline(e.target.value)}
-                className="edit__input"
+                className="edit__input edit__deadline"
                 type="date"
                 value="now"
               />

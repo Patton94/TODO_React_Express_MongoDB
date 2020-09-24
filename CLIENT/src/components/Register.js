@@ -97,13 +97,13 @@ const Register = () => {
 
   return (
     <>
-      {width < 450 ? (
+      {width < 500 ? (
         <button onClick={toggle} className="register">
           <AiOutlineUserAdd />
         </button>
       ) : (
         <button onClick={toggle} className="register">
-          {t("Register.Register")} <AiOutlineUserAdd />
+          {t("Register.Register")}
         </button>
       )}
       <div className={isOpen ? "register__active" : "register__background"}>

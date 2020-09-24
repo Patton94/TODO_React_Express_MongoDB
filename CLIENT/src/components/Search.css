@@ -2,6 +2,28 @@
   flex-basis: 33.33%;
 }
 
+::placeholder {
+  color: black;
+  font-size: 14px;
+}
+
+.search__input {
+  background-color: transparent;
+  border: 3px solid black;
+  box-shadow: 0 0 5px black;
+  border-radius: 10px;
+  height: 20px;
+  transition: 0.2s ease;
+}
+
+.search__input:hover {
+  box-shadow: 0 0 10px black;
+}
+
+.search__input:focus {
+  box-shadow: 0 0 10px black;
+}
+
 @media (max-width: 549.98px) {
   .search {
     flex-basis: 50%;

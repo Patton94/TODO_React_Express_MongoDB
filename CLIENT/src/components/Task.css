@@ -1,32 +1,21 @@
 .task {
+  box-sizing: border-box;
   width: 98%;
   margin: 0 auto;
   margin-top: 2vh;
-  background-color: lightgray;
   display: flex;
-}
-
-.task__done {
-  background-color: greenyellow;
-}
-
-.task__excedeed {
-  background-color: rgba(255, 0, 42, 0.4);
-}
-
-.task__deadlineIsClose {
-  background-color: red;
 }
 
 .task__titleContainer {
   background-color: transparent;
+  background-color: #fff9c4;
   display: flex;
+  border: 2px solid black;
   flex-direction: column;
   flex-grow: 1;
 }
 
 .task__title {
-  background-color: rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,10 +27,12 @@
 
 .task__description {
   text-align: center;
+  font-size: 13px;
 }
 
 .task__priority {
   background-color: transparent;
+  background-color: #fff9c4;
   flex-basis: 8%;
   display: flex;
   justify-content: center;
@@ -49,7 +40,7 @@
 }
 
 .task__beginDate {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: #fff9c4;
   flex-basis: 12%;
   display: flex;
   justify-content: center;
@@ -57,6 +48,8 @@
 }
 
 .task__deadline {
+  box-sizing: border-box;
+  background-color: #fff9c4;
   flex-basis: 12%;
   display: flex;
   justify-content: center;
@@ -64,7 +57,6 @@
 }
 
 .task__editButton {
-  background-color: rgba(0, 0, 0, 0.3);
   flex-basis: 7%;
   display: flex;
   justify-content: center;
@@ -72,7 +64,6 @@
 }
 
 .task__deleteButton {
-  background-color: rgba(177, 0, 0, 0.3);
   flex-basis: 7%;
   display: flex;
   justify-content: center;
@@ -80,7 +71,6 @@
 }
 
 .task__doneButton {
-  background-color: rgba(0, 0, 0, 0.3);
   flex-basis: 7%;
   display: flex;
   justify-content: center;
@@ -88,11 +78,29 @@
 }
 
 .task__dots {
-  background-color: rgba(0, 0, 0, 0.3);
   flex-basis: 7%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.task__dotsButton {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background-color: #f57f17;
+  box-shadow: 0 0 3px 1px #f57f17;
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s ease;
+}
+
+.task__dotsButton:hover {
+  box-shadow: 0 0 3px 3px #f57f17;
 }
 
 .task__modal {
@@ -102,7 +110,13 @@
   transform: translate(-50%, -50%);
   width: 20vw;
   height: 40vh;
-  background-color: lightgray;
+  background: rgb(255, 245, 157);
+  background: linear-gradient(
+    45deg,
+    rgba(255, 214, 0, 1) 0%,
+    rgba(255, 245, 157, 1) 100%
+  );
+  box-shadow: 0 0 2px 2px black;
   display: flex;
   z-index: 3;
 }
@@ -112,12 +126,15 @@
 }
 
 .task__active {
+  z-index: 2;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
 }
 
 .task__close {
@@ -126,16 +143,34 @@
   right: 0;
   width: 25px;
   height: 25px;
-  background-color: red;
+  background-color: #ff4747;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: bold;
   cursor: pointer;
+  transition: 0.2s ease;
+  box-shadow: 0 0 2px 1px #ff4747;
+}
+
+.task__close:hover {
+  box-shadow: 0 0 2px 2px #ff4747;
 }
 
 .task__closeIcon {
   font-size: 25px;
+}
+
+.task__excedeed {
+  background-color: rgba(255, 0, 0, 0.75);
+}
+
+.task__done {
+  background-color: rgba(141, 255, 41, 1);
+}
+
+.task__deadlineIsClose {
+  animation: deadlineClose 1.5s alternate infinite linear;
 }
 
 @media (max-width: 799.98px) {
@@ -154,7 +189,6 @@
   }
 
   .task__deleteButtonModal {
-    background-color: rgba(177, 0, 0, 0.3);
     flex-basis: 7%;
     display: flex;
     justify-content: center;
@@ -200,9 +234,31 @@
 
   .task__titleContainer {
     flex-basis: 100%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
+
+  .task__excedeed {
+    box-shadow: none;
+  }
+
+  .task__done {
+    box-shadow: none;
   }
 
   .task__dots {
+    flex-basis: 9%;
+  }
+
+  .task__dotsButton {
+    font-size: 20px;
+    border-radius: 0;
+    width: 100%;
+    height: auto;
+  }
+
+  .task__deleteButton {
     flex-basis: 9%;
   }
 
@@ -231,5 +287,16 @@
 @media (max-height: 449.98px) {
   .task__modal {
     height: 70vh;
+  }
+}
+
+@keyframes deadlineClose {
+  from {
+    border: 2px solid transparent;
+  }
+
+  to {
+    border: 2px solid rgba(255, 0, 0, 0.75);
+    box-shadow: 0 0 2px 1px rgba(255, 0, 0, 0.75);
   }
 }

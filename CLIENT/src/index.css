@@ -8,3 +8,10 @@ body {
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
+
+button,
+input,
+select,
+textarea {
+  outline: none;
+}

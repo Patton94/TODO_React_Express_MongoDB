@@ -60,7 +60,7 @@ const Sort = () => {
 
   return (
     <div className="sort">
-      <label htmlFor="sort">{<FaSort />}</label>
+      <label>{<FaSort />}</label>
       <select
         className="sort__select"
         value={sortBy}
@@ -68,18 +68,17 @@ const Sort = () => {
           setSortBy(e.target.value);
           localStorage.setItem("sortBy", e.target.value);
         }}
-        id="sort"
       >
-        <optgroup label={t("Sort.BeginDate")}>
+        <optgroup className="sort__group" label={t("Sort.BeginDate")}>
           <option value="beginDateNewest">{t("Sort.Newest")}</option>
           <option value="beginDateOldest">{t("Sort.Oldest")}</option>
         </optgroup>
-        <optgroup label={t("Sort.Deadline")}>
+        <optgroup className="sort__group" label={t("Sort.Deadline")}>
           {" "}
           <option value="deadlineNearest">{t("Sort.Nearest")}</option>
           <option value="deadlineLatest">{t("Sort.Latest")}</option>
         </optgroup>
-        <optgroup label={t("Sort.Priority")}>
+        <optgroup className="sort__group" label={t("Sort.Priority")}>
           <option value="priorityMost">{t("Sort.Most")}</option>
           <option value="priorityLeast">{t("Sort.Least")}</option>
         </optgroup>

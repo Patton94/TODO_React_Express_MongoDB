@@ -1,19 +1,51 @@
 .add {
+  position: relative;
   display: block;
+  background-color: transparent;
+  font-size: 18px;
+  padding: 4px 8px;
+  cursor: pointer;
+  border: 3px solid black;
+  box-shadow: 0 0 5px black;
+  border-radius: 10px;
+  transition: 0.2s ease;
+}
+
+.add:hover {
+  box-shadow: 0 0 10px black;
 }
 
 .add__iconContainer {
-  font-size: 30px;
-  color: green;
-  border-radius: 50%;
   flex-basis: 33.34%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.add__icon {
+.add__iconSmall {
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+  border-radius: 50%;
   cursor: pointer;
+  font-size: 30px;
+  box-shadow: 0 0 3px 1px #209e00;
+  transition: 0.2s ease;
+}
+
+.add__icon {
+  color: #209e00;
+}
+
+.add__iconSmall:hover {
+  width: 35px;
+  height: 35px;
+  font-size: 35px;
 }
 
 .add__background {
@@ -27,22 +59,31 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  z-index: 2;
 }
 
 .add__modal {
   position: absolute;
+  z-index: 3;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 30vw;
   height: 60vh;
-  background-color: lightgray;
-  z-index: 3;
+  background: rgb(255, 245, 157);
+  background: linear-gradient(
+    45deg,
+    rgba(255, 214, 0, 1) 0%,
+    rgba(255, 245, 157, 1) 100%
+  );
+  box-shadow: 0 0 2px 2px black;
 }
 
 .add__modalTitle {
   text-align: center;
-  color: white;
+  color: black;
 }
 
 .add__form {
@@ -69,9 +110,118 @@
 
 .add__input {
   flex-grow: 1;
+  background-color: transparent;
+  border: 2px solid black;
+  box-shadow: 0 0 2px black;
+  border-radius: 10px;
+  height: 20px;
+  transition: 0.2s ease;
+}
+
+.add__input:hover {
+  box-shadow: 0 0 5px black;
+}
+
+.add__input:focus {
+  box-shadow: 0 0 5px black;
+}
+
+.add__description {
+  height: 30px;
+}
+
+.add__priority {
+  box-shadow: none;
+  border: none;
+  flex-grow: 1;
+  margin: 0;
+}
+
+.add__priority {
+  height: 24px;
+  -webkit-appearance: none;
+}
+.add__priority:focus {
+  outline: none;
+}
+.add__priority::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  background: #fff9c4;
+  border-radius: 1px;
+}
+.add__priority::-webkit-slider-thumb {
+  height: 18px;
+  width: 18px;
+  border-radius: 25px;
+  background: #ff4747;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -4px;
+}
+.add__priority:focus::-webkit-slider-runnable-track {
+  background: #fff9c4;
+}
+.add__priority::-moz-range-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  background: #fff9c4;
+  border-radius: 1px;
+}
+.add__priority::-moz-range-thumb {
+  height: 18px;
+  width: 18px;
+  border-radius: 25px;
+  background: #ff4747;
+  cursor: pointer;
+}
+.add__priority::-ms-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+}
+.add__priority::-ms-fill-lower {
+  background: #fff9c4;
+  border-radius: 2px;
+}
+.add__priority::-ms-fill-upper {
+  background: #fff9c4;
+  border-radius: 2px;
+}
+.add__priority::-ms-thumb {
+  margin-top: 1px;
+  height: 18px;
+  width: 18px;
+  border-radius: 25px;
+  background: #ff4747;
+  cursor: pointer;
+}
+.add__priority:focus::-ms-fill-lower {
+  background: #fff9c4;
+}
+.add__priority:focus::-ms-fill-upper {
+  background: #fff9c4;
+}
+
+.add__priority:hover {
+  box-shadow: none;
+}
+
+.add__priority:focus {
+  box-shadow: none;
+}
+
+.add__deadline {
+  height: 22px;
 }
 
 .add__inputError {
+  font-size: 14px;
+  color: red;
+  font-weight: normal;
+  text-align: right;
   margin-top: 3px;
   display: block;
   width: 100%;
@@ -81,6 +231,27 @@
 .add__btn {
   margin-top: 2vh;
   font-weight: bold;
+  font-size: 15px;
+  line-height: 20px;
+  background-color: transparent;
+  border: none;
+  border: 2px solid black;
+  box-shadow: 0 0 2px black;
+  border-radius: 10px;
+  padding: 3px 6px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.add__btn:hover {
+  box-shadow: 0 0 5px black;
+  background-color: #f9a825;
+}
+
+.add__message {
+  display: block;
+  width: 100%;
+  text-align: center;
 }
 
 .add__message {
@@ -100,12 +271,18 @@ i {
   right: 0;
   width: 25px;
   height: 25px;
-  background-color: red;
+  background-color: #ff4747;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: bold;
   cursor: pointer;
+  transition: 0.2s ease;
+  box-shadow: 0 0 2px 1px #ff4747;
+}
+
+.add__close:hover {
+  box-shadow: 0 0 2px 2px #ff4747;
 }
 
 .add__closeIcon {

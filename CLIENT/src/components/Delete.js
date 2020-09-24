@@ -58,7 +58,10 @@ const Delete = (props) => {
   };
 
   return (
-    <button onClick={handleDeleteTask} className="delete">
+    <button
+      onClick={handleDeleteTask}
+      className={props.className ? `${props.className}` : "delete"}
+    >
       <MdDelete />
     </button>
   );

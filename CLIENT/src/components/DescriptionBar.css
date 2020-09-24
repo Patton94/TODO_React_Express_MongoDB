@@ -5,32 +5,40 @@
   display: flex;
   padding: 2px 0 2px 0;
   text-align: center;
+  border: 2px solid black;
   font-weight: bold;
 }
 
 .bar__deadline {
   flex-basis: 12%;
-  background-color: burlywood;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .bar__beginDate {
   flex-basis: 12%;
-  background-color: cadetblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .bar__priority {
   flex-basis: 8%;
-  background-color: cornflowerblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .bar__title {
   flex-grow: 1;
-  background-color: cyan;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .bar__empty {
   flex-basis: 21%;
-  background-color: blueviolet;
 }
 
 @media (max-width: 899.98px) {

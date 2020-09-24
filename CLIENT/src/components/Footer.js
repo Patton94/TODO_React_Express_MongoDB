@@ -38,11 +38,15 @@ const Footer = () => {
     <>
       <div className="footer">
         <div className="footer__info">
-          <BiHelpCircle className="footer__icon" onClick={toggleInfo} />
+          <button onClick={toggleInfo} className="footer__infoButton">
+            <BiHelpCircle className="footer__icon" />
+          </button>
         </div>
 
         <div className="footer__settings">
-          <IoMdSettings className="footer__icon" onClick={toggleSettings} />
+          <button onClick={toggleSettings} className="footer__settingsButton">
+            <IoMdSettings className="footer__icon" />
+          </button>
         </div>
         <div
           className={

@@ -1,13 +1,24 @@
 .language {
   display: flex;
-  background-color: aliceblue;
   justify-content: space-around;
   align-items: center;
-  width: 70px;
+  width: 90px;
   height: 40px;
 }
 
 .language__flag {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s ease;
+  cursor: pointer;
+}
+
+.language__flag:hover {
+  /* background-color: #ffeb3b;
+  box-shadow: 0 0 2px 1px #ffeb3b; */
+  background-color: #f9a825;
+  box-shadow: 0 0 2px 1px #f9a825;
 }
