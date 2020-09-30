@@ -30,7 +30,8 @@
   border: none;
   width: 30px;
   height: 30px;
-  background-color: black;
+  background: rgb(3, 0, 46);
+  background: linear-gradient(45deg, rgba(3, 0, 46, 1) 0%, rgba(1, 0, 87, 1) 100%);
   box-shadow: 0 0 2px 0.5px black;
   transition: 0.2s ease;
   cursor: pointer;
@@ -39,4 +40,10 @@
 .theme__white:hover,
 .theme__black:hover {
   box-shadow: 0 0 3px 1.5px black;
+}
+
+.theme__white.dark:hover,
+.theme__black.dark:hover {
+  border: none;
+  box-shadow: 0 0 3px 1.5px #8c9afd;
 }

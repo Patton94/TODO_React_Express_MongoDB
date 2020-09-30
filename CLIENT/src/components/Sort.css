@@ -15,16 +15,35 @@
   transition: 0.2s ease;
 }
 
+.sort__select.dark {
+  border: 3px solid #8c9afd;
+  box-shadow: 0 0 5px #8c9afd;
+  color: #8c9afd;
+}
+
 .sort__group {
   background-color: #fff9c4;
+}
+
+.sort__group.dark {
+  background-color: #090088;
+  color: #c2c9ff;
 }
 
 .sort__select:hover {
   box-shadow: 0 0 10px black;
 }
 
+.sort__select.dark:hover {
+  box-shadow: 0 0 10px #8c9afd;
+}
+
 .sort__select:focus {
   box-shadow: 0 0 10px black;
+}
+
+.sort__select.dark:focus {
+  box-shadow: 0 0 10px #8c9afd;
 }
 
 @media (max-width: 549.98px) {

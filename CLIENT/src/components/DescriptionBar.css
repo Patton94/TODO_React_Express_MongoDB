@@ -9,6 +9,10 @@
   font-weight: bold;
 }
 
+.bar.dark {
+  border: 2px solid #8c9afd;
+}
+
 .bar__deadline {
   flex-basis: 12%;
   display: flex;

@@ -6,6 +6,7 @@ import { LoadingContext } from "../context/loadingContext";
 import { useTranslation } from "react-i18next";
 import { BsPlusCircleFill } from "react-icons/bs";
 import { GrFormClose } from "react-icons/gr";
+import { DarkThemeContext } from "../context/darkThemeContext";
 
 const Add = () => {
   const { userName, userID, token } = useContext(UserContext);
@@ -13,6 +14,7 @@ const Add = () => {
   const [userIDValue, setUserIDValue] = userID;
   const [tokenValue, setTokenValue] = token;
   const [t, i18n] = useTranslation();
+  const [darkTheme, setDarkTheme] = useContext(DarkThemeContext);
 
   const [isLoading, setIsLoading] = useContext(LoadingContext);
 
@@ -132,22 +134,27 @@ const Add = () => {
     <>
       {width < 650 ? (
         <div className="add__iconContainer">
-          <button className="add__iconSmall" onClick={toggle}>
-            <BsPlusCircleFill className="add__icon" />
+          <button
+            className={darkTheme ? "add__iconSmall dark" : "add__iconSmall"}
+            onClick={toggle}
+          >
+            <BsPlusCircleFill className={darkTheme ? "add__icon dark" : "add__icon"} />
           </button>
         </div>
       ) : (
-        <button onClick={toggle} className="add">
+        <button onClick={toggle} className={darkTheme ? "add dark" : "add"}>
           {t("Add.Add")}
         </button>
       )}
 
       <div className={isOpen ? "add__active" : "add__background"}>
-        <div className="add__modal">
-          <div onClick={toggle} className="add__close">
+        <div className={darkTheme ? "add__modal dark" : "add__modal"}>
+          <div onClick={toggle} className={darkTheme ? "add__close dark" : "add__close"}>
             <GrFormClose className="add__closeIcon" />
           </div>
-          <h2 className="add__modalTitle">{t("Add.ModalTitle")}</h2>
+          <h2 className={darkTheme ? "add__modalTitle dark" : "add__modalTitle"}>
+            {t("Add.ModalTitle")}
+          </h2>
           <form action="" className="add__form">
             <div className="add__container">
               <label className="add__label">{t("Add.ModalTaskTitle")}</label>
@@ -156,7 +163,7 @@ const Add = () => {
                 onFocus={() => setTitleError("")}
                 onChange={(e) => setTitle(e.target.value)}
                 type="text"
-                className="add__input"
+                className={darkTheme ? "add__input dark" : "add__input"}
               />
             </div>
             {titleError ? <span className="add__inputError">{titleError}</span> : ""}
@@ -165,7 +172,11 @@ const Add = () => {
               <textarea
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                className="add__input add__description"
+                className={
+                  darkTheme
+                    ? "add__input add__description dark"
+                    : "add__input add__description"
+                }
                 name="description"
                 cols="20"
                 rows="5"
@@ -176,7 +187,9 @@ const Add = () => {
               <input
                 value={priority}
                 onChange={(e) => setPriority(e.target.value)}
-                className="add__input add__priority"
+                className={
+                  darkTheme ? "add__input add__priority dark" : "add__input add__priority"
+                }
                 type="range"
                 min="1"
                 max="3"
@@ -188,7 +201,9 @@ const Add = () => {
                 value={deadline}
                 onFocus={() => setDeadlineError("")}
                 onChange={(e) => setDeadline(e.target.value)}
-                className="add__input add__deadline"
+                className={
+                  darkTheme ? "add__input add__deadline dark" : "add__input add__deadline"
+                }
                 type="date"
                 value="now"
               />
@@ -201,7 +216,7 @@ const Add = () => {
 
             <input
               onClick={handleAddTask}
-              className="add__btn"
+              className={darkTheme ? "add__btn dark" : "add__btn"}
               type="submit"
               value={t("Add.ModalButton")}
             />

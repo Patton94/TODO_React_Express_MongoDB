@@ -3,12 +3,14 @@ import "./Search.css";
 import { SearchContext } from "../context/searchContext";
 import { TasksContext } from "../context/tasksContext";
 import { useTranslation } from "react-i18next";
+import { DarkThemeContext } from "../context/darkThemeContext";
 
 const Search = () => {
   const [searchText, setSearchText] = useState("");
   const [filteredTasks, setFilteredTasks] = useContext(SearchContext);
   const [tasks, setTasks] = useContext(TasksContext);
   const [t, i18n] = useTranslation();
+  const [darkTheme, setDarkTheme] = useContext(DarkThemeContext);
 
   useEffect(() => {
     setFilteredTasks(tasks);
@@ -31,7 +33,7 @@ const Search = () => {
   return (
     <div className="search">
       <input
-        className="search__input"
+        className={darkTheme ? "search__input dark" : "search__input"}
         value={searchText}
         onChange={(e) => {
           setSearchText(e.target.value.toUpperCase());

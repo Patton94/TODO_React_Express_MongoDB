@@ -53,6 +53,10 @@
   background-color: black;
 }
 
+.nav__verticalBar.dark {
+  background-color: #8c9afd;
+}
+
 .nav__logoTitle {
   flex-grow: 1;
   display: flex;
@@ -65,10 +69,6 @@
 
 .nav__logoSignature {
   font-family: "Permanent Marker", cursive;
-}
-
-.nav__title.dark {
-  background-color: darkgray;
 }
 
 .nav__login {
@@ -86,8 +86,13 @@
   box-shadow: 0 0 3px #f9a825;
 }
 
-.nav__login.dark {
-  background-color: darkred;
+.nav__login.dark:hover {
+  background-color: #090088;
+  box-shadow: 0 0 3px #090088;
+}
+
+.nav__login.dark:hover > .login {
+  color: #c2c9ff;
 }
 
 .nav__logout {
@@ -103,6 +108,16 @@
   justify-content: space-evenly;
 }
 
+.nav__logout.dark {
+  color: #8c9afd;
+}
+
+.nav__logout.dark:hover {
+  background-color: #090088;
+  box-shadow: 0 0 3px #090088;
+  color: #c2c9ff;
+}
+
 .nav__register {
   flex-basis: 20%;
   height: 100%;
@@ -116,6 +131,15 @@
 .nav__register:hover {
   background-color: #f9a825;
   box-shadow: 0 0 3px #f9a825;
+}
+
+.nav__register.dark:hover {
+  background-color: #090088;
+  box-shadow: 0 0 3px #090088;
+}
+
+.nav__register.dark:hover > .register {
+  color: #c2c9ff;
 }
 
 @media (max-width: 499.98px) {

@@ -7,6 +7,8 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(65, 65, 65, 1) 100%);
 }
 
 button,
@@ -14,4 +16,77 @@ input,
 select,
 textarea {
   outline: none;
+}
+
+.loading__container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  background: rgb(255, 245, 157);
+  background: linear-gradient(
+    45deg,
+    rgba(255, 214, 0, 1) 0%,
+    rgba(255, 245, 157, 1) 100%
+  );
+  font-weight: bold;
+  flex-direction: column;
+}
+
+.loading__container.dark {
+  background: rgb(3, 0, 46);
+  background: linear-gradient(45deg, rgba(3, 0, 46, 1) 0%, rgba(1, 0, 87, 1) 100%);
+}
+
+.loading__logoTitleText.dark {
+  color: #8c9afd;
+}
+
+.loading__logoSignature {
+  font-family: "Permanent Marker", cursive;
+  font-weight: normal;
+}
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  margin: 8px;
+  border: 5px solid black;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: black transparent transparent transparent;
+}
+
+.lds-ring div.dark {
+  border: 5px solid #8c9afd;
+  border-color: #8c9afd transparent transparent transparent;
+}
+
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

@@ -22,3 +22,8 @@
   background-color: #f9a825;
   box-shadow: 0 0 2px 1px #f9a825;
 }
+
+.language__flag.dark:hover {
+  background-color: #8c9afd;
+  box-shadow: 0 0 2px 1px #8c9afd;
+}

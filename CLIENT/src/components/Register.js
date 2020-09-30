@@ -5,6 +5,7 @@ import { UserContext } from "../context/userContext";
 import { useTranslation } from "react-i18next";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { GrFormClose } from "react-icons/gr";
+import { DarkThemeContext } from "../context/darkThemeContext";
 
 const Register = () => {
   const { userName, token, userID } = useContext(UserContext);
@@ -12,6 +13,7 @@ const Register = () => {
   const [userIDValue, setUserIDValue] = userID;
   const [tokenValue, setTokenValue] = token;
   const [t, i18n] = useTranslation();
+  const [darkTheme, setDarkTheme] = useContext(DarkThemeContext);
 
   const [isOpen, setIsOpen] = useState(false);
   const [name, setName] = useState("");
@@ -98,27 +100,34 @@ const Register = () => {
   return (
     <>
       {width < 500 ? (
-        <button onClick={toggle} className="register">
+        <button onClick={toggle} className={darkTheme ? "register dark" : "register"}>
           <AiOutlineUserAdd />
         </button>
       ) : (
-        <button onClick={toggle} className="register">
+        <button onClick={toggle} className={darkTheme ? "register dark" : "register"}>
           {t("Register.Register")}
         </button>
       )}
       <div className={isOpen ? "register__active" : "register__background"}>
-        <div className="register__modal">
-          <div onClick={toggle} className="register__close">
+        <div className={darkTheme ? "register__modal dark" : "register__modal"}>
+          <div
+            onClick={toggle}
+            className={darkTheme ? "register__close dark" : "register__close"}
+          >
             <GrFormClose className="register__closeIcon" />
           </div>
-          <h2 className="register__modalTitle">{t("Register.ModalTitle")}</h2>
+          <h2
+            className={darkTheme ? "register__modalTitle dark" : "register__modalTitle"}
+          >
+            {t("Register.ModalTitle")}
+          </h2>
           <LoadingBar class={isLoading ? "loadingBar__on" : ""} />
           <form action="" className="register__form">
             <div className="register__container">
               <label className="register__label">{t("Register.ModalUser")}</label>
               <input
                 type="text"
-                className="register__input"
+                className={darkTheme ? "register__input dark" : "register__input"}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 onFocus={() => {
@@ -131,7 +140,7 @@ const Register = () => {
               <label className="register__label">Email</label>
               <input
                 type="email"
-                className="register__input"
+                className={darkTheme ? "register__input dark" : "register__input"}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 onFocus={() => {
@@ -145,7 +154,7 @@ const Register = () => {
               <label className="register__label">{t("Register.ModalPassword")}</label>
               <input
                 type="password"
-                className="register__input"
+                className={darkTheme ? "register__input dark" : "register__input"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 onFocus={() => {
@@ -164,7 +173,7 @@ const Register = () => {
               </label>
               <input
                 type="password"
-                className="register__input"
+                className={darkTheme ? "register__input dark" : "register__input"}
                 value={passwordConfirm}
                 onChange={(e) => setPasswordConfirm(e.target.value)}
                 onFocus={() => {
@@ -181,7 +190,7 @@ const Register = () => {
               <h3 className="register__message">{t("Register.ModalMessage")}</h3>
             ) : (
               <input
-                className="register__btn"
+                className={darkTheme ? "register__btn dark" : "register__btn"}
                 type="submit"
                 value={t("Register.ModalButton")}
                 onClick={addUser}

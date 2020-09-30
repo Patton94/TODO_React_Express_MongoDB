@@ -14,8 +14,20 @@
   transition: 0.2s ease;
 }
 
+.edit.dark {
+  background-color: transparent;
+  box-shadow: 0 0 3px 1px rgba(99, 190, 255, 0.8),
+    inset 0 0 3px 1px rgba(99, 190, 255, 0.8);
+  color: rgba(99, 190, 255, 0.8);
+}
+
 .edit:hover {
   box-shadow: 0 0 3px 3px #63beff;
+}
+
+.edit.dark:hover {
+  box-shadow: 0 0 3px 3px rgba(99, 190, 255, 0.8),
+    inset 0 0 3px 1px rgba(99, 190, 255, 0.8);
 }
 
 .edit__modal {
@@ -33,6 +45,12 @@
     rgba(255, 245, 157, 1) 100%
   );
   box-shadow: 0 0 2px 2px black;
+}
+
+.edit__modal.dark {
+  background: rgb(3, 0, 46);
+  background: linear-gradient(45deg, rgba(3, 0, 46, 1) 0%, rgba(1, 0, 87, 1) 100%);
+  box-shadow: 0 0 2px 2px #8c9afd;
 }
 
 .edit__background {
@@ -54,6 +72,10 @@
 .edit__modalTitle {
   text-align: center;
   color: black;
+}
+
+.edit__modalTitle.dark {
+  color: #8c9afd;
 }
 
 .edit__form {
@@ -88,12 +110,26 @@
   transition: 0.2s ease;
 }
 
+.edit__input.dark {
+  border: 2px solid #8c9afd;
+  box-shadow: 0 0 2px #8c9afd;
+  color: #8c9afd;
+}
+
 .edit__input:hover {
   box-shadow: 0 0 5px black;
 }
 
+.edit__input.dark:hover {
+  box-shadow: 0 0 7px #8c9afd;
+}
+
 .edit__input:focus {
   box-shadow: 0 0 5px black;
+}
+
+.edit__input.dark:focus {
+  box-shadow: 0 0 7px #8c9afd;
 }
 
 .edit__description {
@@ -101,6 +137,13 @@
 }
 
 .edit__priority {
+  box-shadow: none;
+  border: none;
+  flex-grow: 1;
+  margin: 0;
+}
+
+.edit__priority.dark {
   box-shadow: none;
   border: none;
   flex-grow: 1;
@@ -121,6 +164,11 @@
   background: #fff9c4;
   border-radius: 1px;
 }
+
+.edit__priority.dark::-webkit-slider-runnable-track {
+  background: #090088;
+}
+
 .edit__priority::-webkit-slider-thumb {
   height: 18px;
   width: 18px;
@@ -130,9 +178,19 @@
   -webkit-appearance: none;
   margin-top: -4px;
 }
+
+.edit__priority.dark::-webkit-slider-thumb {
+  background: #c2c9ff;
+}
+
 .edit__priority:focus::-webkit-slider-runnable-track {
   background: #fff9c4;
 }
+
+.edit__priority.dark:focus::-webkit-slider-runnable-track {
+  background: #090088;
+}
+
 .edit__priority::-moz-range-track {
   width: 100%;
   height: 10px;
@@ -140,6 +198,11 @@
   background: #fff9c4;
   border-radius: 1px;
 }
+
+.edit__priority.dark::-moz-range-track {
+  background: #090088;
+}
+
 .edit__priority::-moz-range-thumb {
   height: 18px;
   width: 18px;
@@ -147,19 +210,35 @@
   background: #ff4747;
   cursor: pointer;
 }
+
+.edit__priority.dark::-moz-range-thumb {
+  background: #c2c9ff;
+}
+
 .edit__priority::-ms-track {
   width: 100%;
   height: 10px;
   cursor: pointer;
 }
+
 .edit__priority::-ms-fill-lower {
   background: #fff9c4;
   border-radius: 2px;
 }
+
+.edit__priority.dark::-ms-fill-lower {
+  background: #090088;
+}
+
 .edit__priority::-ms-fill-upper {
   background: #fff9c4;
   border-radius: 2px;
 }
+
+.edit__priority.dark::-ms-fill-upper {
+  background: #090088;
+}
+
 .edit__priority::-ms-thumb {
   margin-top: 1px;
   height: 18px;
@@ -168,14 +247,32 @@
   background: #ff4747;
   cursor: pointer;
 }
+
+.edit__priority.dark::-ms-thumb {
+  background: #c2c9ff;
+}
+
 .edit__priority:focus::-ms-fill-lower {
   background: #fff9c4;
 }
+
+.edit__priority.dark:focus::-ms-fill-lower {
+  background: #090088;
+}
+
 .edit__priority:focus::-ms-fill-upper {
   background: #fff9c4;
 }
 
+.edit__priority.dark:focus::-ms-fill-upper {
+  background: #090088;
+}
+
 .edit__priority:hover {
+  box-shadow: none;
+}
+
+.edit__priority.dark:hover {
   box-shadow: none;
 }
 
@@ -183,8 +280,22 @@
   box-shadow: none;
 }
 
+.edit__priority.dark:focus {
+  box-shadow: none;
+}
+
 .edit__deadline {
   height: 22px;
+}
+
+.edit__deadline::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}
+
+.edit__deadline.dark::-webkit-calendar-picker-indicator {
+  background-color: #8c9afd;
+  border: 2px solid #8c9afd;
+  box-shadow: 0 0 2px 2px #8c9afd;
 }
 
 .edit__inputError {
@@ -213,9 +324,20 @@
   transition: 0.2s ease;
 }
 
+.edit__btn.dark {
+  border: 2px solid #8c9afd;
+  color: #8c9afd;
+}
+
 .edit__btn:hover {
   box-shadow: 0 0 5px black;
   background-color: #f9a825;
+}
+
+.edit__btn.dark:hover {
+  box-shadow: 0 0 7px #8c9afd;
+  background-color: #090088;
+  color: #c2c9ff;
 }
 
 .edit__message {
@@ -245,8 +367,17 @@ i {
   box-shadow: 0 0 2px 1px #ff4747;
 }
 
+.edit__close.dark {
+  background-color: rgb(206, 0, 0);
+  box-shadow: 0 0 2px 1px rgb(206, 0, 0);
+}
+
 .edit__close:hover {
   box-shadow: 0 0 2px 2px #ff4747;
+}
+
+.edit__close.dark:hover {
+  box-shadow: 0 0 2px 2px rgb(206, 0, 0), inset 0 0 1px 1px rgb(206, 0, 0);
 }
 
 .edit__closeIcon {

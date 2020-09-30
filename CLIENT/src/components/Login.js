@@ -5,6 +5,7 @@ import { UserContext } from "../context/userContext";
 import { useTranslation } from "react-i18next";
 import { AiOutlineLogin } from "react-icons/ai";
 import { GrFormClose } from "react-icons/gr";
+import { DarkThemeContext } from "../context/darkThemeContext";
 
 const Login = () => {
   const { userName, token, userID } = useContext(UserContext);
@@ -21,6 +22,8 @@ const Login = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loginFailed, setLoginFailed] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  const [darkTheme, setDarkTheme] = useContext(DarkThemeContext);
 
   const [width, setWidth] = useState(window.innerWidth);
 
@@ -63,7 +66,7 @@ const Login = () => {
           setIsLoggedIn(true);
           setTimeout(() => {
             toggle();
-            setIsLoading(false); /////
+            setIsLoading(false);
             setIsLoggedIn(false);
             setLoginFailed("");
           }, 2000);
@@ -91,28 +94,33 @@ const Login = () => {
       {userNameValue && tokenValue ? (
         userNameValue
       ) : width < 500 ? (
-        <button onClick={toggle} className="login">
+        <button onClick={toggle} className={darkTheme ? "login dark" : "login"}>
           <AiOutlineLogin />
         </button>
       ) : (
-        <button onClick={toggle} className="login">
+        <button onClick={toggle} className={darkTheme ? "login dark" : "login"}>
           {t("Login.Login")}
         </button>
       )}
       <div className={isOpen ? "login__active" : "login__background"}>
         {" "}
-        <div className="login__modal">
-          <div onClick={toggle} className="login__close">
+        <div className={darkTheme ? "login__modal dark" : "login__modal"}>
+          <div
+            onClick={toggle}
+            className={darkTheme ? "login__close dark" : "login__close"}
+          >
             <GrFormClose className="login__closeIcon" />
           </div>
-          <h2 className="login__modalTitle">{t("Login.ModalTitle")}</h2>
+          <h2 className={darkTheme ? "login__modalTitle dark" : "login__modalTitle"}>
+            {t("Login.ModalTitle")}
+          </h2>
           <LoadingBar class={isLoading ? "loadingBar__on" : ""} />
           <form action="" className="login__form">
             <div className="login__container">
               <label className="login__label">Email</label>
               <input
                 type="email"
-                className="login__input"
+                className={darkTheme ? "login__input dark" : "login__input"}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 onFocus={() => {
@@ -126,7 +134,7 @@ const Login = () => {
               <label className="login__label">{t("Login.ModalPassword")}</label>
               <input
                 type="password"
-                className="login__input"
+                className={darkTheme ? "login__input dark" : "login__input"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 onFocus={() => {
@@ -147,7 +155,7 @@ const Login = () => {
               </h3>
             ) : (
               <input
-                className="login__btn"
+                className={darkTheme ? "login__btn dark" : "login__btn"}
                 type="submit"
                 value={t("Login.ModalButton")}
                 onClick={loginUser}

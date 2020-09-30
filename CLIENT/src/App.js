@@ -1,36 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
-import { TasksProvider } from "./context/tasksContext";
-import { UserProvider } from "./context/userContext";
-import { LoadingProvider } from "./context/loadingContext";
-import { SearchProvider } from "./context/searchContext";
-import { LanguageProvider } from "./context/languageContext";
-import { DarkThemeProvider } from "./context/darkThemeContext";
+import { DarkThemeContext } from "./context/darkThemeContext";
 
 function App() {
+  const [darkTheme, setDarkTheme] = useContext(DarkThemeContext);
+
   return (
-    <DarkThemeProvider>
-      <LanguageProvider>
-        <SearchProvider>
-          <LoadingProvider>
-            <UserProvider>
-              <TasksProvider>
-                <div className="App">
-                  <Navbar />
+    <div className={darkTheme ? "app dark" : "app"}>
+      <Navbar />
 
-                  <Main />
+      <Main />
 
-                  <Footer />
-                </div>
-              </TasksProvider>
-            </UserProvider>
-          </LoadingProvider>
-        </SearchProvider>
-      </LanguageProvider>
-    </DarkThemeProvider>
+      <Footer />
+    </div>
   );
 }
 

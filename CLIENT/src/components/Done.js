@@ -4,6 +4,7 @@ import { TasksContext } from "../context/tasksContext";
 import { UserContext } from "../context/userContext";
 import { LoadingContext } from "../context/loadingContext";
 import { MdDone } from "react-icons/md";
+import { DarkThemeContext } from "../context/darkThemeContext";
 
 const Done = (props) => {
   const { userName, userID, token } = useContext(UserContext);
@@ -13,6 +14,7 @@ const Done = (props) => {
 
   const [tasks, setTasks] = useContext(TasksContext);
   const [isLoading, setIsLoading] = useContext(LoadingContext);
+  const [darkTheme, setDarkTheme] = useContext(DarkThemeContext);
 
   const getData = () => {
     fetch(`http://localhost:5000/api/items/${userIDValue}`, {
@@ -65,7 +67,7 @@ const Done = (props) => {
   };
 
   return (
-    <button onClick={handleDoneTask} className="done">
+    <button onClick={handleDoneTask} className={darkTheme ? "done dark" : "done"}>
       <MdDone />
     </button>
   );

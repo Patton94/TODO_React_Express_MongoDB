@@ -6,6 +6,7 @@ import Add from "./Add";
 import LoadingBar from "./LoadingBar";
 import Sort from "./Sort";
 import Search from "./Search";
+import { DarkThemeContext } from "../context/darkThemeContext";
 
 import { TasksContext } from "../context/tasksContext";
 import { UserContext } from "../context/userContext";
@@ -22,6 +23,7 @@ const Main = () => {
   const [t, i18n] = useTranslation();
 
   const [isLoading, setIsLoading] = useContext(LoadingContext);
+  const [darkTheme, setDarkTheme] = useContext(DarkThemeContext);
 
   const [allDone, setAllDone] = useState(false);
   const [isEmpty, setIsEmpty] = useState(true);

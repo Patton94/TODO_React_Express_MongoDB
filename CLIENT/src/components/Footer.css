@@ -15,6 +15,11 @@
   box-shadow: 0 0 3px 1px rgb(255, 249, 196, 0.85);
 }
 
+.footer.dark {
+  background-color: #010057;
+  box-shadow: 0 0 3px 1px #010057;
+}
+
 .footer__settings,
 .footer__info {
   flex-basis: 50%;
@@ -36,10 +41,21 @@
   transition: 0.2s ease;
 }
 
+.footer__infoButton.dark,
+.footer__settingsButton.dark {
+  color: #8c9afd;
+}
+
 .footer__infoButton:hover,
 .footer__settingsButton:hover {
   background-color: #f9a825;
   box-shadow: 0 0 3px 4px #f9a825;
+}
+
+.footer__infoButton.dark:hover,
+.footer__settingsButton.dark:hover {
+  background-color: #090088;
+  box-shadow: 0 0 3px 4px #090088;
 }
 
 .footer__icon {
@@ -48,11 +64,12 @@
 
 .footer__close {
   flex-basis: 5%;
-  font-size: 16px;
+  font-size: 25px;
   align-self: flex-end;
   width: 25px;
   height: 25px;
   background-color: #ff4747;
+  color: black;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -62,8 +79,17 @@
   box-shadow: 0 0 2px 1px #ff4747;
 }
 
+.footer__close.dark {
+  background-color: rgb(206, 0, 0);
+  box-shadow: 0 0 2px 1px rgb(206, 0, 0);
+}
+
 .footer__close:hover {
   box-shadow: 0 0 2px 2px #ff4747;
+}
+
+.footer__close.dark:hover {
+  box-shadow: 0 0 2px 2px rgb(206, 0, 0);
 }
 
 .footer__modalInfo,
@@ -77,6 +103,12 @@
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   border: 2px solid black;
+}
+
+.footer__modalInfo.dark,
+.footer__modalSettings.dark {
+  background-color: rgba(9, 0, 136, 0.5);
+  border: 1px solid #8c9afd;
 }
 
 .footer__modalInfo {
@@ -243,9 +275,9 @@
   align-items: center;
 }
 
-.footer__closeIcon {
-  font-size: 25px;
-}
+/* .footer__closeIcon {
+  font-size: 20px;
+} */
 
 @media (max-width: 739.98px) {
   .footer__modalInfo {

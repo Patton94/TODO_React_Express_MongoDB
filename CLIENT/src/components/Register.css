@@ -11,6 +11,10 @@
   justify-content: space-evenly;
 }
 
+.register.dark {
+  color: #8c9afd;
+}
+
 .register__modal {
   position: absolute;
   top: 50%;
@@ -26,6 +30,12 @@
   );
   box-shadow: 0 0 2px 2px black;
   z-index: 3;
+}
+
+.register__modal.dark {
+  background: rgb(3, 0, 46);
+  background: linear-gradient(45deg, rgba(3, 0, 46, 1) 0%, rgba(1, 0, 87, 1) 100%);
+  box-shadow: 0 0 2px 2px #8c9afd;
 }
 
 .register__background {
@@ -47,6 +57,10 @@
 .register__modalTitle {
   text-align: center;
   color: black;
+}
+
+.register__modalTitle.dark {
+  color: #8c9afd;
 }
 
 .register__form {
@@ -81,12 +95,26 @@
   transition: 0.2s ease;
 }
 
+.register__input.dark {
+  border: 2px solid #8c9afd;
+  box-shadow: 0 0 2px #8c9afd;
+  color: #8c9afd;
+}
+
 .register__input:hover {
   box-shadow: 0 0 5px black;
 }
 
+.register__input.dark:hover {
+  box-shadow: 0 0 7px #8c9afd;
+}
+
 .register__input:focus {
   box-shadow: 0 0 5px black;
+}
+
+.register__input.dark:focus {
+  box-shadow: 0 0 7px #8c9afd;
 }
 
 .register__inputError {
@@ -115,9 +143,20 @@
   transition: 0.2s ease;
 }
 
+.register__btn.dark {
+  border: 2px solid #8c9afd;
+  color: #8c9afd;
+}
+
 .register__btn:hover {
   box-shadow: 0 0 5px black;
   background-color: #f9a825;
+}
+
+.register__btn.dark:hover {
+  box-shadow: 0 0 7px #8c9afd;
+  background-color: #090088;
+  color: #c2c9ff;
 }
 
 .register__message {
@@ -147,8 +186,17 @@ i {
   box-shadow: 0 0 2px 1px #ff4747;
 }
 
+.register__close.dark {
+  background-color: rgb(206, 0, 0);
+  box-shadow: 0 0 2px 1px rgb(206, 0, 0);
+}
+
 .register__close:hover {
   box-shadow: 0 0 2px 2px #ff4747;
+}
+
+.register__close.dark:hover {
+  box-shadow: 0 0 2px 2px rgb(206, 0, 0), inset 0 0 1px 1px rgb(206, 0, 0);
 }
 
 .register__closeIcon {

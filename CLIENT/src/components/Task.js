@@ -1,15 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./Task.css";
 import Edit from "./Edit";
 import Delete from "./Delete";
 import Done from "./Done";
 import { HiDotsVertical } from "react-icons/hi";
 import { GrFormClose } from "react-icons/gr";
+import { DarkThemeContext } from "../context/darkThemeContext";
 
 const Task = (props) => {
   const [isDeadlineClose, setIsDeadlineClose] = useState(false);
   const [isExcedeed, setIsExcedeed] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+
+  const [darkTheme, setDarkTheme] = useContext(DarkThemeContext);
 
   const time1 = new Date(props.deadline);
   const deadlineTime = time1.getTime() + 86400000;
@@ -43,7 +46,13 @@ const Task = (props) => {
     <div className="task">
       <div
         className={
-          props.done
+          darkTheme
+            ? props.done
+              ? "task__titleContainer task__done dark"
+              : isExcedeed
+              ? "task__titleContainer task__excedeed dark"
+              : "task__titleContainer dark"
+            : props.done
             ? "task__titleContainer task__done"
             : isExcedeed
             ? "task__titleContainer task__excedeed"
@@ -57,15 +66,21 @@ const Task = (props) => {
           <span>{props.description}</span>
         </div>
       </div>
-      <div className={"task__priority"}>
+      <div className={darkTheme ? "task__priority dark" : "task__priority"}>
         <span>{props.priority}</span>
       </div>
-      <div className={"task__beginDate"}>
+      <div className={darkTheme ? "task__beginDate dark" : "task__beginDate"}>
         <span>{props.beginDate}</span>
       </div>
       <div
         className={
-          isDeadlineClose ? "task__deadline task__deadlineIsClose" : "task__deadline"
+          darkTheme
+            ? isDeadlineClose
+              ? "task__deadline task__deadlineIsClose dark"
+              : "task__deadline dark"
+            : isDeadlineClose
+            ? "task__deadline task__deadlineIsClose"
+            : "task__deadline"
         }
       >
         {!props.done ? <span>{props.deadline}</span> : <span>{props.finishDate}</span>}
@@ -74,13 +89,18 @@ const Task = (props) => {
         !props.done ? (
           <>
             <div className="task__dots" onClick={toggle}>
-              <button className="task__dotsButton">
+              <button
+                className={darkTheme ? "task__dotsButton dark" : "task__dotsButton"}
+              >
                 <HiDotsVertical />
               </button>
             </div>
             <div className={isOpen ? "task__active" : "task__background"}>
-              <div className="task__modal">
-                <div onClick={toggle} className="task__close">
+              <div className={darkTheme ? "task__modal dark" : "task__modal"}>
+                <div
+                  onClick={toggle}
+                  className={darkTheme ? "task__close dark" : "task__close"}
+                >
                   <GrFormClose className="task__closeIcon" />
                 </div>
                 {!props.done ? (

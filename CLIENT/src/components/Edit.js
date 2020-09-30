@@ -6,6 +6,7 @@ import { LoadingContext } from "../context/loadingContext";
 import { useTranslation } from "react-i18next";
 import { FaEdit } from "react-icons/fa";
 import { GrFormClose } from "react-icons/gr";
+import { DarkThemeContext } from "../context/darkThemeContext";
 
 const Edit = (props) => {
   const { userName, userID, token } = useContext(UserContext);
@@ -13,6 +14,7 @@ const Edit = (props) => {
   const [userIDValue, setUserIDValue] = userID;
   const [tokenValue, setTokenValue] = token;
   const [t, i18n] = useTranslation();
+  const [darkTheme, setDarkTheme] = useContext(DarkThemeContext);
 
   const [isLoading, setIsLoading] = useContext(LoadingContext);
 
@@ -105,15 +107,20 @@ const Edit = (props) => {
 
   return (
     <>
-      <button onClick={toggle} className="edit">
+      <button onClick={toggle} className={darkTheme ? "edit dark" : "edit"}>
         <FaEdit />
       </button>
       <div className={isOpen ? "edit__active" : "edit__background"}>
-        <div className="edit__modal">
-          <div className="edit__close" onClick={toggle}>
+        <div className={darkTheme ? "edit__modal dark" : "edit__modal"}>
+          <div
+            className={darkTheme ? "edit__close dark" : "edit__close"}
+            onClick={toggle}
+          >
             <GrFormClose className="edit__closeIcon" />
           </div>
-          <h2 className="edit__modalTitle">{t("Edit.ModalTitle")}</h2>
+          <h2 className={darkTheme ? "edit__modalTitle dark" : "edit__modalTitle"}>
+            {t("Edit.ModalTitle")}
+          </h2>
           <form action="" className="edit__form">
             <div className="edit__container">
               <label className="edit__label">{t("Edit.ModalTaskTitle")}</label>
@@ -122,7 +129,7 @@ const Edit = (props) => {
                 onFocus={() => setTitleError("")}
                 onChange={(e) => setTitle(e.target.value)}
                 type="text"
-                className="edit__input"
+                className={darkTheme ? "edit__input dark" : "edit__input"}
               />
             </div>
             {titleError ? <span className="edit__inputError">{titleError}</span> : ""}
@@ -131,7 +138,11 @@ const Edit = (props) => {
               <textarea
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                className="edit__input edit__description"
+                className={
+                  darkTheme
+                    ? "edit__input edit__description dark"
+                    : "edit__input edit__description"
+                }
                 name="description"
                 cols="20"
                 rows="5"
@@ -142,7 +153,11 @@ const Edit = (props) => {
               <input
                 value={priority}
                 onChange={(e) => setPriority(e.target.value)}
-                className="edit__input edit__priority"
+                className={
+                  darkTheme
+                    ? "edit__input edit__priority dark"
+                    : "edit__input edit__priority"
+                }
                 type="range"
                 min="1"
                 max="3"
@@ -153,7 +168,11 @@ const Edit = (props) => {
               <input
                 value={deadline}
                 onChange={(e) => setDeadline(e.target.value)}
-                className="edit__input edit__deadline"
+                className={
+                  darkTheme
+                    ? "edit__input edit__deadline dark"
+                    : "edit__input edit__deadline"
+                }
                 type="date"
                 value="now"
               />
@@ -161,7 +180,7 @@ const Edit = (props) => {
 
             <input
               onClick={handleEditTask}
-              className="edit__btn"
+              className={darkTheme ? "edit__btn dark" : "edit__btn"}
               type="submit"
               value={t("Edit.ModalButton")}
             />

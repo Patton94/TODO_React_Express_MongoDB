@@ -11,8 +11,18 @@
   transition: 0.2s ease;
 }
 
+.add.dark {
+  border: 3px solid #8c9afd;
+  box-shadow: 0 0 5px #8c9afd;
+  color: #8c9afd;
+}
+
 .add:hover {
   box-shadow: 0 0 10px black;
+}
+
+.add.dark:hover {
+  box-shadow: 0 0 10px #8c9afd;
 }
 
 .add__iconContainer {
@@ -38,8 +48,16 @@
   transition: 0.2s ease;
 }
 
+.add__iconSmall.dark {
+  box-shadow: 0 0 3px 1px #c524ff;
+}
+
 .add__icon {
   color: #209e00;
+}
+
+.add__icon.dark {
+  color: #c524ff;
 }
 
 .add__iconSmall:hover {
@@ -81,9 +99,19 @@
   box-shadow: 0 0 2px 2px black;
 }
 
+.add__modal.dark {
+  background: rgb(3, 0, 46);
+  background: linear-gradient(45deg, rgba(3, 0, 46, 1) 0%, rgba(1, 0, 87, 1) 100%);
+  box-shadow: 0 0 2px 2px #8c9afd;
+}
+
 .add__modalTitle {
   text-align: center;
   color: black;
+}
+
+.add__modalTitle.dark {
+  color: #8c9afd;
 }
 
 .add__form {
@@ -118,12 +146,26 @@
   transition: 0.2s ease;
 }
 
+.add__input.dark {
+  border: 2px solid #8c9afd;
+  box-shadow: 0 0 2px #8c9afd;
+  color: #8c9afd;
+}
+
 .add__input:hover {
   box-shadow: 0 0 5px black;
 }
 
+.add__input.dark:hover {
+  box-shadow: 0 0 7px #8c9afd;
+}
+
 .add__input:focus {
   box-shadow: 0 0 5px black;
+}
+
+.add__input.dark:focus {
+  box-shadow: 0 0 7px #8c9afd;
 }
 
 .add__description {
@@ -135,6 +177,21 @@
   border: none;
   flex-grow: 1;
   margin: 0;
+}
+
+.add__priority.dark {
+  box-shadow: none;
+  border: none;
+  flex-grow: 1;
+  margin: 0;
+}
+
+.add__priority.dark:hover {
+  box-shadow: none;
+}
+
+.add__priority.dark:focus {
+  box-shadow: none;
 }
 
 .add__priority {
@@ -151,6 +208,11 @@
   background: #fff9c4;
   border-radius: 1px;
 }
+
+.add__priority.dark::-webkit-slider-runnable-track {
+  background: #090088;
+}
+
 .add__priority::-webkit-slider-thumb {
   height: 18px;
   width: 18px;
@@ -160,9 +222,19 @@
   -webkit-appearance: none;
   margin-top: -4px;
 }
+
+.add__priority.dark::-webkit-slider-thumb {
+  background: #c2c9ff;
+}
+
 .add__priority:focus::-webkit-slider-runnable-track {
   background: #fff9c4;
 }
+
+.add__priority.dark:focus::-webkit-slider-runnable-track {
+  background: #090088;
+}
+
 .add__priority::-moz-range-track {
   width: 100%;
   height: 10px;
@@ -170,6 +242,11 @@
   background: #fff9c4;
   border-radius: 1px;
 }
+
+.add__priority.dark::-moz-range-track {
+  background: #090088;
+}
+
 .add__priority::-moz-range-thumb {
   height: 18px;
   width: 18px;
@@ -177,19 +254,35 @@
   background: #ff4747;
   cursor: pointer;
 }
+
+.add__priority.dark::-moz-range-thumb {
+  background: #c2c9ff;
+}
+
 .add__priority::-ms-track {
   width: 100%;
   height: 10px;
   cursor: pointer;
 }
+
 .add__priority::-ms-fill-lower {
   background: #fff9c4;
   border-radius: 2px;
 }
+
+.add__priority.dark::-ms-fill-lower {
+  background: #090088;
+}
+
 .add__priority::-ms-fill-upper {
   background: #fff9c4;
   border-radius: 2px;
 }
+
+.add__priority.dark::-ms-fill-upper {
+  background: #090088;
+}
+
 .add__priority::-ms-thumb {
   margin-top: 1px;
   height: 18px;
@@ -198,11 +291,25 @@
   background: #ff4747;
   cursor: pointer;
 }
+
+.add__priority.dark::-ms-thumb {
+  background: #c2c9ff;
+}
+
 .add__priority:focus::-ms-fill-lower {
   background: #fff9c4;
 }
+
+.add__priority.dark:focus::-ms-fill-lower {
+  background: #090088;
+}
+
 .add__priority:focus::-ms-fill-upper {
   background: #fff9c4;
+}
+
+.add__priority.dark:focus::-ms-fill-upper {
+  background: #090088;
 }
 
 .add__priority:hover {
@@ -215,6 +322,20 @@
 
 .add__deadline {
   height: 22px;
+}
+
+.add__deadline::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}
+
+.add__deadline.dark::-webkit-calendar-picker-indicator {
+  background-color: #8c9afd;
+  border: 2px solid #8c9afd;
+  box-shadow: 0 0 2px 2px #8c9afd;
+}
+
+.add__deadline.dark::-webkit-calendar-picker {
+  background-color: #090088;
 }
 
 .add__inputError {
@@ -243,15 +364,20 @@
   transition: 0.2s ease;
 }
 
+.add__btn.dark {
+  border: 2px solid #8c9afd;
+  color: #8c9afd;
+}
+
 .add__btn:hover {
   box-shadow: 0 0 5px black;
   background-color: #f9a825;
 }
 
-.add__message {
-  display: block;
-  width: 100%;
-  text-align: center;
+.add__btn.dark:hover {
+  box-shadow: 0 0 7px #8c9afd;
+  background-color: #090088;
+  color: #c2c9ff;
 }
 
 .add__message {
@@ -281,8 +407,17 @@ i {
   box-shadow: 0 0 2px 1px #ff4747;
 }
 
+.add__close.dark {
+  background-color: rgb(206, 0, 0);
+  box-shadow: 0 0 2px 1px rgb(206, 0, 0);
+}
+
 .add__close:hover {
   box-shadow: 0 0 2px 2px #ff4747;
+}
+
+.add__close.dark:hover {
+  box-shadow: 0 0 2px 2px rgb(206, 0, 0), inset 0 0 1px 1px rgb(206, 0, 0);
 }
 
 .add__closeIcon {

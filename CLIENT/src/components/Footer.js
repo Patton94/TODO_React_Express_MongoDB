@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./Footer.css";
 import LanguageSwitcher from "./LanguageSwitcher";
 import ThemeSwitcher from "./ThemeSwitcher";
@@ -18,12 +18,16 @@ import { MdDelete } from "react-icons/md";
 import { MdDone } from "react-icons/md";
 import { HiDotsVertical } from "react-icons/hi";
 import { GrFormClose } from "react-icons/gr";
+import { DarkThemeContext } from "../context/darkThemeContext";
+import { MdClose } from "react-icons/md";
+import { RiCloseFill } from "react-icons/ri";
 
 const Footer = () => {
   const [t, i18n] = useTranslation();
 
   const [isOpenInfo, setIsOpenInfo] = useState(false);
   const [isOpenSettings, setIsOpenSettings] = useState(false);
+  const [darkTheme, setDarkTheme] = useContext(DarkThemeContext);
 
   const toggleInfo = () => {
     setIsOpenInfo(!isOpenInfo);
@@ -36,24 +40,41 @@ const Footer = () => {
   };
   return (
     <>
-      <div className="footer">
+      <div className={darkTheme ? "footer dark" : "footer"}>
         <div className="footer__info">
-          <button onClick={toggleInfo} className="footer__infoButton">
+          <button
+            onClick={toggleInfo}
+            className={darkTheme ? "footer__infoButton dark" : "footer__infoButton"}
+          >
             <BiHelpCircle className="footer__icon" />
           </button>
         </div>
 
         <div className="footer__settings">
-          <button onClick={toggleSettings} className="footer__settingsButton">
+          <button
+            onClick={toggleSettings}
+            className={
+              darkTheme ? "footer__settingsButton dark" : "footer__settingsButton"
+            }
+          >
             <IoMdSettings className="footer__icon" />
           </button>
         </div>
         <div
           className={
-            isOpenInfo ? "footer__modalInfo footer__active" : "footer__modalInfo"
+            darkTheme
+              ? isOpenInfo
+                ? "footer__modalInfo footer__active dark"
+                : "footer__modalInfo dark"
+              : isOpenInfo
+              ? "footer__modalInfo footer__active"
+              : "footer__modalInfo"
           }
         >
-          <div onClick={toggleInfo} className="footer__close">
+          <div
+            onClick={toggleInfo}
+            className={darkTheme ? "footer__close dark" : "footer__close"}
+          >
             <GrFormClose className="footer__closeIcon" />
           </div>
           <div className="footer__iconContainer">
@@ -109,12 +130,19 @@ const Footer = () => {
         </div>
         <div
           className={
-            isOpenSettings
+            darkTheme
+              ? isOpenSettings
+                ? "footer__modalSettings footer__active dark"
+                : "footer__modalSettings dark"
+              : isOpenSettings
               ? "footer__modalSettings footer__active"
               : "footer__modalSettings"
           }
         >
-          <div onClick={toggleSettings} className="footer__close">
+          <div
+            onClick={toggleSettings}
+            className={darkTheme ? "footer__close dark" : "footer__close"}
+          >
             <GrFormClose className="footer__closeIcon" />
           </div>
           <div className="footer__switcherContainer">

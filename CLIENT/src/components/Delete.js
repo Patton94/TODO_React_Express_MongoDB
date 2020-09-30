@@ -4,10 +4,12 @@ import { TasksContext } from "../context/tasksContext";
 import { UserContext } from "../context/userContext";
 import { LoadingContext } from "../context/loadingContext";
 import { MdDelete } from "react-icons/md";
+import { DarkThemeContext } from "../context/darkThemeContext";
 
 const Delete = (props) => {
   const [tasks, setTasks] = useContext(TasksContext);
   const [isLoading, setIsLoading] = useContext(LoadingContext);
+  const [darkTheme, setDarkTheme] = useContext(DarkThemeContext);
 
   const { userName, userID, token } = useContext(UserContext);
   const [userNameValue, setUserNameValue] = userName;
@@ -60,7 +62,16 @@ const Delete = (props) => {
   return (
     <button
       onClick={handleDeleteTask}
-      className={props.className ? `${props.className}` : "delete"}
+      // className={props.className ? `${props.className}` : "delete"}
+      className={
+        darkTheme
+          ? props.className
+            ? `${props.className} dark`
+            : "delete dark"
+          : props.className
+          ? `${props.className}`
+          : "delete"
+      }
     >
       <MdDelete />
     </button>

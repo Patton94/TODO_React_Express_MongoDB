@@ -13,8 +13,14 @@ const ThemeSwitcher = () => {
   return (
     <div className="theme">
       <div className="theme__container">
-        <button onClick={() => handleClick("")} className="theme__white"></button>
-        <button onClick={() => handleClick("dark")} className="theme__black"></button>
+        <button
+          onClick={() => handleClick("")}
+          className={darkTheme ? "theme__white dark" : "theme__white"}
+        ></button>
+        <button
+          onClick={() => handleClick("dark")}
+          className={darkTheme ? "theme__black dark" : "theme__black"}
+        ></button>
       </div>
     </div>
   );

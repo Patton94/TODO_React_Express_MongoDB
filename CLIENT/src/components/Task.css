@@ -15,6 +15,12 @@
   flex-grow: 1;
 }
 
+.task__titleContainer.dark {
+  background-color: #090088;
+  border: 2px solid #8c9afd;
+  color: #c2c9ff;
+}
+
 .task__title {
   display: flex;
   justify-content: center;
@@ -39,12 +45,22 @@
   align-items: center;
 }
 
+.task__priority.dark {
+  background-color: #090088;
+  color: #c2c9ff;
+}
+
 .task__beginDate {
   background-color: #fff9c4;
   flex-basis: 12%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.task__beginDate.dark {
+  background-color: #090088;
+  color: #c2c9ff;
 }
 
 .task__deadline {
@@ -54,6 +70,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.task__deadline {
+  background-color: #fff9c4;
+}
+
+.task__deadline.dark {
+  background-color: #090088;
+  color: #c2c9ff;
 }
 
 .task__editButton {
@@ -99,8 +124,20 @@
   transition: 0.2s ease;
 }
 
+.task__dotsButton.dark {
+  background-color: transparent;
+  box-shadow: 0 0 3px 1px rgba(194, 201, 255, 0.8),
+    inset 0 0 3px 1px rgba(194, 201, 255, 0.8);
+  color: rgba(194, 201, 255, 0.8);
+}
+
 .task__dotsButton:hover {
   box-shadow: 0 0 3px 3px #f57f17;
+}
+
+.task__dotsButton.dark:hover {
+  box-shadow: 0 0 3px 3px rgba(194, 201, 255, 0.8),
+    inset 0 0 3px 1px rgba(194, 201, 255, 0.8);
 }
 
 .task__modal {
@@ -119,6 +156,12 @@
   box-shadow: 0 0 2px 2px black;
   display: flex;
   z-index: 3;
+}
+
+.task__modal.dark {
+  background: rgb(3, 0, 46);
+  background: linear-gradient(45deg, rgba(3, 0, 46, 1) 0%, rgba(1, 0, 87, 1) 100%);
+  box-shadow: 0 0 2px 2px #8c9afd;
 }
 
 .task__background {
@@ -153,8 +196,17 @@
   box-shadow: 0 0 2px 1px #ff4747;
 }
 
+.task__close.dark {
+  background-color: rgb(206, 0, 0);
+  box-shadow: 0 0 2px 1px rgb(206, 0, 0);
+}
+
 .task__close:hover {
   box-shadow: 0 0 2px 2px #ff4747;
+}
+
+.task__close.dark:hover {
+  box-shadow: 0 0 2px 2px rgb(206, 0, 0), inset 0 0 1px 1px rgb(206, 0, 0);
 }
 
 .task__closeIcon {
@@ -162,15 +214,35 @@
 }
 
 .task__excedeed {
-  background-color: rgba(255, 0, 0, 0.75);
+  border: none;
+  box-shadow: inset 0 0 3px 1px red;
+  background-color: rgba(255, 0, 0, 0.35);
+}
+
+.task__excedeed.dark {
+  border: none;
+  box-shadow: inset 0 0 3px 1px rgba(255, 0, 0, 0.85);
+  background-color: rgba(255, 0, 0, 0.25);
 }
 
 .task__done {
-  background-color: rgba(141, 255, 41, 1);
+  border: none;
+  box-shadow: inset 0 0 3px 1px #209e00;
+  background-color: rgba(32, 158, 0, 0.15);
+}
+
+.task__done.dark {
+  border: none;
+  box-shadow: inset 0 0 3px 1px rgba(141, 255, 41, 0.8);
+  background-color: rgba(141, 255, 41, 0.25);
 }
 
 .task__deadlineIsClose {
   animation: deadlineClose 1.5s alternate infinite linear;
+}
+
+.task__deadlineIsClose.dark {
+  animation: deadlineCloseDark 1.5s alternate infinite linear;
 }
 
 @media (max-width: 799.98px) {
@@ -239,12 +311,10 @@
     border-right: none;
   }
 
-  .task__excedeed {
-    box-shadow: none;
-  }
-
-  .task__done {
-    box-shadow: none;
+  .task__titleContainer.dark {
+    border-top: none;
+    border-left: none;
+    border-right: none;
   }
 
   .task__dots {
@@ -297,6 +367,18 @@
 
   to {
     border: 2px solid rgba(255, 0, 0, 0.75);
-    box-shadow: 0 0 2px 1px rgba(255, 0, 0, 0.75);
+    box-shadow: 0 0 1.5px 0.5px rgba(255, 0, 0, 0.75),
+      inset 0 0 1.5px 0.5px rgba(255, 0, 0, 0.75);
+  }
+}
+
+@keyframes deadlineCloseDark {
+  from {
+    border: 2px solid transparent;
+  }
+
+  to {
+    border: 2px solid rgba(255, 0, 0, 0.85);
+    box-shadow: 0 0 2px 1px rgba(255, 0, 0, 0.85), inset 0 0 2px 1px rgba(255, 0, 0, 0.85);
   }
 }

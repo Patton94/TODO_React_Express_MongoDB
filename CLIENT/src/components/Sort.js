@@ -3,11 +3,13 @@ import "./Sort.css";
 import { TasksContext } from "../context/tasksContext";
 import { useTranslation } from "react-i18next";
 import { FaSort } from "react-icons/fa";
+import { DarkThemeContext } from "../context/darkThemeContext";
 
 const Sort = () => {
   const [sortBy, setSortBy] = useState(localStorage.getItem("sortBy"));
   const [tasks, setTasks] = useContext(TasksContext);
   const [t, i18n] = useTranslation();
+  const [darkTheme, setDarkTheme] = useContext(DarkThemeContext);
 
   const sortSelectChange = () => {
     if (sortBy == "beginDateNewest") {
@@ -62,23 +64,32 @@ const Sort = () => {
     <div className="sort">
       <label>{<FaSort />}</label>
       <select
-        className="sort__select"
+        className={darkTheme ? "sort__select dark" : "sort__select"}
         value={sortBy}
         onChange={(e) => {
           setSortBy(e.target.value);
           localStorage.setItem("sortBy", e.target.value);
         }}
       >
-        <optgroup className="sort__group" label={t("Sort.BeginDate")}>
+        <optgroup
+          className={darkTheme ? "sort__group dark" : "sort__group"}
+          label={t("Sort.BeginDate")}
+        >
           <option value="beginDateNewest">{t("Sort.Newest")}</option>
           <option value="beginDateOldest">{t("Sort.Oldest")}</option>
         </optgroup>
-        <optgroup className="sort__group" label={t("Sort.Deadline")}>
+        <optgroup
+          className={darkTheme ? "sort__group dark" : "sort__group"}
+          label={t("Sort.Deadline")}
+        >
           {" "}
           <option value="deadlineNearest">{t("Sort.Nearest")}</option>
           <option value="deadlineLatest">{t("Sort.Latest")}</option>
         </optgroup>
-        <optgroup className="sort__group" label={t("Sort.Priority")}>
+        <optgroup
+          className={darkTheme ? "sort__group dark" : "sort__group"}
+          label={t("Sort.Priority")}
+        >
           <option value="priorityMost">{t("Sort.Most")}</option>
           <option value="priorityLeast">{t("Sort.Least")}</option>
         </optgroup>
