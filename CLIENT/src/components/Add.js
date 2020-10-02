@@ -9,14 +9,13 @@ import { GrFormClose } from "react-icons/gr";
 import { DarkThemeContext } from "../context/darkThemeContext";
 
 const Add = () => {
-  const { userName, userID, token } = useContext(UserContext);
-  const [userNameValue, setUserNameValue] = userName;
-  const [userIDValue, setUserIDValue] = userID;
-  const [tokenValue, setTokenValue] = token;
-  const [t, i18n] = useTranslation();
-  const [darkTheme, setDarkTheme] = useContext(DarkThemeContext);
+  const { userID, token } = useContext(UserContext);
+  const [userIDValue] = userID;
+  const [tokenValue] = token;
+  const [t] = useTranslation();
+  const [darkTheme] = useContext(DarkThemeContext);
 
-  const [isLoading, setIsLoading] = useContext(LoadingContext);
+  const [, setIsLoading] = useContext(LoadingContext);
 
   const [tasks, setTasks] = useContext(TasksContext);
   const [isOpen, setIsOpen] = useState(false);
@@ -48,12 +47,10 @@ const Add = () => {
       .catch((err) => console.log(err));
   };
 
-  // Open and close modal
   const toggle = () => {
     setIsOpen(!isOpen);
   };
 
-  // Add new task with validation
   const addTask = () => {
     const newTask = {
       title: title,
@@ -125,9 +122,7 @@ const Add = () => {
 
   const handleAddTask = (e) => {
     e.preventDefault();
-    {
-      userIDValue ? addTask() : addDemoTask();
-    }
+    userIDValue ? addTask() : addDemoTask();
   };
 
   return (
@@ -205,7 +200,6 @@ const Add = () => {
                   darkTheme ? "add__input add__deadline dark" : "add__input add__deadline"
                 }
                 type="date"
-                value="now"
               />
             </div>
             {deadlineError ? (

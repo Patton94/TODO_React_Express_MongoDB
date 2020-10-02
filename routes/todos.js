@@ -5,17 +5,11 @@ const auth = require("../jwtMiddleware");
 const TodoItem = require("../models/TodoModel");
 const User = require("../models/User");
 
-// GET All TodoItems
-// Private
-
 router.get("/:userID", auth, (req, res) => {
   User.findById(req.params.userID)
     .then((user) => res.json(user.tasks))
     .catch((err) => console.log(`Data download error: ${err}`));
 });
-
-// Create a TodoItem
-// Private
 
 router.patch("/:userID/add", auth, (req, res) => {
   const newTodoItem = new TodoItem({
@@ -30,9 +24,6 @@ router.patch("/:userID/add", auth, (req, res) => {
     .catch((err) => console.log(`Adding task failed: ${err}`));
 });
 
-// DELETE TodoItem
-// Private
-
 router.patch("/:userID/delete/:title", auth, (req, res) => {
   User.updateOne(
     { _id: req.params.userID },
@@ -41,9 +32,6 @@ router.patch("/:userID/delete/:title", auth, (req, res) => {
     .then(res.json("Task deleted"))
     .catch((err) => console.log(`Deleting task failed: ${err}`));
 });
-
-// UPDATE TodoItem
-// Private
 
 router.patch("/:userID/edit/:title", auth, (req, res) => {
   User.updateOne(
@@ -60,9 +48,6 @@ router.patch("/:userID/edit/:title", auth, (req, res) => {
     .then(res.json("Item updated"))
     .catch((err) => console.log(`Updating failed ${err}`));
 });
-
-// Mark as done
-// Private
 
 router.patch("/:userID/edit/done/:title", auth, (req, res) => {
   User.updateOne(

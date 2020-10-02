@@ -11,8 +11,8 @@ const Login = () => {
   const { userName, token, userID } = useContext(UserContext);
   const [userNameValue, setUserNameValue] = userName;
   const [tokenValue, setTokenValue] = token;
-  const [userIDValue, setUserIDValue] = userID;
-  const [t, i18n] = useTranslation();
+  const [, setUserIDValue] = userID;
+  const [t] = useTranslation();
 
   const [isOpen, setIsOpen] = useState(false);
   const [email, setEmail] = useState("");
@@ -23,7 +23,7 @@ const Login = () => {
   const [loginFailed, setLoginFailed] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const [darkTheme, setDarkTheme] = useContext(DarkThemeContext);
+  const [darkTheme] = useContext(DarkThemeContext);
 
   const [width, setWidth] = useState(window.innerWidth);
 

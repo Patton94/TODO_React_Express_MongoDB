@@ -8,13 +8,12 @@ import { DarkThemeContext } from "../context/darkThemeContext";
 
 const Delete = (props) => {
   const [tasks, setTasks] = useContext(TasksContext);
-  const [isLoading, setIsLoading] = useContext(LoadingContext);
-  const [darkTheme, setDarkTheme] = useContext(DarkThemeContext);
+  const [, setIsLoading] = useContext(LoadingContext);
+  const [darkTheme] = useContext(DarkThemeContext);
 
-  const { userName, userID, token } = useContext(UserContext);
-  const [userNameValue, setUserNameValue] = userName;
-  const [userIDValue, setUserIDValue] = userID;
-  const [tokenValue, setTokenValue] = token;
+  const { userID, token } = useContext(UserContext);
+  const [userIDValue] = userID;
+  const [tokenValue] = token;
 
   const getData = () => {
     fetch(`http://localhost:5000/api/items/${userIDValue}`, {
@@ -48,21 +47,18 @@ const Delete = (props) => {
 
   const deleteDemoTask = () => {
     const dTasks = [...tasks];
-    const index = dTasks.findIndex((task) => task._id == props.id);
+    const index = dTasks.findIndex((task) => task._id === props.id);
     dTasks.splice(index, 1);
     setTasks(dTasks);
   };
 
   const handleDeleteTask = () => {
-    {
-      userIDValue ? deleteTask() : deleteDemoTask();
-    }
+    userIDValue ? deleteTask() : deleteDemoTask();
   };
 
   return (
     <button
       onClick={handleDeleteTask}
-      // className={props.className ? `${props.className}` : "delete"}
       className={
         darkTheme
           ? props.className

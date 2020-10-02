@@ -7,14 +7,13 @@ import { MdDone } from "react-icons/md";
 import { DarkThemeContext } from "../context/darkThemeContext";
 
 const Done = (props) => {
-  const { userName, userID, token } = useContext(UserContext);
-  const [userNameValue, setUserNameValue] = userName;
-  const [userIDValue, setUserIDValue] = userID;
-  const [tokenValue, setTokenValue] = token;
+  const { userID, token } = useContext(UserContext);
+  const [userIDValue] = userID;
+  const [tokenValue] = token;
 
   const [tasks, setTasks] = useContext(TasksContext);
-  const [isLoading, setIsLoading] = useContext(LoadingContext);
-  const [darkTheme, setDarkTheme] = useContext(DarkThemeContext);
+  const [, setIsLoading] = useContext(LoadingContext);
+  const [darkTheme] = useContext(DarkThemeContext);
 
   const getData = () => {
     fetch(`http://localhost:5000/api/items/${userIDValue}`, {
@@ -52,7 +51,7 @@ const Done = (props) => {
     const finishDate = date1.toISOString().slice(0, 10);
 
     const dTasks = [...tasks];
-    const index = dTasks.findIndex((task) => task._id == props.id);
+    const index = dTasks.findIndex((task) => task._id === props.id);
 
     dTasks[index].done = true;
     dTasks[index].finishDate = finishDate;
@@ -61,9 +60,7 @@ const Done = (props) => {
   };
 
   const handleDoneTask = () => {
-    {
-      userIDValue ? doneTask() : doneDemoTask();
-    }
+    userIDValue ? doneTask() : doneDemoTask();
   };
 
   return (

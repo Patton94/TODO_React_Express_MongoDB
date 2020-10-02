@@ -6,17 +6,13 @@ require("dotenv/config");
 
 const User = require("../models/User");
 
-// Register new user
-// Public
-
 router.post("/register", (req, res) => {
   const { name, email, password } = req.body;
-  // Check for existing user
+
   User.findOne({ email }).then((user) => {
     if (user) res.json({ msg: "User already exist" });
   });
 
-  // Create new user
   const newUser = new User({
     name: name,
     email: email,
@@ -44,17 +40,11 @@ router.post("/register", (req, res) => {
   });
 });
 
-// Login
-// Public
-
 router.post("/login", (req, res) => {
   const { email, password } = req.body;
 
-  // Check for existing user
   User.findOne({ email }).then((user) => {
     if (!user) res.json({ msg: "User does not exist" });
-
-    // Validate password
 
     if (password !== user.password) {
       res.json({ msg: "Invalid credentials" });
@@ -79,8 +69,6 @@ router.post("/login", (req, res) => {
     }
   });
 });
-
-// Get user data
 
 router.get("/user", auth, (req, res) => {
   User.findById(req.user.id)

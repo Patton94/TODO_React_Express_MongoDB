@@ -16,7 +16,5 @@
 .app.dark {
   background: rgb(3, 0, 46);
   background: linear-gradient(45deg, rgba(3, 0, 46, 1) 0%, rgba(1, 0, 87, 1) 100%);
-  /* background: rgb(1, 0, 87);
-  background: linear-gradient(45deg, rgba(1, 0, 87, 1) 0%, rgba(3, 0, 46, 1) 100%); */
   color: #8c9afd;
 }

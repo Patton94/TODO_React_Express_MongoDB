@@ -1,7 +1,6 @@
 import { createContext, useState, useEffect, useContext } from "react";
 import React from "react";
 import { UserContext } from "./userContext";
-import { LoadingContext } from "./loadingContext";
 import { LanguageContext } from "./languageContext";
 import { useTranslation } from "react-i18next";
 
@@ -9,12 +8,11 @@ export const TasksContext = createContext();
 
 export const TasksProvider = (props) => {
   const { userName, userID, token } = useContext(UserContext);
-  const [userNameValue, setUserNameValue] = userName;
-  const [userIDValue, setUserIDValue] = userID;
-  const [tokenValue, setTokenValue] = token;
-  const [t, i18n] = useTranslation();
+  const [userNameValue] = userName;
+  const [userIDValue] = userID;
+  const [tokenValue] = token;
+  const [t] = useTranslation();
 
-  const [isLoading, setIsLoading] = useContext(LoadingContext);
   const [language, setLanguage] = useContext(LanguageContext);
 
   const currentDate = new Date();
@@ -110,7 +108,7 @@ export const TasksProvider = (props) => {
         .then((res) => res.json())
         .then((data) => {
           if (
-            localStorage.getItem("sortBy") == "beginDateNewest" ||
+            localStorage.getItem("sortBy") === "beginDateNewest" ||
             !localStorage.getItem("sortBy")
           ) {
             const sortedTasks = [...data];
@@ -119,35 +117,35 @@ export const TasksProvider = (props) => {
             });
             setTasks(sortedTasks);
           }
-          if (localStorage.getItem("sortBy") == "beginDateOldest") {
+          if (localStorage.getItem("sortBy") === "beginDateOldest") {
             const sortedTasks = [...data];
             sortedTasks.sort((a, b) => {
               return new Date(a.beginDate) - new Date(b.beginDate);
             });
             setTasks(sortedTasks);
           }
-          if (localStorage.getItem("sortBy") == "deadlineNearest") {
+          if (localStorage.getItem("sortBy") === "deadlineNearest") {
             const sortedTasks = [...data];
             sortedTasks.sort((a, b) => {
               return new Date(a.deadline) - new Date(b.deadline);
             });
             setTasks(sortedTasks);
           }
-          if (localStorage.getItem("sortBy") == "deadlineLatest") {
+          if (localStorage.getItem("sortBy") === "deadlineLatest") {
             const sortedTasks = [...data];
             sortedTasks.sort((a, b) => {
               return new Date(b.deadline) - new Date(a.deadline);
             });
             setTasks(sortedTasks);
           }
-          if (localStorage.getItem("sortBy") == "priorityMost") {
+          if (localStorage.getItem("sortBy") === "priorityMost") {
             const sortedTasks = [...data];
             sortedTasks.sort((a, b) => {
               return b.priority - a.priority;
             });
             setTasks(sortedTasks);
           }
-          if (localStorage.getItem("sortBy") == "priorityLeast") {
+          if (localStorage.getItem("sortBy") === "priorityLeast") {
             const sortedTasks = [...data];
             sortedTasks.sort((a, b) => {
               return a.priority - b.priority;
@@ -158,7 +156,7 @@ export const TasksProvider = (props) => {
         .catch((err) => console.log(err));
     } else {
       if (
-        localStorage.getItem("sortBy") == "beginDateNewest" ||
+        localStorage.getItem("sortBy") === "beginDateNewest" ||
         !localStorage.getItem("sortBy")
       ) {
         const sortedTasks = [...initialTasks];
@@ -167,35 +165,35 @@ export const TasksProvider = (props) => {
         });
         setTasks(sortedTasks);
       }
-      if (localStorage.getItem("sortBy") == "beginDateOldest") {
+      if (localStorage.getItem("sortBy") === "beginDateOldest") {
         const sortedTasks = [...initialTasks];
         sortedTasks.sort((a, b) => {
           return new Date(a.beginDate) - new Date(b.beginDate);
         });
         setTasks(sortedTasks);
       }
-      if (localStorage.getItem("sortBy") == "deadlineNearest") {
+      if (localStorage.getItem("sortBy") === "deadlineNearest") {
         const sortedTasks = [...initialTasks];
         sortedTasks.sort((a, b) => {
           return new Date(a.deadline) - new Date(b.deadline);
         });
         setTasks(sortedTasks);
       }
-      if (localStorage.getItem("sortBy") == "deadlineLatest") {
+      if (localStorage.getItem("sortBy") === "deadlineLatest") {
         const sortedTasks = [...initialTasks];
         sortedTasks.sort((a, b) => {
           return new Date(b.deadline) - new Date(a.deadline);
         });
         setTasks(sortedTasks);
       }
-      if (localStorage.getItem("sortBy") == "priorityMost") {
+      if (localStorage.getItem("sortBy") === "priorityMost") {
         const sortedTasks = [...initialTasks];
         sortedTasks.sort((a, b) => {
           return b.priority - a.priority;
         });
         setTasks(sortedTasks);
       }
-      if (localStorage.getItem("sortBy") == "priorityLeast") {
+      if (localStorage.getItem("sortBy") === "priorityLeast") {
         const sortedTasks = [...initialTasks];
         sortedTasks.sort((a, b) => {
           return a.priority - b.priority;
@@ -203,13 +201,13 @@ export const TasksProvider = (props) => {
         setTasks(sortedTasks);
       }
     }
-  }, [userIDValue, userNameValue, tokenValue, language]);
+  }, [userIDValue, userNameValue, tokenValue, language]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     if (localStorage.getItem("i18nextLng") !== language) {
       setLanguage(localStorage.getItem("i18nextLng"));
     } else setLanguage(localStorage.getItem("i18nextLng"));
-  }, [language]);
+  }, [language]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <TasksContext.Provider value={[tasks, setTasks]}>

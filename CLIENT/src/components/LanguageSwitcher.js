@@ -6,9 +6,9 @@ import Flag from "react-flagkit";
 import { DarkThemeContext } from "../context/darkThemeContext";
 
 const LanguageSwitcher = () => {
-  const [language, setLanguage] = useContext(LanguageContext);
-  const [t, i18n] = useTranslation();
-  const [darkTheme, setDarkTheme] = useContext(DarkThemeContext);
+  const [, setLanguage] = useContext(LanguageContext);
+  const [, i18n] = useTranslation();
+  const [darkTheme] = useContext(DarkThemeContext);
 
   const handleClick = (lang) => {
     i18n.changeLanguage(lang);

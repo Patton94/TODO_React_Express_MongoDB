@@ -6,7 +6,7 @@ export const DarkThemeProvider = (props) => {
   const [darkTheme, setDarkTheme] = useState(false);
 
   useEffect(() => {
-    if (localStorage.getItem("darkTheme") != darkTheme) {
+    if (localStorage.getItem("darkTheme") !== darkTheme) {
       setDarkTheme(localStorage.getItem("darkTheme"));
     } else setDarkTheme(localStorage.getItem("darkTheme"));
   }, [darkTheme]);

@@ -275,10 +275,6 @@
   align-items: center;
 }
 
-/* .footer__closeIcon {
-  font-size: 20px;
-} */
-
 @media (max-width: 739.98px) {
   .footer__modalInfo {
     width: 60%;

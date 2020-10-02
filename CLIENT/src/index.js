@@ -31,7 +31,7 @@ ReactDOM.render(
         >
           TODO by <span className="loading__logoSignature">M.G.</span>
         </span>
-        <div class="lds-ring">
+        <div className="lds-ring">
           <div className={localStorage.getItem("darkTheme") ? "dark" : ""}></div>
           <div className={localStorage.getItem("darkTheme") ? "dark" : ""}></div>
           <div className={localStorage.getItem("darkTheme") ? "dark" : ""}></div>

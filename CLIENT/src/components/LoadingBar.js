@@ -3,7 +3,7 @@ import "./LoadingBar.css";
 import { DarkThemeContext } from "../context/darkThemeContext";
 
 const LoadingBar = (props) => {
-  const [darkTheme, setDarkTheme] = useContext(DarkThemeContext);
+  const [darkTheme] = useContext(DarkThemeContext);
   return (
     <div className="loadingBar">
       <div

@@ -12,7 +12,7 @@ const Task = (props) => {
   const [isExcedeed, setIsExcedeed] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
-  const [darkTheme, setDarkTheme] = useContext(DarkThemeContext);
+  const [darkTheme] = useContext(DarkThemeContext);
 
   const time1 = new Date(props.deadline);
   const deadlineTime = time1.getTime() + 86400000;
@@ -31,7 +31,7 @@ const Task = (props) => {
     if (differenceHours < 0) {
       setIsExcedeed(true);
     } else setIsExcedeed(false);
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const [width, setWidth] = useState(window.innerWidth);
 

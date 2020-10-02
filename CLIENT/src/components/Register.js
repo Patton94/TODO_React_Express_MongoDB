@@ -1,19 +1,14 @@
 import React, { useState, useContext, useEffect } from "react";
 import "./Register.css";
 import LoadingBar from "./LoadingBar";
-import { UserContext } from "../context/userContext";
 import { useTranslation } from "react-i18next";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { GrFormClose } from "react-icons/gr";
 import { DarkThemeContext } from "../context/darkThemeContext";
 
 const Register = () => {
-  const { userName, token, userID } = useContext(UserContext);
-  const [userNameValue, setUserNameValue] = userName;
-  const [userIDValue, setUserIDValue] = userID;
-  const [tokenValue, setTokenValue] = token;
-  const [t, i18n] = useTranslation();
-  const [darkTheme, setDarkTheme] = useContext(DarkThemeContext);
+  const [t] = useTranslation();
+  const [darkTheme] = useContext(DarkThemeContext);
 
   const [isOpen, setIsOpen] = useState(false);
   const [name, setName] = useState("");

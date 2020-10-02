@@ -19,15 +19,13 @@ import { MdDone } from "react-icons/md";
 import { HiDotsVertical } from "react-icons/hi";
 import { GrFormClose } from "react-icons/gr";
 import { DarkThemeContext } from "../context/darkThemeContext";
-import { MdClose } from "react-icons/md";
-import { RiCloseFill } from "react-icons/ri";
 
 const Footer = () => {
-  const [t, i18n] = useTranslation();
+  const [t] = useTranslation();
 
   const [isOpenInfo, setIsOpenInfo] = useState(false);
   const [isOpenSettings, setIsOpenSettings] = useState(false);
-  const [darkTheme, setDarkTheme] = useContext(DarkThemeContext);
+  const [darkTheme] = useContext(DarkThemeContext);
 
   const toggleInfo = () => {
     setIsOpenInfo(!isOpenInfo);
@@ -157,5 +155,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
-// {t("Footer.Copyright")} &copy; Michał Gruszczak

@@ -6,7 +6,7 @@ import Footer from "./components/Footer";
 import { DarkThemeContext } from "./context/darkThemeContext";
 
 function App() {
-  const [darkTheme, setDarkTheme] = useContext(DarkThemeContext);
+  const [darkTheme] = useContext(DarkThemeContext);
 
   return (
     <div className={darkTheme ? "app dark" : "app"}>

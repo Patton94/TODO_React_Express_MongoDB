@@ -9,14 +9,13 @@ import { GrFormClose } from "react-icons/gr";
 import { DarkThemeContext } from "../context/darkThemeContext";
 
 const Edit = (props) => {
-  const { userName, userID, token } = useContext(UserContext);
-  const [userNameValue, setUserNameValue] = userName;
-  const [userIDValue, setUserIDValue] = userID;
-  const [tokenValue, setTokenValue] = token;
-  const [t, i18n] = useTranslation();
-  const [darkTheme, setDarkTheme] = useContext(DarkThemeContext);
+  const { userID, token } = useContext(UserContext);
+  const [userIDValue] = userID;
+  const [tokenValue] = token;
+  const [t] = useTranslation();
+  const [darkTheme] = useContext(DarkThemeContext);
 
-  const [isLoading, setIsLoading] = useContext(LoadingContext);
+  const [, setIsLoading] = useContext(LoadingContext);
 
   const [tasks, setTasks] = useContext(TasksContext);
   const [isOpen, setIsOpen] = useState(false);
@@ -81,7 +80,7 @@ const Edit = (props) => {
       setTitleError(t("Edit.EmptyError"));
     } else {
       const dTasks = [...tasks];
-      const index = dTasks.findIndex((task) => task._id == props.id);
+      const index = dTasks.findIndex((task) => task._id === props.id);
 
       dTasks[index].title = title;
       dTasks[index].description = description;
@@ -100,9 +99,8 @@ const Edit = (props) => {
 
   const handleEditTask = (e) => {
     e.preventDefault();
-    {
-      userIDValue ? editTask() : editDemoTask();
-    }
+
+    userIDValue ? editTask() : editDemoTask();
   };
 
   return (
@@ -174,7 +172,6 @@ const Edit = (props) => {
                     : "edit__input edit__deadline"
                 }
                 type="date"
-                value="now"
               />
             </div>
 

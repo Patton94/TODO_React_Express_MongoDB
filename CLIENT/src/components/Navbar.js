@@ -13,8 +13,8 @@ const Navbar = () => {
   const { userName, token, userID } = useContext(UserContext);
   const [userNameValue, setUserNameValue] = userName;
   const [tokenValue, setTokenValue] = token;
-  const [userIDValue, setUserIDValue] = userID;
-  const [darkTheme, setDarkTheme] = useContext(DarkThemeContext);
+  const [, setUserIDValue] = userID;
+  const [darkTheme] = useContext(DarkThemeContext);
 
   const [width, setWidth] = useState(window.innerWidth);
 
@@ -25,7 +25,7 @@ const Navbar = () => {
     window.addEventListener("resize", handleResize);
   }, [width]);
 
-  const [t, i18n] = useTranslation();
+  const [t] = useTranslation();
 
   const logoutUser = (e) => {
     e.preventDefault();

@@ -9,7 +9,7 @@ export const UserProvider = (props) => {
 
   useEffect(() => {
     setToken(localStorage.getItem("token"));
-  });
+  }, []);
 
   return (
     <UserContext.Provider

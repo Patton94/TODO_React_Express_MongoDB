@@ -8,17 +8,17 @@ import { DarkThemeContext } from "../context/darkThemeContext";
 const Search = () => {
   const [searchText, setSearchText] = useState("");
   const [filteredTasks, setFilteredTasks] = useContext(SearchContext);
-  const [tasks, setTasks] = useContext(TasksContext);
-  const [t, i18n] = useTranslation();
-  const [darkTheme, setDarkTheme] = useContext(DarkThemeContext);
+  const [tasks] = useContext(TasksContext);
+  const [t] = useTranslation();
+  const [darkTheme] = useContext(DarkThemeContext);
 
   useEffect(() => {
     setFilteredTasks(tasks);
-  }, [tasks]);
+  }, [tasks]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     searchTask();
-  }, [searchText, tasks]);
+  }, [searchText, tasks]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const searchTask = () => {
     let copyTasks = [...filteredTasks];
@@ -37,7 +37,7 @@ const Search = () => {
         value={searchText}
         onChange={(e) => {
           setSearchText(e.target.value.toUpperCase());
-          if (searchText != e.target.value) {
+          if (searchText !== e.target.value) {
             searchTask();
           }
         }}

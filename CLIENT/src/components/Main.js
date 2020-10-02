@@ -6,7 +6,6 @@ import Add from "./Add";
 import LoadingBar from "./LoadingBar";
 import Sort from "./Sort";
 import Search from "./Search";
-import { DarkThemeContext } from "../context/darkThemeContext";
 
 import { TasksContext } from "../context/tasksContext";
 import { UserContext } from "../context/userContext";
@@ -15,23 +14,20 @@ import { SearchContext } from "../context/searchContext";
 import { useTranslation } from "react-i18next";
 
 const Main = () => {
-  const [tasks, setTasks] = useContext(TasksContext);
-  const { userName, userID, token } = useContext(UserContext);
-  const [userNameValue, setUserNameValue] = userName;
-  const [userIDValue, setUserIDValue] = userID;
-  const [tokenValue, setTokenValue] = token;
-  const [t, i18n] = useTranslation();
+  const [tasks] = useContext(TasksContext);
+  const { userID } = useContext(UserContext);
+  const [userIDValue] = userID;
+  const [t] = useTranslation();
 
   const [isLoading, setIsLoading] = useContext(LoadingContext);
-  const [darkTheme, setDarkTheme] = useContext(DarkThemeContext);
 
   const [allDone, setAllDone] = useState(false);
   const [isEmpty, setIsEmpty] = useState(true);
 
-  const [filteredTasks, setFilteredTasks] = useContext(SearchContext);
+  const [filteredTasks] = useContext(SearchContext);
 
-  const falseTasks = filteredTasks.filter((task) => task.done == false);
-  const doneTasks = filteredTasks.filter((task) => task.done == true);
+  const falseTasks = filteredTasks.filter((task) => task.done === false);
+  const doneTasks = filteredTasks.filter((task) => task.done === true);
 
   const checkIsDone = () => {
     if (doneTasks.length === tasks.length && tasks.length > 0) {
@@ -40,7 +36,7 @@ const Main = () => {
   };
 
   const checkIsEmpty = () => {
-    if (tasks.length == 0) {
+    if (tasks.length === 0) {
       setIsLoading(true);
       setIsEmpty(true);
     } else {
@@ -49,7 +45,7 @@ const Main = () => {
     }
 
     setTimeout(() => {
-      if (tasks.length == 0) {
+      if (tasks.length === 0) {
         setIsLoading(false);
       }
     }, 1000);
@@ -58,7 +54,7 @@ const Main = () => {
   useEffect(() => {
     checkIsDone();
     checkIsEmpty();
-  }, [tasks]);
+  }, [tasks]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="main">

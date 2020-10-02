@@ -8,9 +8,9 @@ import { MdAlarm } from "react-icons/md";
 import { DarkThemeContext } from "../context/darkThemeContext";
 
 const DescriptionBar = () => {
-  const [t, i18n] = useTranslation();
+  const [t] = useTranslation();
   const [width, setWidth] = useState(window.innerWidth);
-  const [darkTheme, setDarkTheme] = useContext(DarkThemeContext);
+  const [darkTheme] = useContext(DarkThemeContext);
 
   useEffect(() => {
     const handleResize = () => {
