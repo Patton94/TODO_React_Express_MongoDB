@@ -42,7 +42,7 @@ const Register = () => {
       email,
       password,
     };
-    fetch("http://localhost:5000/api/users/register", {
+    fetch("https://todomg.herokuapp.com/api/users/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

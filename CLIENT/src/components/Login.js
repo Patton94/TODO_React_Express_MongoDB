@@ -44,7 +44,7 @@ const Login = () => {
       password,
     };
 
-    fetch("http://localhost:5000/api/users/login", {
+    fetch("https://todomg.herokuapp.com/api/users/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -60,7 +60,7 @@ const Login = () => {
           localStorage.setItem("token", data.token);
           localStorage.setItem("userName", data.user.name);
           localStorage.setItem("userID", data.user.id);
-          setIsLoading(true); ////
+          setIsLoading(true);
           setEmail("");
           setPassword("");
           setIsLoggedIn(true);

@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 
 mongoose.connect(
-  process.env.DB_CONNECTION,
+  process.env.MONGODB_URI,
   { useNewUrlParser: true, useCreateIndex: true },
   () => {
     console.log("MongoDB Connected");

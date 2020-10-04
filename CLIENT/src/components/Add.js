@@ -36,7 +36,7 @@ const Add = () => {
   }, [width]);
 
   const getData = () => {
-    fetch(`http://localhost:5000/api/items/${userIDValue}`, {
+    fetch(`https://todomg.herokuapp.com/api/items/${userIDValue}`, {
       method: "GET",
       headers: {
         "x-auth-token": `${tokenValue}`,
@@ -65,7 +65,7 @@ const Add = () => {
     if (!deadline) return setDeadlineError("Select a deadline date!");
 
     if (!titleError && !deadlineError) {
-      fetch(`http://localhost:5000/api/items/${userIDValue}/add`, {
+      fetch(`https://todomg.herokuapp.com/api/items/${userIDValue}/add`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

@@ -16,7 +16,7 @@ const Delete = (props) => {
   const [tokenValue] = token;
 
   const getData = () => {
-    fetch(`http://localhost:5000/api/items/${userIDValue}`, {
+    fetch(`https://todomg.herokuapp.com/api/items/${userIDValue}`, {
       method: "GET",
       headers: {
         "x-auth-token": `${tokenValue}`,
@@ -29,7 +29,7 @@ const Delete = (props) => {
 
   const deleteTask = () => {
     setIsLoading(true);
-    fetch(`http://localhost:5000/api/items/${userIDValue}/delete/${props.title}`, {
+    fetch(`https://todomg.herokuapp.com/api/items/${userIDValue}/delete/${props.title}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

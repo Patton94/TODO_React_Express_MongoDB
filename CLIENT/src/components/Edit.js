@@ -26,7 +26,7 @@ const Edit = (props) => {
   const [titleError, setTitleError] = useState("");
 
   const getData = () => {
-    fetch(`http://localhost:5000/api/items/${userIDValue}`, {
+    fetch(`https://todomg.herokuapp.com/api/items/${userIDValue}`, {
       method: "GET",
       headers: {
         "x-auth-token": `${tokenValue}`,
@@ -52,7 +52,7 @@ const Edit = (props) => {
     if (!title) {
       setTitleError(t("Edit.EmptyError"));
     } else {
-      fetch(`http://localhost:5000/api/items/${userIDValue}/edit/${props.title}`, {
+      fetch(`https://todomg.herokuapp.com/api/items/${userIDValue}/edit/${props.title}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

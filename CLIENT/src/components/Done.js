@@ -16,7 +16,7 @@ const Done = (props) => {
   const [darkTheme] = useContext(DarkThemeContext);
 
   const getData = () => {
-    fetch(`http://localhost:5000/api/items/${userIDValue}`, {
+    fetch(`https://todomg.herokuapp.com/api/items/${userIDValue}`, {
       method: "GET",
       headers: {
         "x-auth-token": `${tokenValue}`,
@@ -29,13 +29,16 @@ const Done = (props) => {
 
   const doneTask = () => {
     setIsLoading(true);
-    fetch(`http://localhost:5000/api/items/${userIDValue}/edit/done/${props.title}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        "x-auth-token": `${tokenValue}`,
-      },
-    })
+    fetch(
+      `https://todomg.herokuapp.com/api/items/${userIDValue}/edit/done/${props.title}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          "x-auth-token": `${tokenValue}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => console.log(data))
       .then(

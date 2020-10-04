@@ -99,7 +99,7 @@ export const TasksProvider = (props) => {
 
   useEffect(() => {
     if (userNameValue && userIDValue && tokenValue) {
-      fetch(`http://localhost:5000/api/items/${userIDValue}`, {
+      fetch(`https://todomg.herokuapp.com/api/items/${userIDValue}`, {
         method: "GET",
         headers: {
           "x-auth-token": `${tokenValue}`,
